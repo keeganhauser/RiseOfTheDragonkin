@@ -9,6 +9,9 @@ public class Player : MonoBehaviour
     [SerializeField]
     private float speed = 1f;
 
+    [SerializeField]
+    public string Name { get; private set; } = "DefaultName";
+
     public int HP { get; private set; }
 
     private SpriteRenderer spriteRenderer;
