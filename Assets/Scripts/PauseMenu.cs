@@ -6,6 +6,7 @@ using System.Linq;
 using TMPro;
 using UnityEditor.EditorTools;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class PauseMenu : MonoBehaviour
@@ -99,15 +100,29 @@ public class PauseMenu : MonoBehaviour
         Player player = FindObjectOfType<Player>();
         Vector3 pos = player.GetComponent<Transform>().position;
         DateTime date = DateTime.Now;
+        string scene_name = SceneManager.GetActiveScene().name;
 
-        db.Insert(player.Name, pos.ToString("F6"), date);
+        db.Insert(player.Name, pos.ToString("F6").Trim("()".ToCharArray()), date, scene_name);
         Debug.Log($"Game saved at {date}");
     }
 
     public void LoadGame()
     {
-        string readQ = "SELECT * FROM save_data";
-        string retrieveLast = "SELECT * FROM save_data ORDER BY DATE DESC LIMIT 1";
-        Debug.Log(db.Read(retrieveLast));
+        Player player = FindObjectOfType<Player>();
+        string[] str_coords;
+        string scene_name;
+
+        string result = db.Read(MariaDB.SelectType.MostRecent);
+        string[] values = result.Split(';');
+
+        // Load proper scene
+        scene_name = values[3].Trim();
+        SceneManager.SetActiveScene(SceneManager.GetSceneByName(scene_name));
+
+        // Set player position
+        str_coords = values[2].Split(',');
+        player.transform.position = new Vector2(Convert.ToSingle(str_coords[0]), Convert.ToSingle(str_coords[1]));
+
+        ResumeGame();
     }
 }
