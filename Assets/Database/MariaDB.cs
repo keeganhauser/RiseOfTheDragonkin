@@ -11,11 +11,11 @@ namespace MariaDBLib
 {
     public class MariaDB : MonoBehaviour
     {
-        string readQ = "SELECT * FROM save_data";
+        public bool IsSaving { get; private set; }
+
         void Start()
         {
-            Insert("test_unity_write");
-            Debug.Log(Read(readQ));
+            IsSaving = false;
         }
 
 
@@ -39,7 +39,7 @@ namespace MariaDBLib
                     {
                         while (reader.Read())
                         {
-                            sb.AppendLine($"{reader["name"]} | {reader["date"]}");
+                            sb.AppendLine($"{reader["name"]}\t{reader["date"]}\t{reader["position"]}");
                         }
                     }
                 }
@@ -49,11 +49,10 @@ namespace MariaDBLib
             return sb.ToString();
         }
 
-        public int Insert(string name, string position = "")
+        public int Insert(string name, string position, DateTime date)
         {
+            IsSaving = true;
             int rowsAffected = 0;
-            GameObject player = GameObject.FindGameObjectsWithTag("Player").FirstOrDefault();
-            Vector3 pos = player.GetComponent<Transform>().position;
 
             using (MySqlConnection conn = new MySqlConnection(connectionString))
             {
@@ -68,12 +67,15 @@ namespace MariaDBLib
                     cmd.Parameters.Add("?save_id", MySqlDbType.Guid).Value = Guid.NewGuid();
                     cmd.Parameters.Add("?name", MySqlDbType.VarChar).Value = name;
                     cmd.Parameters.Add("?date", MySqlDbType.Timestamp).Value = DateTime.Now;
-                    cmd.Parameters.Add("?position", MySqlDbType.VarChar).Value = pos.ToString("F6");
+                    cmd.Parameters.Add("?position", MySqlDbType.VarChar).Value = position;
 
                     rowsAffected = cmd.ExecuteNonQuery();
                 }
             }
+            IsSaving = false;
             return rowsAffected;
         }
+
+        
     }
 }
