@@ -3,9 +3,12 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Player : MonoBehaviour
 {
+    public static Player Instance;
+
     enum Direction
     {
         Left = -1,
@@ -33,6 +36,25 @@ public class Player : MonoBehaviour
     private bool canInteract;
     private GameObject lastCollidedObj;
     private Direction direction;
+    private bool inCombat;
+
+    private void Awake()
+    {
+        InstantiatePlayer();
+    }
+
+    private void InstantiatePlayer() 
+    { 
+        if (Instance == null)
+        {
+            Instance = this;
+            DontDestroyOnLoad(this);
+        }
+        else if (this != Instance)
+        {
+            Destroy(this.gameObject);
+        }
+    }
 
     void Start()
     {
@@ -40,6 +62,7 @@ public class Player : MonoBehaviour
         rb2d = GetComponent<Rigidbody2D>();
         canInteract = false;
         direction = Direction.Right;
+        inCombat = false;
     }
 
     void Update()
@@ -53,17 +76,25 @@ public class Player : MonoBehaviour
     private void Attack()
     {
         float attackX = (direction == Direction.Right) ? xAttackRange : -xAttackRange;
-        Collider2D[] hitEnemies = Physics2D.OverlapBoxAll(transform.position, new Vector2(attackX, 1), 0f, LayerMask.GetMask("Enemy"));
+        Collider2D hitEnemy = Physics2D.OverlapBox(transform.position, new Vector2(attackX, 1), 0f, LayerMask.GetMask("Enemy"));
 
-        foreach (Collider2D enemy in  hitEnemies)
-        {
-            enemy.GetComponent<Enemy>().TakeDamage(damage);
-        }
+        if (hitEnemy != null)
+            EnterCombat(hitEnemy);
+    }
+
+    private void EnterCombat(Collider2D enemy)
+    {
+        inCombat = true;
+        SceneManager.MoveGameObjectToScene(enemy.gameObject, SceneManager.GetSceneByName("CombatScene"));
+
+        SceneManager.LoadScene("CombatScene");
+        FindObjectOfType<CombatHandler>().EnterCombat(enemy);
     }
 
     private void FixedUpdate()
     {
-        HandleMovement();
+        if (!inCombat)
+            HandleMovement();
     }
 
     private void HandleInteractions()
@@ -99,6 +130,12 @@ public class Player : MonoBehaviour
             * Time.fixedDeltaTime;
 
         rb2d.velocity = moveVec;
+    }
+
+    public void ResetPosition()
+    {
+        rb2d.velocity = Vector3.zero;
+        direction = Direction.Right;
     }
 
     private void OnTriggerEnter2D(Collider2D collider)

@@ -8,7 +8,15 @@ public class Enemy : MonoBehaviour
     private int hp = 20;
 
     [SerializeField]
-    private string _name = "Enemy";
+    public string _name = "Enemy";
+
+    [SerializeField]
+    public EnemyType Type { get; private set; }
+
+    public enum EnemyType
+    {
+        Slime
+    }
 
     void Start()
     {
