@@ -420,9 +420,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 5568604292409927094, guid: 1dcf55ef5a5eae349a2c097e1e015d4d, type: 3}
-        m_TargetAssemblyTypeName: Player, Assembly-CSharp
-        m_MethodName: Defend
+      - m_Target: {fileID: 3724115201592841821, guid: 1dcf55ef5a5eae349a2c097e1e015d4d, type: 3}
+        m_TargetAssemblyTypeName: PlayerCombat, Assembly-CSharp
+        m_MethodName: UIDefend
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -3104,9 +3104,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 5568604292409927094, guid: 1dcf55ef5a5eae349a2c097e1e015d4d, type: 3}
-        m_TargetAssemblyTypeName: Player, Assembly-CSharp
-        m_MethodName: CombatAttack
+      - m_Target: {fileID: 3724115201592841821, guid: 1dcf55ef5a5eae349a2c097e1e015d4d, type: 3}
+        m_TargetAssemblyTypeName: PlayerCombat, Assembly-CSharp
+        m_MethodName: UIAttack
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

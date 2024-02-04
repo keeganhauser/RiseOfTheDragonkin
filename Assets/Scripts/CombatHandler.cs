@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using System.Runtime.CompilerServices;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -16,11 +17,13 @@ public class CombatHandler : MonoBehaviour
     public Turn CurrentTurn { get; private set; }
     private Vector2 playerPosition = new Vector2(-3.5f, -0.5f);
     private Vector2 enemyPosition = new Vector2(3.5f, -0.5f);
-    private Enemy enemy;
+    public EnemyCombat[] Enemies { get; private set; }
+
     void Start()
     {
         CurrentTurn = Turn.Player;
-        EnterCombat(FindObjectOfType<Enemy>());
+
+        Invoke(nameof(EnterCombat), 1f);
     }
 
     void Update()
@@ -28,29 +31,27 @@ public class CombatHandler : MonoBehaviour
 
     }
 
-    public void EnterCombat(Enemy enemy)
+    public void EnterCombat()
     {
-        Debug.Log($"{Player.Instance.Name} has entered combat with {enemy._name}!");
-        Player.Instance.transform.position = playerPosition;
-        Player.Instance.ResetPosition();
-        enemy.transform.position = enemyPosition;
-        this.enemy = enemy;
-        this.enemy.InitiateCombat(this);
+        Debug.Log("Entering combat!");
+        Enemies = FindObjectsByType<EnemyCombat>(FindObjectsSortMode.None);
+        Debug.Log($"Found {Enemies.Length} combat objects.");
+        Player.Instance.CanMove = false;
     }
 
     public void EndCombat()
     {
         // Hide UI
         FindObjectOfType<PlayerCombatMenu>().DisableCombatMenu();
+        Player.Instance.CanMove = true;
+    }
 
-        Destroy(enemy.gameObject);
-
-        Player.Instance.LeaveCombat();
-        DontDestroyOnLoad(Player.Instance);
-
-        // Go back to previous scene
-        // TODO: Remove hardcoded values
-        SceneManager.LoadScene("SampleScene");
+    private void InvokeEnemyTurn()
+    {
+        foreach (EnemyCombat enemy in Enemies)
+        {
+            enemy.DecideMove();
+        }
     }
 
     public void EndTurn()
@@ -60,14 +61,14 @@ public class CombatHandler : MonoBehaviour
         {
             // Hide UI
             FindObjectOfType<PlayerCombatMenu>().DisableCombatMenu();
+
             CurrentTurn = Turn.Enemy;
-            
+            Invoke(nameof(InvokeEnemyTurn), 1f);
         }
         else
         {
             // Show UI
             FindObjectOfType<PlayerCombatMenu>().EnableCombatMenu();
-
             CurrentTurn = Turn.Player;
         }
     }

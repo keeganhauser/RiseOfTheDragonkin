@@ -20,24 +20,26 @@ public class Player : MonoBehaviour
     private float speed = 1f;
 
     [SerializeField]
-    private int damage = 10;
-
-    [SerializeField]
     [Range(1f, 10f)]
     private float xAttackRange = 1f;
 
     [SerializeField]
     public string Name { get; private set; } = "DefaultName";
 
-    public int HP { get; private set; }
+    [SerializeField]
+    private int health = 100;
+    public int Health 
+    {
+        get => health;
+        set => health = value;
+    }
+    public bool CanMove { get; set; }
 
     private SpriteRenderer spriteRenderer;
     private Rigidbody2D rb2d;
     private bool canInteract;
     private GameObject lastCollidedObj;
     private Direction direction;
-    private bool inCombat;
-    private bool isDefending = false;
 
     private void Awake()
     {
@@ -63,7 +65,7 @@ public class Player : MonoBehaviour
         rb2d = GetComponent<Rigidbody2D>();
         canInteract = false;
         direction = Direction.Right;
-        inCombat = false;
+        CanMove = true;
     }
 
     void Update()
@@ -74,43 +76,21 @@ public class Player : MonoBehaviour
             Attack();
     }
 
-    public void CombatAttack()
-    {
-        FindObjectOfType<Enemy>().TakeDamage(damage);
-        FindObjectOfType<CombatHandler>().EndTurn();
-    }
-
-    public void Defend()
-    {
-        isDefending = true;
-        FindObjectOfType<CombatHandler>().EndTurn();
-    }
-
     private void Attack()
     {
         float attackX = (direction == Direction.Right) ? xAttackRange : -xAttackRange;
         Collider2D hitEnemy = Physics2D.OverlapBox(transform.position, new Vector2(attackX, 1), 0f, LayerMask.GetMask("Enemy"));
 
         if (hitEnemy != null)
-            EnterCombat(hitEnemy);
-    }
-
-    private void EnterCombat(Collider2D enemy)
-    {
-        inCombat = true;
-        DontDestroyOnLoad(enemy.gameObject);
-
-        SceneManager.LoadScene("CombatScene");
-    }
-
-    public void LeaveCombat()
-    {
-        inCombat = false;
+        {
+            DontDestroyOnLoad(hitEnemy);
+            SceneManager.LoadSceneAsync("CombatScene");
+        }
     }
 
     private void FixedUpdate()
     {
-        if (!inCombat)
+        if (CanMove)
             HandleMovement();
     }
 
@@ -127,28 +107,6 @@ public class Player : MonoBehaviour
             default:
                 break;
         }
-    }
-
-    public void TakeDamage(int damage)
-    {
-        if (isDefending)
-        {
-            damage /= 2;
-            isDefending = false;
-        }
-        HP -= damage;
-        Debug.Log($"{Name} took {damage} damage!");
-
-        if (HP <= 0)
-        {
-            Die();
-            Debug.Log("Player has died!");
-        }
-    }
-
-    private void Die()
-    {
-        // TODO: Add in stuff for when the player loses all hp
     }
 
     private void HandleMovement()
@@ -170,7 +128,7 @@ public class Player : MonoBehaviour
         rb2d.velocity = moveVec;
     }
 
-    public void ResetPosition()
+    public void ZeroMovement()
     {
         rb2d.velocity = Vector3.zero;
         direction = Direction.Right;
