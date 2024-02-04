@@ -37,6 +37,7 @@ public class Player : MonoBehaviour
     private GameObject lastCollidedObj;
     private Direction direction;
     private bool inCombat;
+    private bool isDefending = false;
 
     private void Awake()
     {
@@ -73,6 +74,18 @@ public class Player : MonoBehaviour
             Attack();
     }
 
+    public void CombatAttack()
+    {
+        FindObjectOfType<Enemy>().TakeDamage(damage);
+        FindObjectOfType<CombatHandler>().EndTurn();
+    }
+
+    public void Defend()
+    {
+        isDefending = true;
+        FindObjectOfType<CombatHandler>().EndTurn();
+    }
+
     private void Attack()
     {
         float attackX = (direction == Direction.Right) ? xAttackRange : -xAttackRange;
@@ -85,10 +98,14 @@ public class Player : MonoBehaviour
     private void EnterCombat(Collider2D enemy)
     {
         inCombat = true;
-        SceneManager.MoveGameObjectToScene(enemy.gameObject, SceneManager.GetSceneByName("CombatScene"));
+        DontDestroyOnLoad(enemy.gameObject);
 
         SceneManager.LoadScene("CombatScene");
-        FindObjectOfType<CombatHandler>().EnterCombat(enemy);
+    }
+
+    public void LeaveCombat()
+    {
+        inCombat = false;
     }
 
     private void FixedUpdate()
@@ -112,6 +129,27 @@ public class Player : MonoBehaviour
         }
     }
 
+    public void TakeDamage(int damage)
+    {
+        if (isDefending)
+        {
+            damage /= 2;
+            isDefending = false;
+        }
+        HP -= damage;
+        Debug.Log($"{Name} took {damage} damage!");
+
+        if (HP <= 0)
+        {
+            Die();
+            Debug.Log("Player has died!");
+        }
+    }
+
+    private void Die()
+    {
+        // TODO: Add in stuff for when the player loses all hp
+    }
 
     private void HandleMovement()
     {
