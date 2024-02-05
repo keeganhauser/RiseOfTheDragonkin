@@ -10,14 +10,6 @@ public class Slime : MonoBehaviour, IEnemy
     public string Name => enemyName;
 
     [SerializeField]
-    private int health = 20;
-    public int Health
-    {
-        get => health;
-        set => health = value;
-    }
-
-    [SerializeField]
     private EnemyType enemyType = EnemyType.Slime;
     public EnemyType EnemyType => enemyType;
 }

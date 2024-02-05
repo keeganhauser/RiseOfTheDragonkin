@@ -13,17 +13,20 @@ public class CombatHandler : MonoBehaviour
         Player,
         Enemy
     }
-
+    
     public Turn CurrentTurn { get; private set; }
     private Vector2 playerPosition = new Vector2(-3.5f, -0.5f);
     private Vector2 enemyPosition = new Vector2(3.5f, -0.5f);
-    public EnemyCombat[] Enemies { get; private set; }
+
+    [SerializeField]
+    private GameObject enemyPrefab;
+    
+    public GameObject Enemy { get; private set; }
 
     void Start()
     {
         CurrentTurn = Turn.Player;
-
-        Invoke(nameof(EnterCombat), 1f);
+        EnterCombat();
     }
 
     void Update()
@@ -34,9 +37,14 @@ public class CombatHandler : MonoBehaviour
     public void EnterCombat()
     {
         Debug.Log("Entering combat!");
-        Enemies = FindObjectsByType<EnemyCombat>(FindObjectsSortMode.None);
-        Debug.Log($"Found {Enemies.Length} combat objects.");
+
+        // Setup player
         Player.Instance.CanMove = false;
+        Player.Instance.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
+        Player.Instance.transform.position = playerPosition;
+
+        // Spawn enemy
+        Enemy = Instantiate(enemyPrefab, enemyPosition, Quaternion.identity);
     }
 
     public void EndCombat()
@@ -44,13 +52,17 @@ public class CombatHandler : MonoBehaviour
         // Hide UI
         FindObjectOfType<PlayerCombatMenu>().DisableCombatMenu();
         Player.Instance.CanMove = true;
+        SceneManager.LoadScene("SampleScene");
     }
 
     private void InvokeEnemyTurn()
     {
-        foreach (EnemyCombat enemy in Enemies)
+        try
         {
-            enemy.DecideMove();
+            Enemy.GetComponent<EnemyCombat>().DecideMove();
+        } catch (MissingReferenceException)
+        {
+            EndCombat();
         }
     }
 
@@ -61,6 +73,13 @@ public class CombatHandler : MonoBehaviour
         {
             // Hide UI
             FindObjectOfType<PlayerCombatMenu>().DisableCombatMenu();
+
+            if (Enemy.transform == null)
+            {
+                Debug.Log("ENEMY NULL");
+                EndCombat();
+                return;
+            }
 
             CurrentTurn = Turn.Enemy;
             Invoke(nameof(InvokeEnemyTurn), 1f);

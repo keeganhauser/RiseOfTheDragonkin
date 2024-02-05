@@ -7,6 +7,7 @@ using UnityEngine;
 public class PlayerCombat : Combat
 {
     private Player player;
+    private EntityHealth health;
 
     private void Start()
     {
@@ -17,15 +18,16 @@ public class PlayerCombat : Combat
 
     public override void TakeDamage(int damage)
     {
+        if (health == null) health = Player.Instance.GetComponent<EntityHealth>();
         if (isDefending)
         {
             damage /= 2;
             isDefending = false;
         }
-        player.Health -= damage;
+        health.LoseHealth(damage);
         Debug.Log($"{player.Name} took {damage} damage!");
 
-        if (player.Health <= 0)
+        if (health.Health <= 0)
         {
             Die();
             Debug.Log("Player has died!");
@@ -46,10 +48,9 @@ public class PlayerCombat : Combat
 
     public void UIAttack()
     {
-        foreach (EnemyCombat enemy in FindObjectOfType<CombatHandler>().Enemies)
-        {
-            DealDamage(enemy);
-        }
+        DealDamage(
+            FindFirstObjectByType<CombatHandler>()
+            .Enemy.GetComponent<EnemyCombat>());
     }
 
     public void UIDefend()

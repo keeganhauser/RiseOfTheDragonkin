@@ -5,10 +5,12 @@ using UnityEngine;
 public class SlimeCombat : EnemyCombat
 {
     private Slime slime;
+    private EntityHealth health;
 
     private void Start()
     {
         slime = GetComponent<Slime>();
+        health = GetComponent<EntityHealth>();
     }
 
     public override void TakeDamage(int damage)
@@ -18,10 +20,10 @@ public class SlimeCombat : EnemyCombat
             damage /= 2;
             isDefending = false;
         }
-        slime.Health -= damage;
+        health.LoseHealth(damage);
         Debug.Log($"{slime.Name} took {damage} damage!");
 
-        if (slime.Health <= 0)
+        if (health.Health <= 0)
         {
             Die();
             Debug.Log($"{slime.Name} has died!");
@@ -36,6 +38,9 @@ public class SlimeCombat : EnemyCombat
 
     protected override void Die()
     {
+        EntityHealthBar healthBar = GetComponent<EntityHealthBar>();
+        Destroy(healthBar.BarFullObj);
+        Destroy(healthBar.BarEmptyObj);
         Destroy(this.gameObject);
     }
 

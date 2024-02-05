@@ -26,13 +26,6 @@ public class Player : MonoBehaviour
     [SerializeField]
     public string Name { get; private set; } = "DefaultName";
 
-    [SerializeField]
-    private int health = 100;
-    public int Health 
-    {
-        get => health;
-        set => health = value;
-    }
     public bool CanMove { get; set; }
 
     private SpriteRenderer spriteRenderer;
@@ -83,8 +76,8 @@ public class Player : MonoBehaviour
 
         if (hitEnemy != null)
         {
-            DontDestroyOnLoad(hitEnemy);
-            SceneManager.LoadSceneAsync("CombatScene");
+            Destroy(hitEnemy);
+            SceneManager.LoadScene("CombatScene");
         }
     }
 

@@ -15,6 +15,5 @@ namespace ROTDK.EnemyType
 public interface IEnemy
 {
     public string Name { get; }
-    public int Health { get; set; }
     public EnemyType EnemyType { get; }
 }
