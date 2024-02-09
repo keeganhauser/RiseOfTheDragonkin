@@ -304,7 +304,7 @@ GameObject:
   - component: {fileID: 1026966293}
   - component: {fileID: 1026966294}
   m_Layer: 0
-  m_Name: CombatHandler
+  m_Name: BattleSystem
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -334,10 +334,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 1026966292}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4f86dc1a86b0acc4ab0749574a7c342e, type: 3}
+  m_Script: {fileID: 11500000, guid: 5e7d738c4f47192408ac9e1edff15ac9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerPrefab: {fileID: 1991416719239739546, guid: 1dcf55ef5a5eae349a2c097e1e015d4d, type: 3}
   enemyPrefab: {fileID: 5770605726181696271, guid: 4a1c321f7631edd4f9f1634fab15a2f7, type: 3}
+  dialogueText: {fileID: 0}
+  playerHUD: {fileID: 0}
+  enemyHUD: {fileID: 0}
+  state: 0
 --- !u!1 &1285776738
 GameObject:
   m_ObjectHideFlags: 0
@@ -2628,7 +2633,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1770088291
 RectTransform:
   m_ObjectHideFlags: 0
