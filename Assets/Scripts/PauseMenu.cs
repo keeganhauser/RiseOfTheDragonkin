@@ -75,7 +75,9 @@ public class PauseMenu : MonoBehaviour
 
     private void TogglePauseMenu()
     {
-        isPaused = !isPaused;
+        //isPaused = !isPaused;
+
+        Time.timeScale = isPaused ? 0 : 1;
 
         // Enable/disable panel's background image and all children
         image.enabled = isPaused;

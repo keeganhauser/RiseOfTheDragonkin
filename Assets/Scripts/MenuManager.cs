@@ -5,22 +5,26 @@ using UnityEngine;
 public class MenuManager : MonoBehaviour
 {
     [SerializeField]
-    private List<Menu> menus = new List<Menu>();
+    private bool showOnStartup = false;
+
+    [SerializeField]
+    private List<Menu> menusList = new List<Menu>();
 
     private void Start()
     {
-        ShowMenu(menus[0]);
+        if (showOnStartup)
+            ShowMenu(menusList[0]);
     }
 
     public void ShowMenu(Menu menu)
     {
-        if (!menus.Contains(menu))
+        if (!menusList.Contains(menu))
         {
             Debug.LogError($"{menu.name} is not found in the list of menus.");
             return;
         }
 
-        foreach (Menu m in menus)
+        foreach (Menu m in menusList)
         {
             if (m == menu)
             {
