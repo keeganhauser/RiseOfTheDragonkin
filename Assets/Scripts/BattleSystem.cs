@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -20,13 +21,16 @@ public class BattleSystem : MonoBehaviour
     [SerializeField]
     private GameObject enemyPrefab;
 
+    [SerializeField]
     private Transform playerBattleStation;
+
+    [SerializeField]
     private Transform enemyBattleStation;
 
     private Unit playerUnit;
     private Unit enemyUnit;
 
-    public Text dialogueText;
+    public TMP_Text dialogueText;
 
     public BattleHUD playerHUD;
     public BattleHUD enemyHUD;
@@ -42,20 +46,23 @@ public class BattleSystem : MonoBehaviour
 
     private IEnumerator SetupBattle()
     {
-        GameObject playerObj = Instantiate(playerPrefab, playerBattleStation);
+        GameObject playerObj = Instantiate(playerPrefab, playerBattleStation.position, Quaternion.identity, playerBattleStation);
+        Player.Instance.CanMove = false;
         playerUnit = playerObj.GetComponent<Unit>();
         playerUnit.OnDeath.AddListener(EndBattle);
+        playerHUD.RegisterUnit(playerUnit);
 
-        GameObject enemyObj = Instantiate(enemyPrefab, enemyBattleStation);
+        GameObject enemyObj = Instantiate(enemyPrefab, enemyBattleStation.position, Quaternion.identity, enemyBattleStation);
         enemyUnit = enemyObj.GetComponent<Unit>();
         enemyUnit.OnDeath.AddListener(EndBattle);
+        enemyHUD.RegisterUnit(enemyUnit);
 
         dialogueText.text = $"You've encountered a hostile {enemyUnit.UnitName}!";
 
-        playerHUD.SetHUD(playerUnit);
-        enemyHUD.SetHUD(enemyUnit);
+        playerHUD.SetHUD();
+        enemyHUD.SetHUD();
 
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(3f);
 
         state = BattleState.PlayerTurn;
         PlayerTurn();   
@@ -76,6 +83,7 @@ public class BattleSystem : MonoBehaviour
 
     private IEnumerator EnemyTurn()
     {
+        enemyUnit.IsDefending = false;
         dialogueText.text = $"{enemyUnit.UnitName} attacked!";
 
         yield return new WaitForSeconds(1f);
@@ -99,10 +107,12 @@ public class BattleSystem : MonoBehaviour
         {
             dialogueText.text = "You were slain...";
         }
+        Player.Instance.CanMove = true;
     }
 
     private void PlayerTurn()
     {
+        playerUnit.IsDefending = false;
         dialogueText.text = "Choose an action:";
     }
 

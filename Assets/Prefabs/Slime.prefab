@@ -14,9 +14,7 @@ GameObject:
   - component: {fileID: 8524081942381547643}
   - component: {fileID: 5412807667861436071}
   - component: {fileID: 7133694669832849197}
-  - component: {fileID: 2406957022451855661}
-  - component: {fileID: 6156748646505188010}
-  - component: {fileID: 7888155063912803781}
+  - component: {fileID: -4887953233362076546}
   m_Layer: 7
   m_Name: Slime
   m_TagString: Enemy
@@ -109,7 +107,7 @@ SpriteRenderer:
   m_SortingOrder: 8
   m_Sprite: {fileID: -1363174942, guid: 8941260a90943a64381d2232565e5ce0, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_FlipX: 0
+  m_FlipX: 1
   m_FlipY: 0
   m_DrawMode: 0
   m_Size: {x: 0.16, y: 0.16}
@@ -189,7 +187,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 28bb850c96eb98e488dac2f69927349d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &2406957022451855661
+--- !u!114 &-4887953233362076546
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -198,36 +196,18 @@ MonoBehaviour:
   m_GameObject: {fileID: 5770605726181696271}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 00871d6f4f2380b44aaf325eb2b0ef3e, type: 3}
+  m_Script: {fileID: 11500000, guid: 9b3e119394082234bb979f48f66a0d6f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 30
---- !u!114 &6156748646505188010
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5770605726181696271}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0f818cd8e86ecff4ab7e9539fbb376c1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  health: 40
-  maxHealth: 40
---- !u!114 &7888155063912803781
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5770605726181696271}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e6f1865be0da58e4eab9ea01d48b43fc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  healthBarFull: {fileID: 6772067715406855418, guid: 813f86979262e04478efddfdea7a1be1, type: 3}
-  healthBarEmpty: {fileID: 8219568005276880408, guid: bf4e1fba6cce6ab43b675d8af0d92760, type: 3}
-  healthBarLocation: {x: 0, y: 0.5}
+  unitName: Purple Slime
+  unitLevel: 2
+  damage: 2
+  maxHealth: 5
+  positionOffset: {x: 0, y: 0}
+  OnDeath:
+    m_PersistentCalls:
+      m_Calls: []
+  OnHealthChange:
+    m_PersistentCalls:
+      m_Calls: []
+  IsDefending: 0

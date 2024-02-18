@@ -1,14 +1,16 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
+using TMPro;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
 
 public class BattleHUD : MonoBehaviour
 {
-    public Text nameText;
-    public Text levelText;
-    public Slider hpSlider;
+    public TMP_Text nameText;
+    public TMP_Text levelText;
+    public Image hpImage;
 
     private Unit unit;
 
@@ -16,18 +18,19 @@ public class BattleHUD : MonoBehaviour
     {
         this.unit = unit;
         unit.OnHealthChange.AddListener(SetHP);
+        SetHP();
+        SetHUD();
     }
 
-    public void SetHUD(Unit unit)
+    public void SetHUD()
     {
         nameText.text = unit.UnitName;
         levelText.text = $"Lvl. {unit.UnitLevel}";
-        hpSlider.maxValue = unit.MaxHealth;
-        hpSlider.value = unit.CurrentHealth;
+        hpImage.fillAmount = (float)unit.CurrentHealth / unit.MaxHealth;
     }
 
     private void SetHP()
     {
-        hpSlider.value = unit.CurrentHealth;
+        hpImage.fillAmount = (float)unit.CurrentHealth / unit.MaxHealth;
     }
 }

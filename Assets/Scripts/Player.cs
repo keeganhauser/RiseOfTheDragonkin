@@ -11,6 +11,14 @@ public class Player : MonoBehaviour
 {
     public static Player Instance;
 
+    public enum Direction
+    {
+        Up,
+        Down,
+        Left,
+        Right
+    }
+
 
     [SerializeField]
     private float speed = 1f;
@@ -35,10 +43,13 @@ public class Player : MonoBehaviour
         InstantiatePlayer();
         rb2d = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
+        SetAnimator(Direction.Right);
+        canInteract = false;
+        CanMove = true;
     }
 
     private void InstantiatePlayer() 
-    { 
+    {
         if (Instance == null)
         {
             Instance = this;
@@ -50,30 +61,12 @@ public class Player : MonoBehaviour
         }
     }
 
-    void Start()
-    {
-        canInteract = false;
-        CanMove = true;
-    }
-
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.E))
             HandleInteractions();
-        if (Input.GetKeyDown(KeyCode.Space))
-            Attack();
-    }
-
-    private void Attack()
-    {
-        //float attackX = (direction == Direction.Right) ? xAttackRange : -xAttackRange;
-        //Collider2D hitEnemy = Physics2D.OverlapBox(transform.position, new Vector2(attackX, 1), 0f, LayerMask.GetMask("Enemy"));
-
-        //if (hitEnemy != null)
-        //{
-        //    Destroy(hitEnemy);
-        //    SceneManager.LoadScene("CombatScene");
-        //}
+        if (Input.GetKeyDown(KeyCode.Return))
+            SceneManager.LoadSceneAsync("CombatScene");
     }
 
     private void OnMovement(InputValue value)
@@ -91,6 +84,33 @@ public class Player : MonoBehaviour
         {
             animator.SetBool("IsMoving", false);
         }
+    }
+
+    private void SetAnimator(Direction direction)
+    {
+        float x = 0f;
+        float y = 0f;
+
+        switch (direction)
+        {
+            case Direction.Up:
+                y = 1f;
+                break;
+            case Direction.Down: 
+                y = -1f;
+                break;
+            case Direction.Left:
+                x = -1f;
+                break;
+            case Direction.Right:
+                x = 1f;
+                break;
+            default:
+                break;
+        }
+
+        animator.SetFloat("X", x);
+        animator.SetFloat("Y", y);
     }
 
     private void FixedUpdate()
@@ -117,11 +137,6 @@ public class Player : MonoBehaviour
     private void HandleMovement()
     {
         rb2d.MovePosition(rb2d.position + movementVec * speed * Time.fixedDeltaTime);
-    }
-
-    public void ZeroMovement()
-    {
-        rb2d.velocity = Vector3.zero;
     }
 
     private void OnTriggerEnter2D(Collider2D collider)

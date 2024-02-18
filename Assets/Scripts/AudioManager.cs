@@ -36,6 +36,10 @@ public class AudioManager : MonoBehaviour
     [SerializeField] private AudioClip overworldMusic;
     [SerializeField][Range(0f, 1f)] private float overworldMusicVolume;
 
+    [Header("Combat Music")]
+    [SerializeField] private AudioClip combatMusic;
+    [SerializeField][Range(0f, 1f)] private float combatMusicVolume;
+
 
     [Header("Test SFX")]
     [SerializeField] private AudioClip testSFX;
@@ -69,6 +73,9 @@ public class AudioManager : MonoBehaviour
                 break;
             case GameState.Overworld:
                 AudioSource.PlayClipAtPoint(overworldMusic, Camera.main.transform.position, overworldMusicVolume);
+                break;
+            case GameState.Combat:
+                AudioSource.PlayClipAtPoint(combatMusic, Camera.main.transform.position, combatMusicVolume);
                 break;
             default:
                 break;

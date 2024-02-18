@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Data.Common;
@@ -6,6 +7,12 @@ using UnityEngine.Events;
 
 public class Unit : MonoBehaviour
 {
+    public enum Type
+    {
+        Player,
+        Enemy
+    }
+
     [SerializeField]
     private string unitName;
     public string UnitName => unitName;
@@ -22,20 +29,33 @@ public class Unit : MonoBehaviour
     private int maxHealth;
     public int MaxHealth => maxHealth;
 
+    [SerializeField]
+    private Vector2 positionOffset = Vector2.zero;
+
     private int currentHealth;
     public int CurrentHealth => currentHealth;
 
     public UnityEvent OnDeath;
     public UnityEvent OnHealthChange;
 
+    public bool IsDefending;
+
     private void Awake()
     {
         OnDeath = new UnityEvent();
         OnHealthChange = new UnityEvent();
+        IsDefending = false;
+        currentHealth = maxHealth;
+        transform.position += new Vector3(positionOffset.x, positionOffset.y);
     }
 
     public void TakeDamage(int damage)
     {
+        if (IsDefending)
+        {
+            damage /= 2;
+            IsDefending = false;
+        }
         currentHealth -= damage;
 
         if (currentHealth <= 0)
