@@ -81,6 +81,8 @@ public class Player : MonoBehaviour
         }
     }
 
+    
+
     private void FixedUpdate()
     {
         if (CanMove)

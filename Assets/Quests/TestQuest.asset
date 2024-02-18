@@ -12,5 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6788a5a95cf0d834389d5fa8591073ec, type: 3}
   m_Name: TestQuest
   m_EditorClassIdentifier: 
-  questName: 
-  objectives: []
+  questName: Test Quest
+  objectives:
+  - name: Approach stone
+    optional: 0
+    visible: 1
+    initialStatus: 0
