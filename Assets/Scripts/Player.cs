@@ -4,16 +4,12 @@ using Unity.VisualScripting;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.InputSystem;
+using System.Runtime.CompilerServices;
 
 public class Player : MonoBehaviour
 {
     public static Player Instance;
-
-    enum Direction
-    {
-        Left = -1,
-        Right = 1
-    }
 
 
     [SerializeField]
@@ -28,15 +24,17 @@ public class Player : MonoBehaviour
 
     public bool CanMove { get; set; }
 
-    private SpriteRenderer spriteRenderer;
+    private Vector2 movementVec;
     private Rigidbody2D rb2d;
+    private Animator animator;
     private bool canInteract;
     private GameObject lastCollidedObj;
-    private Direction direction;
 
     private void Awake()
     {
         InstantiatePlayer();
+        rb2d = GetComponent<Rigidbody2D>();
+        animator = GetComponent<Animator>();
     }
 
     private void InstantiatePlayer() 
@@ -54,10 +52,7 @@ public class Player : MonoBehaviour
 
     void Start()
     {
-        spriteRenderer = GetComponent<SpriteRenderer>();
-        rb2d = GetComponent<Rigidbody2D>();
         canInteract = false;
-        direction = Direction.Right;
         CanMove = true;
     }
 
@@ -71,17 +66,32 @@ public class Player : MonoBehaviour
 
     private void Attack()
     {
-        float attackX = (direction == Direction.Right) ? xAttackRange : -xAttackRange;
-        Collider2D hitEnemy = Physics2D.OverlapBox(transform.position, new Vector2(attackX, 1), 0f, LayerMask.GetMask("Enemy"));
+        //float attackX = (direction == Direction.Right) ? xAttackRange : -xAttackRange;
+        //Collider2D hitEnemy = Physics2D.OverlapBox(transform.position, new Vector2(attackX, 1), 0f, LayerMask.GetMask("Enemy"));
 
-        if (hitEnemy != null)
-        {
-            Destroy(hitEnemy);
-            SceneManager.LoadScene("CombatScene");
-        }
+        //if (hitEnemy != null)
+        //{
+        //    Destroy(hitEnemy);
+        //    SceneManager.LoadScene("CombatScene");
+        //}
     }
 
-    
+    private void OnMovement(InputValue value)
+    {
+        movementVec = value.Get<Vector2>();
+
+        if (movementVec.x != 0 || movementVec.y != 0)
+        {
+            animator.SetFloat("X", movementVec.x);
+            animator.SetFloat("Y", movementVec.y);
+
+            animator.SetBool("IsMoving", true);
+        }
+        else
+        {
+            animator.SetBool("IsMoving", false);
+        }
+    }
 
     private void FixedUpdate()
     {
@@ -106,27 +116,12 @@ public class Player : MonoBehaviour
 
     private void HandleMovement()
     {
-        float horizontalInput = Input.GetAxis("Horizontal");
-        float verticalInput = Input.GetAxis("Vertical");
-
-        direction = (horizontalInput < 0f) ? Direction.Left : Direction.Right;
-        
-        spriteRenderer.flipX = direction == Direction.Left;
-
-        Vector3 moveVec = new Vector3(
-            horizontalInput,
-            verticalInput,
-            0)
-            * speed
-            * Time.fixedDeltaTime;
-
-        rb2d.velocity = moveVec;
+        rb2d.MovePosition(rb2d.position + movementVec * speed * Time.fixedDeltaTime);
     }
 
     public void ZeroMovement()
     {
         rb2d.velocity = Vector3.zero;
-        direction = Direction.Right;
     }
 
     private void OnTriggerEnter2D(Collider2D collider)
