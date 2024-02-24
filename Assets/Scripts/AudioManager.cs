@@ -11,6 +11,7 @@ public class AudioManager : MonoBehaviour
         if (Instance == null)
         {
             Instance = this;
+            audioSource = GetComponent<AudioSource>();
             DontDestroyOnLoad(this);
         }
         else if (this != Instance)
@@ -58,6 +59,8 @@ public class AudioManager : MonoBehaviour
         }
     }
 
+    private AudioSource audioSource;
+
     private void Awake()
     {
         InstantiateAudio();
@@ -69,21 +72,25 @@ public class AudioManager : MonoBehaviour
         switch (currentGameState)
         {
             case GameState.MainMenu:
-                AudioSource.PlayClipAtPoint(menuMusic, Camera.main.transform.position, mainMusicVolume); 
+                audioSource.clip = menuMusic;
+                audioSource.volume = mainMusicVolume;
                 break;
             case GameState.Overworld:
-                AudioSource.PlayClipAtPoint(overworldMusic, Camera.main.transform.position, overworldMusicVolume);
+                audioSource.clip = overworldMusic;
+                audioSource.volume = overworldMusicVolume;
                 break;
             case GameState.Combat:
-                AudioSource.PlayClipAtPoint(combatMusic, Camera.main.transform.position, combatMusicVolume);
+                audioSource.clip = combatMusic;
+                audioSource.volume = combatMusicVolume;
                 break;
             default:
                 break;
         }
-    }
 
-    public void PlayOneShot()
-    {
-
+        if (audioSource != null)
+        {
+            audioSource.loop = true;
+            audioSource.Play();
+        }
     }
 }
