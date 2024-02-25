@@ -1,18 +1,18 @@
 fileFormatVersion: 2
-guid: 4fc00401dba38dd40bbdba443c6d7b5e
+guid: 0d13ebb83ed9de9429e87924e19d47be
 TrueTypeFontImporter:
   externalObjects: {}
   serializedVersion: 4
-  fontSize: 256
-  forceTextureCase: -1
+  fontSize: 16
+  forceTextureCase: -2
   characterSpacing: 0
   characterPadding: 1
   includeFontData: 1
   fontNames:
-  - Retro Gaming
+  - Public Sans
   fallbackFontReferences: []
   customCharacters: 
-  fontRenderingMode: 2
+  fontRenderingMode: 0
   ascentCalculationMode: 1
   useLegacyBoundsCalculation: 0
   shouldRoundAdvanceValue: 1
