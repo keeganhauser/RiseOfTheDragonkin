@@ -110,6 +110,21 @@ public class InventoryManager : MonoBehaviour
         return false;
     }
 
+    public bool HasItem(Item item)
+    {
+        foreach (InventorySlot slot in inventorySlots)
+        {
+            InventoryItem itemInSlot = slot.GetComponentInChildren<InventoryItem>();
+            if (itemInSlot != null && itemInSlot.item == item)
+            {
+                return true;
+            }
+        }
+        return false;
+    }
+
+
+
     private void SpawnNewItem(Item item, InventorySlot slot)
     {
         GameObject newItemObj = Instantiate(inventoryItemPrefab, slot.transform);
@@ -133,12 +148,23 @@ public class InventoryManager : MonoBehaviour
         return null;
     }
 
+    public bool RemoveItem(Item item, int amount = 1)
+    {
+        // Find item
+        foreach (InventorySlot slot in inventorySlots)
+        {
+            InventoryItem itemInSlot = slot.GetComponentInChildren<InventoryItem>();
+            if (itemInSlot.item == item)
+            {
+                itemInSlot.Count -= amount;
+                return true;
+            }
+        }
+        return false;
+    }
+
     private void UseItem(InventoryItem invItem)
     {
         invItem.Count--;
-        if (invItem.Count <= 0)
-        {
-            Destroy(invItem.gameObject);
-        }
     }
 }

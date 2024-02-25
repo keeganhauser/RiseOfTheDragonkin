@@ -16,5 +16,6 @@ MonoBehaviour:
   type: 1
   actionType: 1
   range: {x: 5, y: 4}
+  itemName: Healing Potion
   stackable: 1
   image: {fileID: 1736836470, guid: a2669bfa923d7cb45b328e10e0963a0a, type: 3}

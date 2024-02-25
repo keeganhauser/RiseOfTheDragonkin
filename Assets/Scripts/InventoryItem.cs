@@ -20,6 +20,10 @@ public class InventoryItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
         set
         {
             count = value;
+
+            if (count <= 0)
+                Destroy(this.gameObject);
+
             RefreshCountText();
         }
     }
