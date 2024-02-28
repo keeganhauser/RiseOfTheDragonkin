@@ -79,6 +79,8 @@ public class QuestStatus
 
 public class QuestManager : MonoBehaviour
 {
+    public static QuestManager Instance;
+
     [SerializeField]
     private Quest startingQuest;
 
@@ -86,6 +88,17 @@ public class QuestManager : MonoBehaviour
     private TMP_Text objectiveSummary;
 
     private QuestStatus activeQuest;
+
+    private void Awake()
+    {
+        if (Instance == null)
+        {
+            Instance = this;
+            DontDestroyOnLoad(this);
+        }
+        else
+            Destroy(this);
+    }
 
     void Start()
     {

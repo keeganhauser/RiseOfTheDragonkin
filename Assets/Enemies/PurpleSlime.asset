@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 174a078f731be8d488ece845d1257a42, type: 3}
+  m_Name: PurpleSlime
+  m_EditorClassIdentifier: 
+  enemyName: Purple Slime
+  description: A slime!
+  enemyPrefab: {fileID: 5770605726181696271, guid: 4a1c321f7631edd4f9f1634fab15a2f7, type: 3}
+  sprite: {fileID: -1363174942, guid: 8941260a90943a64381d2232565e5ce0, type: 3}
+  material: {fileID: 2100000, guid: ebe5218df19199a47ba1c9ce3a998329, type: 2}

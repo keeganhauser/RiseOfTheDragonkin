@@ -25,7 +25,7 @@ public class Player : MonoBehaviour
 
     [SerializeField]
     [Range(1f, 10f)]
-    private float xAttackRange = 1f;
+    private float interactRange = 1f;
 
     [SerializeField]
     public string Name { get; private set; } = "DefaultName";
@@ -67,6 +67,7 @@ public class Player : MonoBehaviour
             HandleInteractions();
         if (Input.GetKeyDown(KeyCode.Return))
             SceneManager.LoadSceneAsync("CombatScene");
+
     }
 
     private void OnMovement(InputValue value)
@@ -121,35 +122,11 @@ public class Player : MonoBehaviour
 
     private void HandleInteractions()
     {
-        if (!canInteract || lastCollidedObj is null) { return; }
-
-        switch (lastCollidedObj.tag)
-        {
-            case "Door":
-                Debug.Log("Interacted with door!");
-                break;
-
-            default:
-                break;
-        }
+        // TODO: Handle interactions
     }
 
     private void HandleMovement()
     {
         rb2d.MovePosition(rb2d.position + movementVec * speed * Time.fixedDeltaTime);
-    }
-
-    private void OnTriggerEnter2D(Collider2D collider)
-    {
-        canInteract = true;
-        lastCollidedObj = collider.gameObject;
-    }
-
-    private void OnTriggerExit2D(Collider2D collision)
-    {
-        if (collision.gameObject.tag == lastCollidedObj.tag)
-        {
-            canInteract = false;
-        }
     }
 }

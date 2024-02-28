@@ -41,8 +41,11 @@ public class AudioManager : MonoBehaviour
     [SerializeField] private AudioClip combatMusic;
     [SerializeField][Range(0f, 1f)] private float combatMusicVolume;
 
+    [Header("General FX")]
+    public AudioClip pickupFX;
+    [Range(0f, 1f)] public float pickupVolume;
 
-    [Header("Test SFX")]
+
     [SerializeField] private AudioClip testSFX;
     [SerializeField][Range(0f, 1f)] private float testVolume;
 

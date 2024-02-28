@@ -19,14 +19,14 @@ public class BattleSystem : MonoBehaviour
     private GameObject playerPrefab;
 
     [SerializeField]
-    private GameObject enemyPrefab;
-
-    [SerializeField]
     private Transform playerBattleStation;
 
     [SerializeField]
     private Transform enemyBattleStation;
 
+    public static BattleSystem Instance;
+
+    public static Enemy enemy;
     private Unit playerUnit;
     private Unit enemyUnit;
 
@@ -37,27 +37,40 @@ public class BattleSystem : MonoBehaviour
 
     public BattleState state;
 
-    // Start is called before the first frame update
+    private void Awake()
+    {
+        if (Instance == null)
+        {
+            Instance = this;
+            DontDestroyOnLoad(this);
+        }
+        else
+            Destroy(this.gameObject);
+    }
+
     void Start()
     {
         state = BattleState.Start;
         StartCoroutine(SetupBattle());
     }
 
-    private IEnumerator SetupBattle()
+    public IEnumerator SetupBattle()
     {
-        GameObject playerObj = Instantiate(playerPrefab, playerBattleStation.position, Quaternion.identity, playerBattleStation);
+        // Spawn player
+        Player.Instance.transform.position = playerBattleStation.position;
         Player.Instance.CanMove = false;
-        playerUnit = playerObj.GetComponent<Unit>();
+
+        playerUnit = Player.Instance.GetComponent<Unit>();
         playerUnit.OnDeath.AddListener(EndBattle);
         playerHUD.RegisterUnit(playerUnit);
 
-        GameObject enemyObj = Instantiate(enemyPrefab, enemyBattleStation.position, Quaternion.identity, enemyBattleStation);
+        // Spawn enemy
+        GameObject enemyObj = EnemySpawner.SpawnEnemy(enemy, enemyBattleStation.position, Quaternion.identity, enemyBattleStation);
         enemyUnit = enemyObj.GetComponent<Unit>();
         enemyUnit.OnDeath.AddListener(EndBattle);
         enemyHUD.RegisterUnit(enemyUnit);
 
-        dialogueText.text = $"You've encountered a hostile {enemyUnit.UnitName}!";
+        dialogueText.text = $"You've encountered a hostile {enemy.enemyName}!";
 
         playerHUD.SetHUD();
         enemyHUD.SetHUD();
@@ -71,9 +84,9 @@ public class BattleSystem : MonoBehaviour
     private IEnumerator PlayerAttack()
     {
         // If the unit dies, then EndBattle will be called.
-        enemyUnit.TakeDamage(playerUnit.Damage);
+        playerUnit.DealDamage(enemyUnit);
 
-        dialogueText.text = $"Attacked {enemyUnit.UnitName} for {playerUnit.Damage}!";
+        dialogueText.text = $"Attacked {enemy.enemyName} for {playerUnit.Damage}!";
 
         yield return new WaitForSeconds(2f);
 
@@ -84,11 +97,15 @@ public class BattleSystem : MonoBehaviour
     private IEnumerator EnemyTurn()
     {
         enemyUnit.IsDefending = false;
-        dialogueText.text = $"{enemyUnit.UnitName} attacked!";
+        
+        // Figure out what move the enemy makes
+
+        dialogueText.text = $"{enemy.enemyName} attacked!";
+
 
         yield return new WaitForSeconds(1f);
 
-        playerUnit.TakeDamage(enemyUnit.Damage);
+        enemyUnit.DealDamage(playerUnit);
 
         yield return new WaitForSeconds(1f);
 

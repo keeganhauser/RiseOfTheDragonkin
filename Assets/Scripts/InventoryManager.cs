@@ -17,7 +17,10 @@ public class InventoryManager : MonoBehaviour
     private void Awake()
     {
         if (Instance == null)
+        {
             Instance = this;
+            DontDestroyOnLoad(this);
+        }
         else
             Destroy(this);
     }
@@ -154,7 +157,7 @@ public class InventoryManager : MonoBehaviour
         foreach (InventorySlot slot in inventorySlots)
         {
             InventoryItem itemInSlot = slot.GetComponentInChildren<InventoryItem>();
-            if (itemInSlot.item == item)
+            if (itemInSlot != null && itemInSlot.item == item)
             {
                 itemInSlot.Count -= amount;
                 return true;

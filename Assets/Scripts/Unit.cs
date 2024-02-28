@@ -13,7 +13,6 @@ public class Unit : MonoBehaviour
         Enemy
     }
 
-    [SerializeField]
     private string unitName;
     public string UnitName => unitName;
 
@@ -49,7 +48,7 @@ public class Unit : MonoBehaviour
         transform.position += new Vector3(positionOffset.x, positionOffset.y);
     }
 
-    public void TakeDamage(int damage)
+    private void TakeDamage(int damage)
     {
         if (IsDefending)
         {
@@ -69,5 +68,10 @@ public class Unit : MonoBehaviour
     public void Heal(int amount)
     {
         currentHealth = Mathf.Min(currentHealth + amount, maxHealth);
+    }
+
+    public void DealDamage(Unit other, int? amount = null)
+    {
+        other.TakeDamage(amount ?? damage);
     }
 }

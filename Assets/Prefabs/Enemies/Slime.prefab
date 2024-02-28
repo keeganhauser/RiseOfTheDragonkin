@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 2065563538981781209}
   - component: {fileID: 2354000034614702544}
   - component: {fileID: 8524081942381547643}
-  - component: {fileID: 5412807667861436071}
   - component: {fileID: 7133694669832849197}
   - component: {fileID: -4887953233362076546}
   m_Layer: 7
@@ -84,7 +83,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: ebe5218df19199a47ba1c9ce3a998329, type: 2}
+  - {fileID: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -105,7 +104,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 8
-  m_Sprite: {fileID: -1363174942, guid: 8941260a90943a64381d2232565e5ce0, type: 3}
+  m_Sprite: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 1
   m_FlipY: 0
@@ -113,7 +112,7 @@ SpriteRenderer:
   m_Size: {x: 0.16, y: 0.16}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!61 &8524081942381547643
@@ -161,20 +160,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.25, y: 0.25}
   m_EdgeRadius: 0
---- !u!114 &5412807667861436071
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5770605726181696271}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 68ffdf66a85c4b146b5989c94d3ce8a6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  enemyName: Slime
-  enemyType: 0
 --- !u!114 &7133694669832849197
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -199,7 +184,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9b3e119394082234bb979f48f66a0d6f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  unitName: Purple Slime
   unitLevel: 2
   damage: 2
   maxHealth: 5
