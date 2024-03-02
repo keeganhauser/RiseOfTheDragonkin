@@ -1,0 +1,226 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &1
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a5e6fedc2472449cead18ef23b5cb30d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Library:
+  - m_Name: IdleUp
+    m_Hash: 486716119
+    m_CategoryList: []
+    m_OverrideEntries:
+    - m_Name: Alchemist_idle_12
+      m_Hash: 658487366
+      m_Sprite: {fileID: 210885550, guid: af8f089501f91984dbf10766206a70e6, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: 210885550, guid: af8f089501f91984dbf10766206a70e6, type: 3}
+    - m_Name: Alchemist_idle_13
+      m_Hash: 272140496
+      m_Sprite: {fileID: -1469431783, guid: af8f089501f91984dbf10766206a70e6, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: -1469431783, guid: af8f089501f91984dbf10766206a70e6, type: 3}
+    - m_Name: Alchemist_idle_14
+      m_Hash: 240917875
+      m_Sprite: {fileID: 1727896831, guid: af8f089501f91984dbf10766206a70e6, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: 1727896831, guid: af8f089501f91984dbf10766206a70e6, type: 3}
+    - m_Name: Alchemist_idle_15
+      m_Hash: 962276837
+      m_Sprite: {fileID: -1202384632, guid: af8f089501f91984dbf10766206a70e6, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: -1202384632, guid: af8f089501f91984dbf10766206a70e6, type: 3}
+    m_FromMain: 0
+    m_EntryOverrideCount: 4
+  - m_Name: IdleDown
+    m_Hash: 526694748
+    m_CategoryList: []
+    m_OverrideEntries:
+    - m_Name: Alchemist_idle_0
+      m_Hash: 446679577
+      m_Sprite: {fileID: 197077327, guid: af8f089501f91984dbf10766206a70e6, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: 197077327, guid: af8f089501f91984dbf10766206a70e6, type: 3}
+    - m_Name: Alchemist_idle_1
+      m_Hash: 765000335
+      m_Sprite: {fileID: -301279426, guid: af8f089501f91984dbf10766206a70e6, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: -301279426, guid: af8f089501f91984dbf10766206a70e6, type: 3}
+    - m_Name: Alchemist_idle_2
+      m_Hash: 881961781
+      m_Sprite: {fileID: 1590776359, guid: af8f089501f91984dbf10766206a70e6, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: 1590776359, guid: af8f089501f91984dbf10766206a70e6, type: 3}
+    - m_Name: Alchemist_idle_3
+      m_Hash: 60201891
+      m_Sprite: {fileID: 846185871, guid: af8f089501f91984dbf10766206a70e6, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: 846185871, guid: af8f089501f91984dbf10766206a70e6, type: 3}
+    m_FromMain: 0
+    m_EntryOverrideCount: 4
+  - m_Name: IdleLeft
+    m_Hash: 972869135
+    m_CategoryList: []
+    m_OverrideEntries:
+    - m_Name: Alchemist_idle_4
+      m_Hash: 502402560
+      m_Sprite: {fileID: -1244897670, guid: af8f089501f91984dbf10766206a70e6, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: -1244897670, guid: af8f089501f91984dbf10766206a70e6, type: 3}
+    - m_Name: Alchemist_idle_5
+      m_Hash: 720715414
+      m_Sprite: {fileID: 10347278, guid: af8f089501f91984dbf10766206a70e6, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: 10347278, guid: af8f089501f91984dbf10766206a70e6, type: 3}
+    - m_Name: Alchemist_idle_6
+      m_Hash: 872181548
+      m_Sprite: {fileID: -1134894360, guid: af8f089501f91984dbf10766206a70e6, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: -1134894360, guid: af8f089501f91984dbf10766206a70e6, type: 3}
+    - m_Name: Alchemist_idle_7
+      m_Hash: 83582906
+      m_Sprite: {fileID: 856603783, guid: af8f089501f91984dbf10766206a70e6, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: 856603783, guid: af8f089501f91984dbf10766206a70e6, type: 3}
+    m_FromMain: 0
+    m_EntryOverrideCount: 4
+  - m_Name: IdleRight
+    m_Hash: 664738502
+    m_CategoryList: []
+    m_OverrideEntries:
+    - m_Name: Alchemist_idle_8
+      m_Hash: 340017707
+      m_Sprite: {fileID: -1348455865, guid: af8f089501f91984dbf10766206a70e6, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: -1348455865, guid: af8f089501f91984dbf10766206a70e6, type: 3}
+    - m_Name: Alchemist_idle_9
+      m_Hash: 591622845
+      m_Sprite: {fileID: 1189061856, guid: af8f089501f91984dbf10766206a70e6, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: 1189061856, guid: af8f089501f91984dbf10766206a70e6, type: 3}
+    - m_Name: Alchemist_idle_10
+      m_Hash: 154261866
+      m_Sprite: {fileID: 2054176115, guid: af8f089501f91984dbf10766206a70e6, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: 2054176115, guid: af8f089501f91984dbf10766206a70e6, type: 3}
+    - m_Name: Alchemist_idle_11
+      m_Hash: 1043786236
+      m_Sprite: {fileID: -861913912, guid: af8f089501f91984dbf10766206a70e6, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: -861913912, guid: af8f089501f91984dbf10766206a70e6, type: 3}
+    m_FromMain: 0
+    m_EntryOverrideCount: 4
+  - m_Name: WalkUp
+    m_Hash: 648049478
+    m_CategoryList: []
+    m_OverrideEntries:
+    - m_Name: Alchemist_walk_12
+      m_Hash: 550287701
+      m_Sprite: {fileID: 712787117, guid: 09646336a1f721245a942c3a5530ace1, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: 712787117, guid: 09646336a1f721245a942c3a5530ace1, type: 3}
+    - m_Name: Alchemist_walk_13
+      m_Hash: 399215043
+      m_Sprite: {fileID: -1093906696, guid: 09646336a1f721245a942c3a5530ace1, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: -1093906696, guid: 09646336a1f721245a942c3a5530ace1, type: 3}
+    - m_Name: Alchemist_walk_14
+      m_Hash: 162471008
+      m_Sprite: {fileID: 1359877191, guid: 09646336a1f721245a942c3a5530ace1, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: 1359877191, guid: 09646336a1f721245a942c3a5530ace1, type: 3}
+    - m_Name: Alchemist_walk_15
+      m_Hash: 1051208950
+      m_Sprite: {fileID: 288425313, guid: 09646336a1f721245a942c3a5530ace1, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: 288425313, guid: 09646336a1f721245a942c3a5530ace1, type: 3}
+    m_FromMain: 0
+    m_EntryOverrideCount: 4
+  - m_Name: WalkDown
+    m_Hash: 459082627
+    m_CategoryList: []
+    m_OverrideEntries:
+    - m_Name: Alchemist_walk_0
+      m_Hash: 557648776
+      m_Sprite: {fileID: 65734064, guid: 09646336a1f721245a942c3a5530ace1, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: 65734064, guid: 09646336a1f721245a942c3a5530ace1, type: 3}
+    - m_Name: Alchemist_walk_1
+      m_Hash: 372914974
+      m_Sprite: {fileID: -1841079503, guid: 09646336a1f721245a942c3a5530ace1, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: -1841079503, guid: 09646336a1f721245a942c3a5530ace1, type: 3}
+    - m_Name: Alchemist_walk_2
+      m_Hash: 255027876
+      m_Sprite: {fileID: 53231763, guid: 09646336a1f721245a942c3a5530ace1, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: 53231763, guid: 09646336a1f721245a942c3a5530ace1, type: 3}
+    - m_Name: Alchemist_walk_3
+      m_Hash: 942955058
+      m_Sprite: {fileID: -1933320971, guid: 09646336a1f721245a942c3a5530ace1, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: -1933320971, guid: 09646336a1f721245a942c3a5530ace1, type: 3}
+    m_FromMain: 0
+    m_EntryOverrideCount: 4
+  - m_Name: WalkLeft
+    m_Hash: 1036352720
+    m_CategoryList: []
+    m_OverrideEntries:
+    - m_Name: Alchemist_walk_4
+      m_Hash: 642830225
+      m_Sprite: {fileID: -1083648642, guid: 09646336a1f721245a942c3a5530ace1, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: -1083648642, guid: 09646336a1f721245a942c3a5530ace1, type: 3}
+    - m_Name: Alchemist_walk_5
+      m_Hash: 290979591
+      m_Sprite: {fileID: -107998214, guid: 09646336a1f721245a942c3a5530ace1, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: -107998214, guid: 09646336a1f721245a942c3a5530ace1, type: 3}
+    - m_Name: Alchemist_walk_6
+      m_Hash: 140422845
+      m_Sprite: {fileID: 2077947164, guid: 09646336a1f721245a942c3a5530ace1, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: 2077947164, guid: 09646336a1f721245a942c3a5530ace1, type: 3}
+    - m_Name: Alchemist_walk_7
+      m_Hash: 1062837803
+      m_Sprite: {fileID: 1112355978, guid: 09646336a1f721245a942c3a5530ace1, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: 1112355978, guid: 09646336a1f721245a942c3a5530ace1, type: 3}
+    m_FromMain: 0
+    m_EntryOverrideCount: 4
+  - m_Name: WalkRight
+    m_Hash: 829942833
+    m_CategoryList: []
+    m_OverrideEntries:
+    - m_Name: Alchemist_walk_8
+      m_Hash: 803636154
+      m_Sprite: {fileID: 515201952, guid: 09646336a1f721245a942c3a5530ace1, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: 515201952, guid: 09646336a1f721245a942c3a5530ace1, type: 3}
+    - m_Name: Alchemist_walk_9
+      m_Hash: 417444652
+      m_Sprite: {fileID: -1300216242, guid: 09646336a1f721245a942c3a5530ace1, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: -1300216242, guid: 09646336a1f721245a942c3a5530ace1, type: 3}
+    - m_Name: Alchemist_walk_10
+      m_Hash: 247650425
+      m_Sprite: {fileID: 1993545949, guid: 09646336a1f721245a942c3a5530ace1, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: 1993545949, guid: 09646336a1f721245a942c3a5530ace1, type: 3}
+    - m_Name: Alchemist_walk_11
+      m_Hash: 969271535
+      m_Sprite: {fileID: 366875393, guid: 09646336a1f721245a942c3a5530ace1, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: 366875393, guid: 09646336a1f721245a942c3a5530ace1, type: 3}
+    m_FromMain: 0
+    m_EntryOverrideCount: 4
+  m_PrimaryLibraryGUID: 
+  m_ModificationHash: 638449277750237494
+  m_Version: 1

@@ -42,7 +42,7 @@ public class Player : MonoBehaviour
     {
         InstantiatePlayer();
         rb2d = GetComponent<Rigidbody2D>();
-        animator = GetComponent<Animator>();
+        animator = GetComponentInChildren<Animator>();
         SetAnimator(Direction.Right);
         canInteract = false;
         CanMove = true;
