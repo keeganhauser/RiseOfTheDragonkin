@@ -17,17 +17,17 @@ public class InteractableObject : MonoBehaviour
         float height = GetComponent<SpriteRenderer>().sprite.bounds.size.y;
 
         // Add sprite child to object
-        interactionObj = Instantiate(
-            interactionDisplayPrefab,
-            new Vector3()
-            {
-                x = this.gameObject.transform.position.x + interactionDisplayOffset.x,
-                y = this.gameObject.transform.position.y + interactionDisplayOffset.y + height,
-                z = 0.0f
-            },
-            Quaternion.identity,
-            this.gameObject.transform);
-        interactionObj.SetActive(false);
+        //interactionObj = Instantiate(
+        //    interactionDisplayPrefab,
+        //    new Vector3()
+        //    {
+        //        x = this.gameObject.transform.position.x + interactionDisplayOffset.x,
+        //        y = this.gameObject.transform.position.y + interactionDisplayOffset.y + height,
+        //        z = 0.0f
+        //    },
+        //    Quaternion.identity,
+        //    this.gameObject.transform);
+        //interactionObj.SetActive(false);
     }
 
     private void OnCollisionEnter2D(Collision2D collision)

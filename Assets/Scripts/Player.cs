@@ -7,17 +7,24 @@ using UnityEngine.SceneManagement;
 using UnityEngine.InputSystem;
 using System.Runtime.CompilerServices;
 
+public enum Direction
+{
+    Up,
+    Down,
+    Left,
+    Right
+}
+
+public enum CharacterAction
+{
+    Idle,
+    Move,
+    Attack
+}
+
 public class Player : MonoBehaviour
 {
     public static Player Instance;
-
-    public enum Direction
-    {
-        Up,
-        Down,
-        Left,
-        Right
-    }
 
 
     [SerializeField]
@@ -38,12 +45,23 @@ public class Player : MonoBehaviour
     private bool canInteract;
     private GameObject lastCollidedObj;
 
+    private Direction playerDirection;
+    public Direction PlayerDirection
+    {
+        get { return playerDirection; }
+        set
+        {
+            playerDirection = value;
+            SetAnimator(playerDirection);
+        }
+    }
+
     private void Awake()
     {
         InstantiatePlayer();
         rb2d = GetComponent<Rigidbody2D>();
         animator = GetComponentInChildren<Animator>();
-        SetAnimator(Direction.Right);
+        PlayerDirection = Direction.Right;
         canInteract = false;
         CanMove = true;
     }
@@ -72,6 +90,8 @@ public class Player : MonoBehaviour
 
     private void OnMovement(InputValue value)
     {
+        if (!CanMove) return;
+
         movementVec = value.Get<Vector2>();
 
         if (movementVec.x != 0 || movementVec.y != 0)
@@ -85,6 +105,22 @@ public class Player : MonoBehaviour
         {
             animator.SetBool("IsMoving", false);
         }
+    }
+
+    public IEnumerator TriggerAnimation(CharacterAction action)
+    {
+        switch (action)
+        {
+            case CharacterAction.Attack:
+                animator.SetTrigger("Attack");
+                yield return new WaitForSeconds(0.5f);
+                animator.ResetTrigger("Attack");
+                break;
+            default:
+                break;
+        }
+
+        
     }
 
     private void SetAnimator(Direction direction)
@@ -112,6 +148,11 @@ public class Player : MonoBehaviour
 
         animator.SetFloat("X", x);
         animator.SetFloat("Y", y);
+
+        if (!CanMove)
+        {
+            animator.SetBool("IsMoving", false);
+        }
     }
 
     private void FixedUpdate()

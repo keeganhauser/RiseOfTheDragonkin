@@ -14,7 +14,7 @@ public class Unit : MonoBehaviour
     }
 
     private string unitName;
-    public string UnitName => unitName;
+    public string UnitName { get; set; }
 
     [SerializeField]
     private int unitLevel;
@@ -29,6 +29,10 @@ public class Unit : MonoBehaviour
     public int MaxHealth => maxHealth;
 
     [SerializeField]
+    private int speed;
+    public int Speed => speed;
+
+    [SerializeField]
     private Vector2 positionOffset = Vector2.zero;
 
     private int currentHealth;
@@ -38,6 +42,8 @@ public class Unit : MonoBehaviour
     public UnityEvent OnHealthChange;
 
     public bool IsDefending;
+    public CombatAction? combatAction;
+    public CombatBehavior combatBehavior;
 
     private void Awake()
     {
@@ -45,7 +51,7 @@ public class Unit : MonoBehaviour
         OnHealthChange = new UnityEvent();
         IsDefending = false;
         currentHealth = maxHealth;
-        transform.position += new Vector3(positionOffset.x, positionOffset.y);
+        combatBehavior = GetComponent<CombatBehavior>();
     }
 
     private void TakeDamage(int damage)
@@ -73,5 +79,10 @@ public class Unit : MonoBehaviour
     public void DealDamage(Unit other, int? amount = null)
     {
         other.TakeDamage(amount ?? damage);
+    }
+
+    public void DecideCombatAction()
+    {
+        combatAction = combatBehavior?.DecideCombatAction();
     }
 }

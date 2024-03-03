@@ -11,7 +11,7 @@ public class CombatManager : MonoBehaviour
     public static CombatManager Instance;
 
     private Transform playerTransform;
-    private Enemy enemy;
+    public Enemy enemy;
 
     private void Awake()
     {
@@ -28,7 +28,6 @@ public class CombatManager : MonoBehaviour
     {
         // Capture enemy to enter combat with
         this.enemy = enemy;
-        BattleSystem.enemy = enemy;
 
         // Store player's position outside of combat
         playerTransform = Player.Instance.transform;
