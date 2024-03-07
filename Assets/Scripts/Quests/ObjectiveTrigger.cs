@@ -1,9 +1,7 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using UnityEditor;
 using System.Linq;
+using UnityEditor;
+using UnityEngine;
 
 [Serializable]
 public class ObjectiveTrigger
@@ -46,7 +44,9 @@ public class ObjectiveTriggerDrawer : PropertyDrawer
 
         EditorGUI.PropertyField(firstLinePosition, questProperty, new GUIContent("Quest"));
         EditorGUI.PropertyField(secondLinePosition, statusProperty, new GUIContent("Status"));
-        EditorGUI.PropertyField(thirdLinePosition, objectiveNumberProperty, new GUIContent("Objective"));
+
+        thirdLinePosition = EditorGUI.PrefixLabel(thirdLinePosition, new GUIContent("Objective"));
+        //EditorGUI.PropertyField(thirdLinePosition, objectiveNumberProperty, new GUIContent("Objective"));
 
         Quest quest = questProperty.objectReferenceValue as Quest;
 

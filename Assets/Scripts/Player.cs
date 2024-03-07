@@ -1,11 +1,7 @@
 using System.Collections;
-using System.Collections.Generic;
-using Unity.VisualScripting;
-using UnityEditor;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 using UnityEngine.InputSystem;
-using System.Runtime.CompilerServices;
+using UnityEngine.SceneManagement;
 
 public enum Direction
 {
@@ -24,9 +20,10 @@ public enum CharacterAction
 
 public class Player : MonoBehaviour
 {
+    // Static variables
     public static Player Instance;
 
-
+    // Serialized variables
     [SerializeField]
     private float speed = 1f;
 
@@ -37,14 +34,14 @@ public class Player : MonoBehaviour
     [SerializeField]
     public string Name { get; private set; } = "DefaultName";
 
-    public bool CanMove { get; set; }
+    // Public variables
 
+    // Private variables
     private Vector2 movementVec;
     private Rigidbody2D rb2d;
     private Animator animator;
-    private bool canInteract;
-    private GameObject lastCollidedObj;
 
+    // Properties
     private Direction playerDirection;
     public Direction PlayerDirection
     {
@@ -56,17 +53,20 @@ public class Player : MonoBehaviour
         }
     }
 
+    public bool CanMove { get; set; }
+
+
+    // Private methods
     private void Awake()
     {
         InstantiatePlayer();
         rb2d = GetComponent<Rigidbody2D>();
         animator = GetComponentInChildren<Animator>();
         PlayerDirection = Direction.Right;
-        canInteract = false;
         CanMove = true;
     }
 
-    private void InstantiatePlayer() 
+    private void InstantiatePlayer()
     {
         if (Instance == null)
         {
@@ -77,15 +77,6 @@ public class Player : MonoBehaviour
         {
             Destroy(this.gameObject);
         }
-    }
-
-    void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.E))
-            HandleInteractions();
-        if (Input.GetKeyDown(KeyCode.Return))
-            SceneManager.LoadSceneAsync("CombatScene");
-
     }
 
     private void OnMovement(InputValue value)
@@ -107,6 +98,12 @@ public class Player : MonoBehaviour
         }
     }
 
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Return))
+            SceneManager.LoadSceneAsync("CombatScene");
+    }
+
     public IEnumerator TriggerAnimation(CharacterAction action)
     {
         switch (action)
@@ -119,8 +116,6 @@ public class Player : MonoBehaviour
             default:
                 break;
         }
-
-        
     }
 
     private void SetAnimator(Direction direction)
@@ -133,7 +128,7 @@ public class Player : MonoBehaviour
             case Direction.Up:
                 y = 1f;
                 break;
-            case Direction.Down: 
+            case Direction.Down:
                 y = -1f;
                 break;
             case Direction.Left:
@@ -159,11 +154,6 @@ public class Player : MonoBehaviour
     {
         if (CanMove)
             HandleMovement();
-    }
-
-    private void HandleInteractions()
-    {
-        // TODO: Handle interactions
     }
 
     private void HandleMovement()

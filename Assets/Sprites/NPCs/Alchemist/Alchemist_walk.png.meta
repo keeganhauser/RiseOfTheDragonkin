@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: af8f089501f91984dbf10766206a70e6
+guid: 09646336a1f721245a942c3a5530ace1
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -119,11 +119,24 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Alchemist_idle_0
+      name: Alchemist_walk_0
       rect:
         serializedVersion: 2
         x: 0
@@ -137,14 +150,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 572c0cb14a87e9e45a81182eb2ac96ac
-      internalID: 197077327
+      spriteID: 847c5f2cd4bad44448630572158e6411
+      internalID: 65734064
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Alchemist_idle_1
+      name: Alchemist_walk_1
       rect:
         serializedVersion: 2
         x: 32
@@ -158,14 +171,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b56ffabcb4908b2478fde976952cd031
-      internalID: -301279426
+      spriteID: 6d39cffb1c6200e408aa5a836c2a9cb3
+      internalID: -1841079503
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Alchemist_idle_2
+      name: Alchemist_walk_2
       rect:
         serializedVersion: 2
         x: 64
@@ -179,14 +192,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 99e70783739a7644cba5b5f39dcd6adc
-      internalID: 1590776359
+      spriteID: ec486d0d171b3044596c37c1562f8571
+      internalID: 53231763
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Alchemist_idle_3
+      name: Alchemist_walk_3
       rect:
         serializedVersion: 2
         x: 96
@@ -200,14 +213,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c4c5bf75d33a5374391d9df89ebf2aa3
-      internalID: 846185871
+      spriteID: 043abdc5f24ea1b44bac38d1ede62d9f
+      internalID: -1933320971
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Alchemist_idle_4
+      name: Alchemist_walk_4
       rect:
         serializedVersion: 2
         x: 0
@@ -221,14 +234,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 40076d6875c93104ca01a7615df2cfe0
-      internalID: -1244897670
+      spriteID: 5db3536bd93d3cc4696bc95bc34c7142
+      internalID: -1083648642
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Alchemist_idle_5
+      name: Alchemist_walk_5
       rect:
         serializedVersion: 2
         x: 32
@@ -242,14 +255,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1115590e70bd77049b6beedf1ac54c75
-      internalID: 10347278
+      spriteID: cf642aaaa13b8474c98f33240af128d3
+      internalID: -107998214
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Alchemist_idle_6
+      name: Alchemist_walk_6
       rect:
         serializedVersion: 2
         x: 64
@@ -263,14 +276,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1d8fe46616bd9164989ef66e9691d729
-      internalID: -1134894360
+      spriteID: e72427201744e0344870e2e3ffeda1a7
+      internalID: 2077947164
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Alchemist_idle_7
+      name: Alchemist_walk_7
       rect:
         serializedVersion: 2
         x: 96
@@ -284,14 +297,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a4c70ac780400cf4b9d3980a2025f9e6
-      internalID: 856603783
+      spriteID: 1e8a4e716e286f74093b456f91626add
+      internalID: 1112355978
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Alchemist_idle_8
+      name: Alchemist_walk_8
       rect:
         serializedVersion: 2
         x: 0
@@ -305,14 +318,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a74217f0665560e42b7d701552b9671c
-      internalID: -1348455865
+      spriteID: 1bc2110ae44ce1e4a894dec39d07c5f9
+      internalID: 515201952
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Alchemist_idle_9
+      name: Alchemist_walk_9
       rect:
         serializedVersion: 2
         x: 32
@@ -326,14 +339,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: cbf5c6e2d85455546800194c816e4a7a
-      internalID: 1189061856
+      spriteID: 45f527e521c1369448bdf7b3c597b027
+      internalID: -1300216242
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Alchemist_idle_10
+      name: Alchemist_walk_10
       rect:
         serializedVersion: 2
         x: 64
@@ -347,14 +360,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c527b4aecb8a4c841b869fdd61610b55
-      internalID: 2054176115
+      spriteID: 0ceb85ead8d6615439f6c686f61d619d
+      internalID: 1993545949
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Alchemist_idle_11
+      name: Alchemist_walk_11
       rect:
         serializedVersion: 2
         x: 96
@@ -368,14 +381,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a7526c143730aea4d8e80b8d23d87326
-      internalID: -861913912
+      spriteID: 3758ccc6c4388e649a2b6a65ff6bd04a
+      internalID: 366875393
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Alchemist_idle_12
+      name: Alchemist_walk_12
       rect:
         serializedVersion: 2
         x: 0
@@ -389,14 +402,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a0a0aef5f7d08b7458b66d31d6387ca1
-      internalID: 210885550
+      spriteID: ecf8e1703e95b6846a3a6441668b6623
+      internalID: 712787117
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Alchemist_idle_13
+      name: Alchemist_walk_13
       rect:
         serializedVersion: 2
         x: 32
@@ -410,14 +423,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 6cd5f3523a44d3f4982d175c1fc9f18a
-      internalID: -1469431783
+      spriteID: fb3897b8112d1de48b2ec0fc2e8c14f1
+      internalID: -1093906696
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Alchemist_idle_14
+      name: Alchemist_walk_14
       rect:
         serializedVersion: 2
         x: 64
@@ -431,14 +444,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 4f820f678a62581499a9d1e605740c4b
-      internalID: 1727896831
+      spriteID: 7957bd233c5a4b74aaf9f4d5db55f9d6
+      internalID: 1359877191
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Alchemist_idle_15
+      name: Alchemist_walk_15
       rect:
         serializedVersion: 2
         x: 96
@@ -452,8 +465,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 5bc1ca7bdf1e4624482db47c48957c90
-      internalID: -1202384632
+      spriteID: 0c9eb713fc66b34459ebf9dffbd06fd7
+      internalID: 288425313
       vertices: []
       indices: 
       edges: []
@@ -469,22 +482,22 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Alchemist_idle_0: 197077327
-      Alchemist_idle_1: -301279426
-      Alchemist_idle_10: 2054176115
-      Alchemist_idle_11: -861913912
-      Alchemist_idle_12: 210885550
-      Alchemist_idle_13: -1469431783
-      Alchemist_idle_14: 1727896831
-      Alchemist_idle_15: -1202384632
-      Alchemist_idle_2: 1590776359
-      Alchemist_idle_3: 846185871
-      Alchemist_idle_4: -1244897670
-      Alchemist_idle_5: 10347278
-      Alchemist_idle_6: -1134894360
-      Alchemist_idle_7: 856603783
-      Alchemist_idle_8: -1348455865
-      Alchemist_idle_9: 1189061856
+      Alchemist_walk_0: 65734064
+      Alchemist_walk_1: -1841079503
+      Alchemist_walk_10: 1993545949
+      Alchemist_walk_11: 366875393
+      Alchemist_walk_12: 712787117
+      Alchemist_walk_13: -1093906696
+      Alchemist_walk_14: 1359877191
+      Alchemist_walk_15: 288425313
+      Alchemist_walk_2: 53231763
+      Alchemist_walk_3: -1933320971
+      Alchemist_walk_4: -1083648642
+      Alchemist_walk_5: -107998214
+      Alchemist_walk_6: 2077947164
+      Alchemist_walk_7: 1112355978
+      Alchemist_walk_8: 515201952
+      Alchemist_walk_9: -1300216242
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

@@ -1,10 +1,7 @@
 using MariaDBLib;
 using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
 using TMPro;
-using UnityEditor.EditorTools;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -69,7 +66,7 @@ public class PauseMenu : MonoBehaviour
     private void UpdatePauseText()
     {
         pauseText.color = Color.HSVToRGB(
-            Mathf.PingPong(Time.time * pauseTextSpeed, 1), 
+            Mathf.PingPong(Time.time * pauseTextSpeed, 1),
             1, 1);
     }
 

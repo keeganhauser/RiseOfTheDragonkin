@@ -14,7 +14,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   questName: Test Quest
   objectives:
-  - name: Approach stone
+  - name: Talk to alchemist
+    optional: 0
+    visible: 1
+    initialStatus: 0
+  - name: Talk to merchant
     optional: 0
     visible: 1
     initialStatus: 0

@@ -1,8 +1,6 @@
-using System.Collections;
 using System.Collections.Generic;
 using System.Text;
 using TMPro;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class QuestStatus
@@ -113,8 +111,8 @@ public class QuestManager : MonoBehaviour
         Debug.Log($"Started quest {activeQuest.questData.name}");
     }
 
-    private void UpdateObjectiveSummaryText() 
-    { 
+    private void UpdateObjectiveSummaryText()
+    {
         objectiveSummary.text = (activeQuest == null) ? "No active quest" : activeQuest.ToString();
     }
 

@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -14,7 +12,8 @@ public class InventoryItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
 
     [HideInInspector] public Item item;
     [HideInInspector] private int count = 1;
-    [HideInInspector] public int Count
+    [HideInInspector]
+    public int Count
     {
         get { return count; }
         set

@@ -1,10 +1,8 @@
 ﻿//using MySql.Data.MySqlClient;
+using MySqlConnector;
 using System;
 using System.Data;
-using System.Linq;
 using System.Text;
-using MySqlConnector;
-using UnityEditor;
 using UnityEngine;
 
 namespace MariaDBLib
@@ -40,7 +38,7 @@ namespace MariaDBLib
                     cmd.CommandTimeout = 300;
                     cmd.CommandText = query;
 
-                    
+
 
                     using (MySqlDataReader reader = cmd.ExecuteReader())
                     {

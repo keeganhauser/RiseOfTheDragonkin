@@ -1,8 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
 using UnityEngine;
-using UnityEngine.AI;
 
 public class InventoryManager : MonoBehaviour
 {
@@ -40,7 +36,7 @@ public class InventoryManager : MonoBehaviour
         if (Input.inputString != null)
         {
             bool isNumber = int.TryParse(Input.inputString, out int number);
-            if (isNumber && number >= 0 && number < 10) 
+            if (isNumber && number >= 0 && number < 10)
             {
                 if (number == 0)
                     number = 10;

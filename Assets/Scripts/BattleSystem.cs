@@ -1,11 +1,6 @@
 using System.Collections;
-using System.Collections.Generic;
-using System.Text;
 using TMPro;
-using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.SceneManagement;
-using UnityEngine.UI;
 
 public enum BattleState
 {
@@ -166,7 +161,7 @@ public class BattleSystem : MonoBehaviour
         Unit[] units;
         if (playerUnit.Speed > enemyUnit.Speed)
         {
-            units = new Unit[2]{ playerUnit, enemyUnit};
+            units = new Unit[2] { playerUnit, enemyUnit };
         }
         else if (playerUnit.Speed < enemyUnit.Speed)
         {

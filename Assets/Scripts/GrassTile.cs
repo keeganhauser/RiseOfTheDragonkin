@@ -1,11 +1,8 @@
-using System.Collections;
-using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class GrassTile : MonoBehaviour
 {
-    
+
     [SerializeField][Range(0f, 100f)] private float encounterPercentage = 20f;
     [SerializeField] private Enemy[] encounterableEnemies;
 

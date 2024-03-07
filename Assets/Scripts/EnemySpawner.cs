@@ -1,6 +1,3 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class EnemySpawner : MonoBehaviour
@@ -11,9 +8,9 @@ public class EnemySpawner : MonoBehaviour
     }
 
     public static GameObject SpawnEnemy(
-        Enemy enemy, 
-        Vector3 position, 
-        Quaternion rotation, 
+        Enemy enemy,
+        Vector3 position,
+        Quaternion rotation,
         Transform parent)
     {
         GameObject enemyObj = Instantiate(enemy.enemyPrefab, position, rotation, parent);

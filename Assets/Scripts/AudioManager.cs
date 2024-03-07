@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public enum GameState
@@ -109,7 +108,7 @@ public class AudioManager : MonoBehaviour
     {
         float startVolume = audioSource.volume;
 
-        while (audioSource.volume > 0) 
+        while (audioSource.volume > 0)
         {
             audioSource.volume -= startVolume * Time.deltaTime / duration;
             yield return null;
@@ -117,7 +116,7 @@ public class AudioManager : MonoBehaviour
 
         audioSource.Stop();
         audioSource.volume = startVolume;
-        
+
     }
 
     public IEnumerator FadeIn(float duration)

@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 /// <summary>
@@ -23,8 +21,8 @@ public class WorldItem : MonoBehaviour
         if (other.tag == Player.Instance.tag)
         {
             AudioSource.PlayClipAtPoint(
-                AudioManager.Instance.pickupFX, 
-                this.transform.position, 
+                AudioManager.Instance.pickupFX,
+                this.transform.position,
                 AudioManager.Instance.pickupVolume);
             InventoryManager.Instance.AddItem(item);
             Destroy(this.gameObject);
