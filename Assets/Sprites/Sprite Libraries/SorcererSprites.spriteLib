@@ -1,0 +1,330 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &1
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a5e6fedc2472449cead18ef23b5cb30d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Library:
+  - m_Name: IdleUp
+    m_Hash: 486716119
+    m_CategoryList: []
+    m_OverrideEntries:
+    - m_Name: Swashbuckler_idle_12
+      m_Hash: 395476481
+      m_Sprite: {fileID: -2042359876, guid: 6ab9325eca444504a96f0cce73393fe1, type: 3}
+      m_FromMain: 1
+      m_SpriteOverride: {fileID: 81868758, guid: 799e1a5c9dcc01f44bd35c5a57baf0f0, type: 3}
+    - m_Name: Swashbuckler_idle_13
+      m_Hash: 546655895
+      m_Sprite: {fileID: -1554254648, guid: 6ab9325eca444504a96f0cce73393fe1, type: 3}
+      m_FromMain: 1
+      m_SpriteOverride: {fileID: -1255009611, guid: 799e1a5c9dcc01f44bd35c5a57baf0f0, type: 3}
+    - m_Name: Swashbuckler_idle_14
+      m_Hash: 1056037684
+      m_Sprite: {fileID: -678878155, guid: 6ab9325eca444504a96f0cce73393fe1, type: 3}
+      m_FromMain: 1
+      m_SpriteOverride: {fileID: 1338008023, guid: 799e1a5c9dcc01f44bd35c5a57baf0f0, type: 3}
+    - m_Name: Swashbuckler_idle_15
+      m_Hash: 167177122
+      m_Sprite: {fileID: -557341634, guid: 6ab9325eca444504a96f0cce73393fe1, type: 3}
+      m_FromMain: 1
+      m_SpriteOverride: {fileID: 739297906, guid: 799e1a5c9dcc01f44bd35c5a57baf0f0, type: 3}
+    m_FromMain: 1
+    m_EntryOverrideCount: 4
+  - m_Name: IdleDown
+    m_Hash: 526694748
+    m_CategoryList: []
+    m_OverrideEntries:
+    - m_Name: Swashbuckler_idle_0
+      m_Hash: 667004771
+      m_Sprite: {fileID: -1311296857, guid: 6ab9325eca444504a96f0cce73393fe1, type: 3}
+      m_FromMain: 1
+      m_SpriteOverride: {fileID: -331293098, guid: 799e1a5c9dcc01f44bd35c5a57baf0f0, type: 3}
+    - m_Name: Swashbuckler_idle_1
+      m_Hash: 281452533
+      m_Sprite: {fileID: 793826425, guid: 6ab9325eca444504a96f0cce73393fe1, type: 3}
+      m_FromMain: 1
+      m_SpriteOverride: {fileID: -302330476, guid: 799e1a5c9dcc01f44bd35c5a57baf0f0, type: 3}
+    - m_Name: Swashbuckler_idle_2
+      m_Hash: 164613711
+      m_Sprite: {fileID: -23991916, guid: 6ab9325eca444504a96f0cce73393fe1, type: 3}
+      m_FromMain: 1
+      m_SpriteOverride: {fileID: 1653999095, guid: 799e1a5c9dcc01f44bd35c5a57baf0f0, type: 3}
+    - m_Name: Swashbuckler_idle_3
+      m_Hash: 1053359833
+      m_Sprite: {fileID: 1724933669, guid: 6ab9325eca444504a96f0cce73393fe1, type: 3}
+      m_FromMain: 1
+      m_SpriteOverride: {fileID: -984443438, guid: 799e1a5c9dcc01f44bd35c5a57baf0f0, type: 3}
+    m_FromMain: 1
+    m_EntryOverrideCount: 4
+  - m_Name: IdleLeft
+    m_Hash: 972869135
+    m_CategoryList: []
+    m_OverrideEntries:
+    - m_Name: Swashbuckler_idle_4
+      m_Hash: 548170618
+      m_Sprite: {fileID: 408741572, guid: 6ab9325eca444504a96f0cce73393fe1, type: 3}
+      m_FromMain: 1
+      m_SpriteOverride: {fileID: 1740500194, guid: 799e1a5c9dcc01f44bd35c5a57baf0f0, type: 3}
+    - m_Name: Swashbuckler_idle_5
+      m_Hash: 397106156
+      m_Sprite: {fileID: 185854795, guid: 6ab9325eca444504a96f0cce73393fe1, type: 3}
+      m_FromMain: 1
+      m_SpriteOverride: {fileID: 1291463639, guid: 799e1a5c9dcc01f44bd35c5a57baf0f0, type: 3}
+    - m_Name: Swashbuckler_idle_6
+      m_Hash: 245500502
+      m_Sprite: {fileID: -1891453411, guid: 6ab9325eca444504a96f0cce73393fe1, type: 3}
+      m_FromMain: 1
+      m_SpriteOverride: {fileID: -427781289, guid: 799e1a5c9dcc01f44bd35c5a57baf0f0, type: 3}
+    - m_Name: Swashbuckler_idle_7
+      m_Hash: 967129792
+      m_Sprite: {fileID: 2117041899, guid: 6ab9325eca444504a96f0cce73393fe1, type: 3}
+      m_FromMain: 1
+      m_SpriteOverride: {fileID: 1939164031, guid: 799e1a5c9dcc01f44bd35c5a57baf0f0, type: 3}
+    m_FromMain: 1
+    m_EntryOverrideCount: 4
+  - m_Name: IdleRight
+    m_Hash: 664738502
+    m_CategoryList: []
+    m_OverrideEntries:
+    - m_Name: Swashbuckler_idle_8
+      m_Hash: 689579857
+      m_Sprite: {fileID: 2003559121, guid: 6ab9325eca444504a96f0cce73393fe1, type: 3}
+      m_FromMain: 1
+      m_SpriteOverride: {fileID: 839901626, guid: 799e1a5c9dcc01f44bd35c5a57baf0f0, type: 3}
+    - m_Name: Swashbuckler_idle_9
+      m_Hash: 505223111
+      m_Sprite: {fileID: 776378097, guid: 6ab9325eca444504a96f0cce73393fe1, type: 3}
+      m_FromMain: 1
+      m_SpriteOverride: {fileID: -85627690, guid: 799e1a5c9dcc01f44bd35c5a57baf0f0, type: 3}
+    - m_Name: Swashbuckler_idle_10
+      m_Hash: 966532909
+      m_Sprite: {fileID: -1066900641, guid: 6ab9325eca444504a96f0cce73393fe1, type: 3}
+      m_FromMain: 1
+      m_SpriteOverride: {fileID: -1005524674, guid: 799e1a5c9dcc01f44bd35c5a57baf0f0, type: 3}
+    - m_Name: Swashbuckler_idle_11
+      m_Hash: 245051323
+      m_Sprite: {fileID: -581337579, guid: 6ab9325eca444504a96f0cce73393fe1, type: 3}
+      m_FromMain: 1
+      m_SpriteOverride: {fileID: -883303618, guid: 799e1a5c9dcc01f44bd35c5a57baf0f0, type: 3}
+    m_FromMain: 1
+    m_EntryOverrideCount: 4
+  - m_Name: WalkUp
+    m_Hash: 648049478
+    m_CategoryList: []
+    m_OverrideEntries:
+    - m_Name: Swashbuckler_walk_12
+      m_Hash: 274824978
+      m_Sprite: {fileID: 396520890, guid: 164dbd14e467bd34ca33d0e0da806dab, type: 3}
+      m_FromMain: 1
+      m_SpriteOverride: {fileID: 1219499882, guid: ac75f234125ff364c95dbc4d007db30e, type: 3}
+    - m_Name: Swashbuckler_walk_13
+      m_Hash: 661016452
+      m_Sprite: {fileID: 1251087096, guid: 164dbd14e467bd34ca33d0e0da806dab, type: 3}
+      m_FromMain: 1
+      m_SpriteOverride: {fileID: -1341092762, guid: ac75f234125ff364c95dbc4d007db30e, type: 3}
+    - m_Name: Swashbuckler_walk_14
+      m_Hash: 956488231
+      m_Sprite: {fileID: -680794028, guid: 164dbd14e467bd34ca33d0e0da806dab, type: 3}
+      m_FromMain: 1
+      m_SpriteOverride: {fileID: 1535148802, guid: ac75f234125ff364c95dbc4d007db30e, type: 3}
+    - m_Name: Swashbuckler_walk_15
+      m_Hash: 235268785
+      m_Sprite: {fileID: 2099667814, guid: 164dbd14e467bd34ca33d0e0da806dab, type: 3}
+      m_FromMain: 1
+      m_SpriteOverride: {fileID: -1650446463, guid: ac75f234125ff364c95dbc4d007db30e, type: 3}
+    m_FromMain: 1
+    m_EntryOverrideCount: 4
+  - m_Name: WalkDown
+    m_Hash: 459082627
+    m_CategoryList: []
+    m_OverrideEntries:
+    - m_Name: Swashbuckler_walk_0
+      m_Hash: 476278514
+      m_Sprite: {fileID: -1639768010, guid: 164dbd14e467bd34ca33d0e0da806dab, type: 3}
+      m_FromMain: 1
+      m_SpriteOverride: {fileID: 1356672175, guid: ac75f234125ff364c95dbc4d007db30e, type: 3}
+    - m_Name: Swashbuckler_walk_1
+      m_Hash: 727998052
+      m_Sprite: {fileID: 425712573, guid: 164dbd14e467bd34ca33d0e0da806dab, type: 3}
+      m_FromMain: 1
+      m_SpriteOverride: {fileID: -1466109409, guid: ac75f234125ff364c95dbc4d007db30e, type: 3}
+    - m_Name: Swashbuckler_walk_2
+      m_Hash: 846008286
+      m_Sprite: {fileID: 1804249634, guid: 164dbd14e467bd34ca33d0e0da806dab, type: 3}
+      m_FromMain: 1
+      m_SpriteOverride: {fileID: 1770204018, guid: ac75f234125ff364c95dbc4d007db30e, type: 3}
+    - m_Name: Swashbuckler_walk_3
+      m_Hash: 90849096
+      m_Sprite: {fileID: 339169565, guid: 164dbd14e467bd34ca33d0e0da806dab, type: 3}
+      m_FromMain: 1
+      m_SpriteOverride: {fileID: -917993696, guid: ac75f234125ff364c95dbc4d007db30e, type: 3}
+    m_FromMain: 1
+    m_EntryOverrideCount: 4
+  - m_Name: WalkLeft
+    m_Hash: 1036352720
+    m_CategoryList: []
+    m_OverrideEntries:
+    - m_Name: Swashbuckler_walk_4
+      m_Hash: 453946091
+      m_Sprite: {fileID: -150210083, guid: 164dbd14e467bd34ca33d0e0da806dab, type: 3}
+      m_FromMain: 1
+      m_SpriteOverride: {fileID: -327918421, guid: ac75f234125ff364c95dbc4d007db30e, type: 3}
+    - m_Name: Swashbuckler_walk_5
+      m_Hash: 738826877
+      m_Sprite: {fileID: 1622004553, guid: 164dbd14e467bd34ca33d0e0da806dab, type: 3}
+      m_FromMain: 1
+      m_SpriteOverride: {fileID: 1206722863, guid: ac75f234125ff364c95dbc4d007db30e, type: 3}
+    - m_Name: Swashbuckler_walk_6
+      m_Hash: 889244615
+      m_Sprite: {fileID: 1975381260, guid: 164dbd14e467bd34ca33d0e0da806dab, type: 3}
+      m_FromMain: 1
+      m_SpriteOverride: {fileID: -123496553, guid: ac75f234125ff364c95dbc4d007db30e, type: 3}
+    - m_Name: Swashbuckler_walk_7
+      m_Hash: 34077521
+      m_Sprite: {fileID: -1835288846, guid: 164dbd14e467bd34ca33d0e0da806dab, type: 3}
+      m_FromMain: 1
+      m_SpriteOverride: {fileID: 1908067902, guid: ac75f234125ff364c95dbc4d007db30e, type: 3}
+    m_FromMain: 1
+    m_EntryOverrideCount: 4
+  - m_Name: WalkRight
+    m_Hash: 829942833
+    m_CategoryList: []
+    m_OverrideEntries:
+    - m_Name: Swashbuckler_walk_8
+      m_Hash: 314107584
+      m_Sprite: {fileID: -243641450, guid: 164dbd14e467bd34ca33d0e0da806dab, type: 3}
+      m_FromMain: 1
+      m_SpriteOverride: {fileID: 199879687, guid: ac75f234125ff364c95dbc4d007db30e, type: 3}
+    - m_Name: Swashbuckler_walk_9
+      m_Hash: 633329238
+      m_Sprite: {fileID: 356017480, guid: 164dbd14e467bd34ca33d0e0da806dab, type: 3}
+      m_FromMain: 1
+      m_SpriteOverride: {fileID: -1277630595, guid: ac75f234125ff364c95dbc4d007db30e, type: 3}
+    - m_Name: Swashbuckler_walk_10
+      m_Hash: 1047469630
+      m_Sprite: {fileID: -339927672, guid: 164dbd14e467bd34ca33d0e0da806dab, type: 3}
+      m_FromMain: 1
+      m_SpriteOverride: {fileID: 339143618, guid: ac75f234125ff364c95dbc4d007db30e, type: 3}
+    - m_Name: Swashbuckler_walk_11
+      m_Hash: 157822632
+      m_Sprite: {fileID: -1500077926, guid: 164dbd14e467bd34ca33d0e0da806dab, type: 3}
+      m_FromMain: 1
+      m_SpriteOverride: {fileID: -301099951, guid: ac75f234125ff364c95dbc4d007db30e, type: 3}
+    m_FromMain: 1
+    m_EntryOverrideCount: 4
+  - m_Name: AttackUp
+    m_Hash: 369843209
+    m_CategoryList: []
+    m_OverrideEntries:
+    - m_Name: Swashbuckler_melee_12
+      m_Hash: 969585799
+      m_Sprite: {fileID: 1611518944, guid: 94c347a03ee258f459cd4a358bcf32b2, type: 3}
+      m_FromMain: 1
+      m_SpriteOverride: {fileID: 1611518944, guid: 94c347a03ee258f459cd4a358bcf32b2, type: 3}
+    - m_Name: Swashbuckler_melee_13
+      m_Hash: 248349713
+      m_Sprite: {fileID: -393866050, guid: 94c347a03ee258f459cd4a358bcf32b2, type: 3}
+      m_FromMain: 1
+      m_SpriteOverride: {fileID: -393866050, guid: 94c347a03ee258f459cd4a358bcf32b2, type: 3}
+    - m_Name: Swashbuckler_melee_14
+      m_Hash: 279515570
+      m_Sprite: {fileID: 1602561419, guid: 94c347a03ee258f459cd4a358bcf32b2, type: 3}
+      m_FromMain: 1
+      m_SpriteOverride: {fileID: 1602561419, guid: 94c347a03ee258f459cd4a358bcf32b2, type: 3}
+    - m_Name: Swashbuckler_melee_15
+      m_Hash: 665723172
+      m_Sprite: {fileID: 486807388, guid: 94c347a03ee258f459cd4a358bcf32b2, type: 3}
+      m_FromMain: 1
+      m_SpriteOverride: {fileID: 486807388, guid: 94c347a03ee258f459cd4a358bcf32b2, type: 3}
+    m_FromMain: 1
+    m_EntryOverrideCount: 0
+  - m_Name: AttackDown
+    m_Hash: 124622267
+    m_CategoryList: []
+    m_OverrideEntries:
+    - m_Name: Swashbuckler_melee_0
+      m_Hash: 336449268
+      m_Sprite: {fileID: 2042709624, guid: 94c347a03ee258f459cd4a358bcf32b2, type: 3}
+      m_FromMain: 1
+      m_SpriteOverride: {fileID: 2042709624, guid: 94c347a03ee258f459cd4a358bcf32b2, type: 3}
+    - m_Name: Swashbuckler_melee_1
+      m_Hash: 587923042
+      m_Sprite: {fileID: 789438257, guid: 94c347a03ee258f459cd4a358bcf32b2, type: 3}
+      m_FromMain: 1
+      m_SpriteOverride: {fileID: 789438257, guid: 94c347a03ee258f459cd4a358bcf32b2, type: 3}
+    - m_Name: Swashbuckler_melee_2
+      m_Hash: 973320152
+      m_Sprite: {fileID: -940858428, guid: 94c347a03ee258f459cd4a358bcf32b2, type: 3}
+      m_FromMain: 1
+      m_SpriteOverride: {fileID: -940858428, guid: 94c347a03ee258f459cd4a358bcf32b2, type: 3}
+    - m_Name: Swashbuckler_melee_3
+      m_Hash: 218406734
+      m_Sprite: {fileID: -662400696, guid: 94c347a03ee258f459cd4a358bcf32b2, type: 3}
+      m_FromMain: 1
+      m_SpriteOverride: {fileID: -662400696, guid: 94c347a03ee258f459cd4a358bcf32b2, type: 3}
+    m_FromMain: 1
+    m_EntryOverrideCount: 0
+  - m_Name: AttackLeft
+    m_Hash: 569762536
+    m_CategoryList: []
+    m_OverrideEntries:
+    - m_Name: Swashbuckler_melee_4
+      m_Hash: 325061357
+      m_Sprite: {fileID: 1720402135, guid: 94c347a03ee258f459cd4a358bcf32b2, type: 3}
+      m_FromMain: 1
+      m_SpriteOverride: {fileID: 1720402135, guid: 94c347a03ee258f459cd4a358bcf32b2, type: 3}
+    - m_Name: Swashbuckler_melee_5
+      m_Hash: 610744955
+      m_Sprite: {fileID: -509328615, guid: 94c347a03ee258f459cd4a358bcf32b2, type: 3}
+      m_FromMain: 1
+      m_SpriteOverride: {fileID: -509328615, guid: 94c347a03ee258f459cd4a358bcf32b2, type: 3}
+    - m_Name: Swashbuckler_melee_6
+      m_Hash: 1030646721
+      m_Sprite: {fileID: 2127290207, guid: 94c347a03ee258f459cd4a358bcf32b2, type: 3}
+      m_FromMain: 1
+      m_SpriteOverride: {fileID: 2127290207, guid: 94c347a03ee258f459cd4a358bcf32b2, type: 3}
+    - m_Name: Swashbuckler_melee_7
+      m_Hash: 174676823
+      m_Sprite: {fileID: -329909997, guid: 94c347a03ee258f459cd4a358bcf32b2, type: 3}
+      m_FromMain: 1
+      m_SpriteOverride: {fileID: -329909997, guid: 94c347a03ee258f459cd4a358bcf32b2, type: 3}
+    m_FromMain: 1
+    m_EntryOverrideCount: 0
+  - m_Name: AttackRight
+    m_Hash: 430531633
+    m_CategoryList: []
+    m_OverrideEntries:
+    - m_Name: Swashbuckler_melee_8
+      m_Hash: 450250438
+      m_Sprite: {fileID: 800988881, guid: 94c347a03ee258f459cd4a358bcf32b2, type: 3}
+      m_FromMain: 1
+      m_SpriteOverride: {fileID: 800988881, guid: 94c347a03ee258f459cd4a358bcf32b2, type: 3}
+    - m_Name: Swashbuckler_melee_9
+      m_Hash: 768702032
+      m_Sprite: {fileID: 425486033, guid: 94c347a03ee258f459cd4a358bcf32b2, type: 3}
+      m_FromMain: 1
+      m_SpriteOverride: {fileID: 425486033, guid: 94c347a03ee258f459cd4a358bcf32b2, type: 3}
+    - m_Name: Swashbuckler_melee_10
+      m_Hash: 398775723
+      m_Sprite: {fileID: 1457618184, guid: 94c347a03ee258f459cd4a358bcf32b2, type: 3}
+      m_FromMain: 1
+      m_SpriteOverride: {fileID: 1457618184, guid: 94c347a03ee258f459cd4a358bcf32b2, type: 3}
+    - m_Name: Swashbuckler_melee_11
+      m_Hash: 549709117
+      m_Sprite: {fileID: 980390031, guid: 94c347a03ee258f459cd4a358bcf32b2, type: 3}
+      m_FromMain: 1
+      m_SpriteOverride: {fileID: 980390031, guid: 94c347a03ee258f459cd4a358bcf32b2, type: 3}
+    m_FromMain: 1
+    m_EntryOverrideCount: 0
+  m_PrimaryLibraryGUID: 6fa361fa2eebb1c46b219f9718d6c50f
+  m_ModificationHash: 638454483597508384
+  m_Version: 1

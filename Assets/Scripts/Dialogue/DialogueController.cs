@@ -11,6 +11,7 @@ public class DialogueController : MonoBehaviour
 
     private Queue<string> paragraphs = new Queue<string>();
     private bool conversationEnded;
+    public bool ConversationEnded => conversationEnded;
     private string paragraph;
     private Coroutine typeDialogueCoroutine;
     private bool isTyping;
@@ -67,6 +68,8 @@ public class DialogueController : MonoBehaviour
         {
             paragraphs.Enqueue(paragraph);
         }
+
+        conversationEnded = false;
     }
 
     private void EndConversation()

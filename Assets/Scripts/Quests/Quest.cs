@@ -1,84 +1,50 @@
-using System;
-using System.Collections.Generic;
-using UnityEditor;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "New Quest", menuName = "Quest", order = 100)]
-public class Quest : ScriptableObject
+public class Quest
 {
-    public enum Status
+    public QuestInfo questInfo;
+    public QuestState state;
+    private int currentQuestStepIndex;
+
+    public Quest(QuestInfo questInfo)
     {
-        NotComplete,
-        Complete,
-        Failed
+        this.questInfo = questInfo;
+        this.state = QuestState.RequirementsNotMet;
+        this.currentQuestStepIndex = 0;
     }
 
-    public string questName;
-
-    public List<Objective> objectives;
-
-    [Serializable]
-    public class Objective
+    public void MoveToNextStep()
     {
-        public string name = "New Objective";
-        public bool optional = false;
-        public bool visible = true;
-        public Status initialStatus = Status.NotComplete;
+        currentQuestStepIndex++;
     }
-}
 
-[CustomEditor(typeof(Quest))]
-public class QuestEditor : Editor
-{
-    public override void OnInspectorGUI()
+    public bool CurrentStepExists()
     {
-        serializedObject.Update();
+        return currentQuestStepIndex < questInfo.questStepPrefabs.Length;
+    }
 
-        EditorGUILayout.PropertyField(
-            serializedObject.FindProperty("questName"),
-            new GUIContent("Name")
-        );
+    public void InstantiateCurrentQuestStep(Transform parentTransform)
+    {
+        GameObject questStepPrefab = GetCurrentQuestStepPrefab();
 
-        EditorGUILayout.LabelField("Objectives");
-
-        SerializedProperty objectiveList = serializedObject.FindProperty("objectives");
-
-        EditorGUI.indentLevel += 1;
-
-        for (int i = 0; i < objectiveList.arraySize; i++)
+        if (questStepPrefab != null )
         {
-            EditorGUILayout.BeginHorizontal();
+            Object.Instantiate(questStepPrefab, parentTransform);
+        }
+    }
 
-            EditorGUILayout.PropertyField(
-                objectiveList.GetArrayElementAtIndex(i),
-                includeChildren: true
-            );
-
-            if (GUILayout.Button("Up", EditorStyles.miniButtonLeft, GUILayout.Width(25)))
-            {
-                objectiveList.MoveArrayElement(i, i - 1);
-            }
-
-            if (GUILayout.Button("Down", EditorStyles.miniButtonMid, GUILayout.Width(40)))
-            {
-                objectiveList.MoveArrayElement(i, i + 1);
-            }
-
-            if (GUILayout.Button("-", EditorStyles.miniButtonRight, GUILayout.Width(25)))
-            {
-                objectiveList.DeleteArrayElementAtIndex(i);
-            }
-
-            EditorGUILayout.EndHorizontal();
+    private GameObject GetCurrentQuestStepPrefab()
+    {
+        GameObject questStepPrefab = null;
+        if (CurrentStepExists())
+        {
+            questStepPrefab = questInfo.questStepPrefabs[currentQuestStepIndex];
+        }
+        else
+        {
+            Debug.LogWarning("Tried to get quest step prefab, but stepIndex is out of range.");
         }
 
-        EditorGUI.indentLevel -= 1;
-
-        if (GUILayout.Button("Add Objective"))
-        {
-            objectiveList.arraySize += 1;
-        }
-
-        serializedObject.ApplyModifiedProperties();
+        return questStepPrefab;
     }
 }

@@ -5,11 +5,12 @@ public abstract class NPC : MonoBehaviour, IInteractable
 {
     [SerializeField] private Direction direction;
     [SerializeField] private SpriteRenderer interactSprite;
+    [field: SerializeField] public string NPCName { get; private set; }
 
     private Animator animator;
     private const float interactDistance = 2f;
 
-    public UnityEvent InteractionEvent;
+    //public UnityEvent InteractionEvent;
 
     private void Awake()
     {

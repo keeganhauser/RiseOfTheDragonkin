@@ -7,8 +7,9 @@ public class Alchemist : NPC, ITalkable
 
     public override void Interact()
     {
+        GameEventsManager.Instance.npcEvents.TriggerInteract(this);
+
         Talk(dialogueText);
-        InteractionEvent.Invoke();
     }
 
     public void Talk(DialogueText dialogueText)

@@ -13759,6 +13759,50 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 007aee80a1716294385d78f89f5379d6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &172696105
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 172696107}
+  - component: {fileID: 172696106}
+  m_Layer: 0
+  m_Name: GameEventsManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &172696106
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 172696105}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a5a72d8db739fb6459438b871b404ac0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &172696107
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 172696105}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &206362853
 GameObject:
   m_ObjectHideFlags: 0
@@ -30306,7 +30350,6 @@ GameObject:
   - component: {fileID: 888542898}
   - component: {fileID: 888542901}
   - component: {fileID: 888542902}
-  - component: {fileID: 888542903}
   m_Layer: 0
   m_Name: Alchemist
   m_TagString: Untagged
@@ -30390,27 +30433,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   direction: 1
   interactSprite: {fileID: 1111191651}
-  InteractionEvent:
-    m_PersistentCalls:
-      m_Calls: []
+  <NPCName>k__BackingField: Alchemist
   dialogueText: {fileID: 11400000, guid: 4b0187a48a16e764ba2f3043d7071ef3, type: 2}
   dialogueController: {fileID: 994470185}
---- !u!114 &888542903
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 888542896}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a65cc7c11f1f97a42a2ad1ccb6047a52, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  objective:
-    quest: {fileID: 11400000, guid: 3bd3e60b6aed377418f77b1e6c1c4696, type: 2}
-    statusToApply: 1
-    objectiveNumber: 0
 --- !u!114 &904443376 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 4031903893715248620, guid: 077019155730818468e63f37ff3ca682, type: 3}
@@ -47312,7 +47337,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1051137762}
   - component: {fileID: 1051137763}
-  - component: {fileID: 1051137764}
   m_Layer: 0
   m_Name: Merchant
   m_TagString: Untagged
@@ -47381,22 +47405,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 2, y: 2}
   m_EdgeRadius: 0
---- !u!114 &1051137764
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1051137760}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c07e88d0ef0bcc244a341a1b1ee269c1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  objective:
-    quest: {fileID: 11400000, guid: 3bd3e60b6aed377418f77b1e6c1c4696, type: 2}
-    statusToApply: 1
-    objectiveNumber: 1
 --- !u!1001 &1074114052
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -47460,7 +47468,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 5945261091561966434, guid: 3bdc5bf662a697743a7a73c15f4fdbe0, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1219820906}
   m_SourcePrefab: {fileID: 100100000, guid: 3bdc5bf662a697743a7a73c15f4fdbe0, type: 3}
 --- !u!114 &1080459703 stripped
 MonoBehaviour:
@@ -47588,6 +47599,23 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 007aee80a1716294385d78f89f5379d6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!1 &1219820903 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5945261091561966434, guid: 3bdc5bf662a697743a7a73c15f4fdbe0, type: 3}
+  m_PrefabInstance: {fileID: 1074114052}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1219820906
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1219820903}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ec48a3315be04f1408db0aa3ce581ab6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &1259835849 stripped
@@ -53145,7 +53173,7 @@ PrefabInstance:
     - target: {fileID: 5394773268987632909, guid: 1dcf55ef5a5eae349a2c097e1e015d4d, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 396520890, guid: 164dbd14e467bd34ca33d0e0da806dab, type: 3}
+      objectReference: {fileID: 1219499882, guid: ac75f234125ff364c95dbc4d007db30e, type: 3}
     - target: {fileID: 6938019995646815969, guid: 1dcf55ef5a5eae349a2c097e1e015d4d, type: 3}
       propertyPath: m_Size.x
       value: 0.55
@@ -53158,6 +53186,10 @@ PrefabInstance:
       propertyPath: m_Offset.y
       value: -0.43406546
       objectReference: {fileID: 0}
+    - target: {fileID: 7021553046613465053, guid: 1dcf55ef5a5eae349a2c097e1e015d4d, type: 3}
+      propertyPath: m_SpriteLibraryAsset
+      value: 
+      objectReference: {fileID: 7108339969198208228, guid: a57e94af725d5c244a04a4b62847d7b3, type: 3}
     - target: {fileID: 7124742833200873388, guid: 1dcf55ef5a5eae349a2c097e1e015d4d, type: 3}
       propertyPath: m_LocalPosition.y
       value: 0
@@ -54182,6 +54214,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4936726575239169659, guid: 077019155730818468e63f37ff3ca682, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: -1020396615, guid: fa32f260ddb7d2d44a0f602382796a20, type: 3}
     - target: {fileID: 5362326468531753028, guid: 077019155730818468e63f37ff3ca682, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -54979,3 +55015,4 @@ SceneRoots:
   - {fileID: 1461998596}
   - {fileID: 888542898}
   - {fileID: 1051137762}
+  - {fileID: 172696107}
