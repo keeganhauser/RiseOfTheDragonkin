@@ -64,7 +64,7 @@ public class QuestStatus
             }
             else
             {
-                stringBuilder.AppendLine($"{objectiveData.name} - {objectiveStatus}");
+                stringBuilder.AppendLine($"{objectiveData.name} - {HTMLUtil.GetColoredString(objectiveStatus.ToString(), "red")}");
             }
         }
 
