@@ -12,11 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ee665d25b0f47fa4b9e36a69d7ce98ed, type: 3}
   m_Name: TestQuest
   m_EditorClassIdentifier: 
-  <id>k__BackingField: TestQuest
-  displayName: Test Quest
-  levelRequirement: 1
-  questPrerequisites: []
-  questStepPrefabs:
+  <ID>k__BackingField: TestQuest
+  DisplayName: Simple Quest To Test
+  LevelRequirement: 0
+  QuestPrerequisites: []
+  QuestStepPrefabs:
   - {fileID: 7201880670503451333, guid: 64b18999bb8350f4a8c46a29bd6833fe, type: 3}
-  goldReward: 50
-  experienceReward: 250
+  GoldReward: 50
+  ExperienceReward: 200

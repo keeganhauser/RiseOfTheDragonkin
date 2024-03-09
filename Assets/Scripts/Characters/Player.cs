@@ -28,10 +28,6 @@ public class Player : MonoBehaviour
     private float speed = 1f;
 
     [SerializeField]
-    [Range(1f, 10f)]
-    private float interactRange = 1f;
-
-    [SerializeField]
     public string Name { get; private set; } = "DefaultName";
 
     // Public variables

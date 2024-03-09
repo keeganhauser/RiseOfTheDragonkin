@@ -1,6 +1,8 @@
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
-public class Alchemist : NPC, ITalkable
+public class Merchant : NPC, IInteractable
 {
     [SerializeField] private DialogueText dialogueText;
     [SerializeField] private DialogueController dialogueController;
@@ -15,11 +17,15 @@ public class Alchemist : NPC, ITalkable
     {
         GameEventsManager.Instance.NPCEvents.TriggerInteract(this);
         questPoint?.StartQuest();
-        Talk(dialogueText);
+
+        if (dialogueController != null) 
+        { 
+            Talk(dialogueText);
+        }
     }
 
     public void Talk(DialogueText dialogueText)
     {
-        dialogueController.DisplayNextParagraph(dialogueText);    
+        dialogueController.DisplayNextParagraph(dialogueText);
     }
 }

@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 7973912313218174919}
   - component: {fileID: 2393959248810398128}
   m_Layer: 0
-  m_Name: TestQuestStep
+  m_Name: TestQuestStep 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -44,3 +44,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 14dca1d611f4695409d255f67545ce83, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  location: town
+  NPCPrefab: {fileID: 8896146409451084174, guid: cb33997381b946341877f223350efb7e, type: 3}

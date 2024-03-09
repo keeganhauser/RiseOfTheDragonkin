@@ -6,7 +6,8 @@ public class GameEventsManager : MonoBehaviour
 {
     public static GameEventsManager Instance { get; private set; }
 
-    public NPCEvents npcEvents;
+    public NPCEvents NPCEvents;
+    public QuestEvents QuestEvents;
 
     private void Awake()
     {
@@ -16,6 +17,7 @@ public class GameEventsManager : MonoBehaviour
         Instance = this;
 
         // Initialize events
-        npcEvents = new NPCEvents();
+        NPCEvents = new NPCEvents();
+        QuestEvents = new QuestEvents();
     }
 }
