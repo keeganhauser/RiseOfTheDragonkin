@@ -31,4 +31,6 @@ public class PlayerEvents
     {
         onPlayerLevelChange?.Invoke(level);
     }
+
+    // TODO: Enable/disable player interactions
 }

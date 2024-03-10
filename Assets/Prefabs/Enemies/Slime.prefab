@@ -13,8 +13,7 @@ GameObject:
   - component: {fileID: 2354000034614702544}
   - component: {fileID: 8524081942381547643}
   - component: {fileID: 7133694669832849197}
-  - component: {fileID: -4887953233362076546}
-  - component: {fileID: -5218165765407553287}
+  - component: {fileID: 7106626341505033993}
   m_Layer: 7
   m_Name: Slime
   m_TagString: Enemy
@@ -173,7 +172,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 28bb850c96eb98e488dac2f69927349d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &-4887953233362076546
+--- !u!114 &7106626341505033993
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -182,30 +181,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 5770605726181696271}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9b3e119394082234bb979f48f66a0d6f, type: 3}
+  m_Script: {fileID: 11500000, guid: 076c01006d18d474999a0094a2e81db7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  unitLevel: 2
-  damage: 2
   maxHealth: 5
-  speed: 0
-  positionOffset: {x: 0, y: 0}
-  OnDeath:
-    m_PersistentCalls:
-      m_Calls: []
-  OnHealthChange:
-    m_PersistentCalls:
-      m_Calls: []
-  IsDefending: 0
---- !u!114 &-5218165765407553287
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5770605726181696271}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1450a47e2876c7f4fa3e81d32e85ff47, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  maxMana: 5
+  damage: 1
+  level: 4

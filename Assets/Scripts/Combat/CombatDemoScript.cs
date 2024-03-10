@@ -6,6 +6,6 @@ public class CombatDemoScript : MonoBehaviour
 
     public void StartCombat()
     {
-        CombatManager.Instance.StartEncounter(enemy);
+        //CombatManager.Instance.StartEncounter(enemy);
     }
 }

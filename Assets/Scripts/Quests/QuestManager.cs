@@ -11,7 +11,7 @@ public class QuestManager : MonoBehaviour
     private void Awake()
     {
         questMap = CreateQuestMap();
-
+        //DontDestroyOnLoad(gameObject);
     }
 
     private void OnEnable()

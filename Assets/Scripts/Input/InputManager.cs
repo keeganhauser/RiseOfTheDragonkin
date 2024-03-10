@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
+/// <summary>
+/// Wrapper class around Unity's Player Input component.
+/// </summary>
 [RequireComponent(typeof(PlayerInput))]
 public class InputManager : MonoBehaviour
 {

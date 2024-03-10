@@ -27,7 +27,7 @@ public class NPCInteractQuestStep : QuestStep
 
     private void Start()
     {
-        string status = $"Talk to {trackedNPC.NPCName} in {location}.";
+        string status = $"Talk to {trackedNPC.Name} in {location}.";
         ChangeState(string.Empty, status);
     }
 
@@ -38,9 +38,9 @@ public class NPCInteractQuestStep : QuestStep
 
     private void Interacted(NPC npc)
     {
-        if (npc.NPCName == trackedNPC.NPCName)
+        if (npc.Name == trackedNPC.Name)
         {
-            string status = $"You talked to {trackedNPC.NPCName}.";
+            string status = $"You talked to {trackedNPC.Name}.";
             ChangeState(string.Empty, status);
             FinishQuestStep();
         }

@@ -3,14 +3,10 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 
-public class Player : MonoBehaviour
+public class Player : Entity
 {
     // Static variables
     public static Player Instance;
-
-    // Serialized variables
-    [SerializeField]
-    public string Name { get; private set; } = "DefaultName";
 
     // Private methods
     private void Awake()
@@ -23,17 +19,11 @@ public class Player : MonoBehaviour
         if (Instance == null)
         {
             Instance = this;
-            DontDestroyOnLoad(this);
+            DontDestroyOnLoad(gameObject);
         }
         else if (this != Instance)
         {
-            Destroy(this.gameObject);
+            Destroy(this);
         }
-    }
-
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.Return))
-            SceneManager.LoadSceneAsync("CombatScene");
     }
 }

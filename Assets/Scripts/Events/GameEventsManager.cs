@@ -11,6 +11,7 @@ public class GameEventsManager : MonoBehaviour
     public PlayerEvents     PlayerEvents;
     public InputEvents      InputEvents;
     public InventoryEvents  InventoryEvents;
+    public CombatEvents     CombatEvents;
 
     private void Awake()
     {
@@ -18,6 +19,7 @@ public class GameEventsManager : MonoBehaviour
             Debug.LogError("Found more than one Game Events Manager in the scene.");
 
         Instance = this;
+        DontDestroyOnLoad(gameObject);
 
         // Initialize events
         NPCEvents       = new NPCEvents();
@@ -25,5 +27,6 @@ public class GameEventsManager : MonoBehaviour
         PlayerEvents    = new PlayerEvents();
         InputEvents     = new InputEvents();
         InventoryEvents = new InventoryEvents();
+        CombatEvents    = new CombatEvents();
     }
 }
