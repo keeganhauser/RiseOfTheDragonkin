@@ -18,14 +18,18 @@ public abstract class NPC : MonoBehaviour, IInteractable
         SetAnimator(direction);
     }
 
+    private void OnEnable()
+    {
+        GameEventsManager.Instance.InputEvents.onInteractPressed += Interact;
+    }
+
+    private void OnDisable()
+    {
+        GameEventsManager.Instance.InputEvents.onInteractPressed -= Interact;
+    }
+
     private void Update()
     {
-        // Check for player interactions
-        if (Input.GetKeyDown(KeyCode.E) && IsWithinInteractDistance())
-        {
-            Interact();
-        }
-
         // Handle showing/hiding of interaction sprite
         if (interactSprite.gameObject.activeSelf && !IsWithinInteractDistance())
         {
@@ -66,7 +70,7 @@ public abstract class NPC : MonoBehaviour, IInteractable
 
     public abstract void Interact();
 
-    private bool IsWithinInteractDistance()
+    protected bool IsWithinInteractDistance()
     {
         return Vector2.Distance(
             Player.Instance.transform.position,

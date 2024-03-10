@@ -43,9 +43,19 @@ public class InventoryManager : MonoBehaviour
                 ChangeSelectedSlot(number - 1);
             }
         }
+    }
+    private void OnEnable()
+    {
+        GameEventsManager.Instance.InputEvents.onToolbarScroll += ToolbarScroll;
+    }
 
-        float scroll = Input.GetAxis("Mouse ScrollWheel");
+    private void OnDisable()
+    {
+        GameEventsManager.Instance.InputEvents.onToolbarScroll -= ToolbarScroll;
+    }
 
+    private void ToolbarScroll(float scroll)
+    {
         if (scroll != 0)
         {
             int newValue = selectedSlot - (int)(scroll / Mathf.Abs(scroll));
@@ -94,6 +104,8 @@ public class InventoryManager : MonoBehaviour
             }
         }
 
+        // If there was no previous stack to add to,
+        // find empty slot to insert item.
         for (int i = 0; i < inventorySlots.Length; i++)
         {
             slot = inventorySlots[i];

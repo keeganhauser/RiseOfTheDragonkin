@@ -13,9 +13,12 @@ MonoBehaviour:
   m_Name: FindQuest
   m_EditorClassIdentifier: 
   <ID>k__BackingField: FindQuest
-  DisplayName: 
-  LevelRequirement: 0
-  QuestPrerequisites: []
-  QuestStepPrefabs: []
-  GoldReward: 0
-  ExperienceReward: 0
+  DisplayName: Talk to the people!
+  LevelRequirement: 10
+  QuestPrerequisites:
+  - {fileID: 11400000, guid: 166d905198c79224f90f4019f3cd7e59, type: 2}
+  QuestStepPrefabs:
+  - {fileID: 1003108278230926725, guid: 0a5f32ef147283644911bcaac897beeb, type: 3}
+  - {fileID: 1003108278230926725, guid: e9cf3f9e8dc9a044bb557304eda15eaa, type: 3}
+  GoldReward: 200
+  ExperienceReward: 5000

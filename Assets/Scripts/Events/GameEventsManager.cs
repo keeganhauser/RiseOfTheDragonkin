@@ -6,8 +6,11 @@ public class GameEventsManager : MonoBehaviour
 {
     public static GameEventsManager Instance { get; private set; }
 
-    public NPCEvents NPCEvents;
-    public QuestEvents QuestEvents;
+    public NPCEvents        NPCEvents;
+    public QuestEvents      QuestEvents;
+    public PlayerEvents     PlayerEvents;
+    public InputEvents      InputEvents;
+    public InventoryEvents  InventoryEvents;
 
     private void Awake()
     {
@@ -17,7 +20,10 @@ public class GameEventsManager : MonoBehaviour
         Instance = this;
 
         // Initialize events
-        NPCEvents = new NPCEvents();
-        QuestEvents = new QuestEvents();
+        NPCEvents       = new NPCEvents();
+        QuestEvents     = new QuestEvents();
+        PlayerEvents    = new PlayerEvents();
+        InputEvents     = new InputEvents();
+        InventoryEvents = new InventoryEvents();
     }
 }

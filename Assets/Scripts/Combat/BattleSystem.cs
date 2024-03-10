@@ -79,8 +79,7 @@ public class BattleSystem : MonoBehaviour
 
         // Spawn player
         Player.Instance.transform.position = playerBattleStation.position;
-        Player.Instance.CanMove = false;
-        Player.Instance.PlayerDirection = Direction.Right;
+        GameEventsManager.Instance.PlayerEvents.DisablePlayerMovement();
 
         playerUnit = Player.Instance.GetComponent<Unit>();
         playerUnit.UnitName = Player.Instance.Name;
@@ -190,7 +189,7 @@ public class BattleSystem : MonoBehaviour
             case CombatAction.Attack:
                 main.DealDamage(other);
                 if (main == playerUnit)
-                    StartCoroutine(Player.Instance.TriggerAnimation(CharacterAction.Attack));
+                    //StartCoroutine(Player.Instance.TriggerAnimation(CharacterAction.Attack));
                 actionStr = $"{main.UnitName} attacked {other.UnitName} for {main.Damage} damage!";
                 break;
             case CombatAction.Defend:

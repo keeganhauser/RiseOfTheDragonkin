@@ -13,8 +13,11 @@ public class Alchemist : NPC, ITalkable
 
     public override void Interact()
     {
+        if (!IsWithinInteractDistance()) return;
+
+        // If player is within interaction distance:
         GameEventsManager.Instance.NPCEvents.TriggerInteract(this);
-        questPoint?.StartQuest();
+
         Talk(dialogueText);
     }
 
