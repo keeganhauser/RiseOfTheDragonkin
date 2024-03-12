@@ -22,7 +22,25 @@ public class PlayerCombatController : CombatController
     protected override void HandleTurn()
     {
         Debug.Log("Handling player turn");
+    }
 
+    public void ButtonAttack()
+    {
         Attack(CombatManager.Instance.enemyCombatController);
+    }
+
+    public void ButtonDefend()
+    {
+        Defend();
+    }
+
+    public void ButtonItem()
+    {
+
+    }
+
+    public void ButtonEscape()
+    {
+
     }
 }

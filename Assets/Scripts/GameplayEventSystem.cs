@@ -1,14 +1,11 @@
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.InputSystem;
-using UnityEngine.SceneManagement;
 
-public class Player : Entity
+public class GameplayEventSystem : MonoBehaviour
 {
-    // Static variables
-    public static Player Instance;
+    public static GameplayEventSystem Instance;
 
-    // Private methods
     private void Awake()
     {
         if (Instance == null)
@@ -18,7 +15,7 @@ public class Player : Entity
         }
         else
         {
-            Destroy(gameObject);
+            Destroy(this);
         }
     }
 }

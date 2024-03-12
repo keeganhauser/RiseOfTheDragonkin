@@ -1,16 +1,19 @@
 using System;
+using UnityEngine;
 
 public class PlayerEvents
 {
     public event Action onDisablePlayerMovement;
     public void DisablePlayerMovement()
     {
+        Debug.Log("Player movement disabled");
         onDisablePlayerMovement?.Invoke();
     }
 
     public event Action onEnablePlayerMovement;
     public void EnablePlayerMovement()
     {
+        Debug.Log("Player movement enabled");
         onEnablePlayerMovement?.Invoke();
     }
 

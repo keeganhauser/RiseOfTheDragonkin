@@ -4,11 +4,32 @@ using UnityEngine;
 
 public class CombatEvents
 {
-    // Called when combat first starts
-    public event Action<Enemy> onCombatStart;
-    public void CombatStart(Enemy enemy)
+    // Called when combat is triggered
+    public event Action<Enemy> onCombatTrigger;
+    public void CombatTrigger(Enemy enemy)
     {
-        onCombatStart?.Invoke(enemy);
+        onCombatTrigger?.Invoke(enemy);
+    }
+
+    // Called before combat starts being initialized
+    public event Action onCombatPreInitialization;
+    public void CombatPreInitialization()
+    {
+        onCombatPreInitialization?.Invoke();
+    }
+
+    // Called after combat is initialized
+    public event Action onCombatPostInitialization;
+    public void CombatPostInitialization()
+    {
+        onCombatPostInitialization?.Invoke();
+    }
+
+    // Called when combat starts
+    public event Action onCombatStart;
+    public void CombatStart()
+    {
+        onCombatStart?.Invoke();
     }
 
     // Called when combat ends
@@ -19,10 +40,10 @@ public class CombatEvents
     }
 
     // Called when something dies in combat
-    public event Action<CombatController> onEntityDeath;
-    public void EntityDied(CombatController controller)
+    public event Action<CombatController> onLoseCombat;
+    public void LoseCombat(CombatController controller)
     {
-        onEntityDeath?.Invoke(controller);
+        onLoseCombat?.Invoke(controller);
     }
 
     // Called when it is the player's turn
@@ -71,5 +92,11 @@ public class CombatEvents
     public void CombatStatusChange(string status)
     {
         onCombatStatusChange?.Invoke(status);
+    }
+
+    public event Action<CombatController> onHealthChange;
+    public void HealthChange(CombatController controller)
+    {
+        onHealthChange?.Invoke(controller);
     }
 }

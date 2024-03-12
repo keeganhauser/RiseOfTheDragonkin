@@ -25,12 +25,27 @@ public class CombatManager : MonoBehaviour
 
     private BattleState battleState;
 
+    [SerializeField] private Vector2 playerPosition;
+    [SerializeField] private Vector2 enemyPosition;
+
+    private string status;
+    private string Status
+    {
+        get => status;
+        set
+        {
+            status = value;
+            if (!string.IsNullOrEmpty(status))
+                GameEventsManager.Instance.CombatEvents.CombatStatusChange(status);
+        }
+    }
+
     private void Awake()
     {
         if (Instance == null)
             Instance = this;
         else
-            Destroy(this);
+            Destroy(gameObject);
         DontDestroyOnLoad(gameObject);
 
         combatEnded = false;
@@ -39,30 +54,35 @@ public class CombatManager : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Return))
+        if (Input.GetKeyDown(KeyCode.RightArrow))
         {
-            GameEventsManager.Instance.CombatEvents.CombatStart(enemy);
+            //GameEventsManager.Instance.CombatEvents.CombatTrigger(enemy);
+            CustomSceneManager.Instance.FadeAndLoadScene("CombatScene", Vector3.zero);
+        }
+        else if (Input.GetKeyDown(KeyCode.LeftArrow))
+        {
+            CustomSceneManager.Instance.FadeAndLoadScene("OverworldArea1", Vector3.zero);
         }
 
     }
 
     private void OnEnable()
     {
-        GameEventsManager.Instance.CombatEvents.onCombatStart += CombatStart;
-        GameEventsManager.Instance.CombatEvents.onEntityDeath += EndCombat;
+        GameEventsManager.Instance.CombatEvents.onCombatTrigger += CombatTrigger;
+        GameEventsManager.Instance.CombatEvents.onLoseCombat += EndCombat;
         GameEventsManager.Instance.CombatEvents.onEndTurn += EndTurn;
         GameEventsManager.Instance.CombatEvents.onEnemyChange += SetEnemy;
     }
 
     private void OnDisable()
     {
-        GameEventsManager.Instance.CombatEvents.onCombatStart -= CombatStart;
-        GameEventsManager.Instance.CombatEvents.onEntityDeath -= EndCombat;
+        GameEventsManager.Instance.CombatEvents.onCombatTrigger -= CombatTrigger;
+        GameEventsManager.Instance.CombatEvents.onLoseCombat -= EndCombat;
         GameEventsManager.Instance.CombatEvents.onEndTurn -= EndTurn;
         GameEventsManager.Instance.CombatEvents.onEnemyChange -= SetEnemy;
     }
 
-    private void CombatStart(Enemy enemy)
+    private void CombatTrigger(Enemy enemy)
     {
         if (enemy == null)
         {
@@ -71,36 +91,45 @@ public class CombatManager : MonoBehaviour
         }
 
         if (battleState != BattleState.NotStarted) return;
-
-
-        battleState = BattleState.Start;
-        Debug.Log("Starting combat");
-
-        SetEnemy(enemy);
-        StartCoroutine(InitializeCombat());
-        StartCoroutine(DoCombat());
-
+        StartCoroutine(InitializeCombat(enemy));
     }
 
-    private IEnumerator InitializeCombat()
+    private IEnumerator InitializeCombat(Enemy enemy)
+    {
+        // Set battle state
+        battleState = BattleState.Start;
+        Status = $"You've encountered a {enemy.enemyName}!";
+
+        SetEnemy(enemy);
+
+        GameEventsManager.Instance.CombatEvents.CombatPreInitialization();
+        
+        yield return StartCoroutine(SetupCombat());
+
+        GameEventsManager.Instance.CombatEvents.CombatPostInitialization();
+
+        yield return StartCoroutine(DoCombat());
+    }
+
+    private IEnumerator SetupCombat()
     {
         // Load combat scene
-        SceneManager.LoadScene("CombatScene");
+        //SceneManager.LoadScene("CombatScene");
         yield return new WaitForFixedUpdate();
 
-        // Set battle state
 
         // Get components
         playerCombatController = Player.Instance.GetComponent<CombatController>();
 
         // Move player to proper spot
+        Player.Instance.gameObject.transform.position = playerPosition;
 
         // Disable player movement and interactions
-        GameEventsManager.Instance.PlayerEvents.DisablePlayerMovement();
+        //GameEventsManager.Instance.PlayerEvents.DisablePlayerMovement();
 
         // Spawn enemy
         //GameObject enemyObj = EnemySpawner.SpawnEnemy(enemy, enemyBattleStation.position, Quaternion.identity, enemyBattleStation);
-        GameObject enemyObj = EnemySpawner.SpawnEnemy(enemy);
+        GameObject enemyObj = EnemySpawner.SpawnEnemy(enemy, enemyPosition, Quaternion.identity, null);
         enemyCombatController = enemyObj.GetComponent<CombatController>();
     }
 
@@ -112,6 +141,7 @@ public class CombatManager : MonoBehaviour
 
     private IEnumerator DoCombat()
     {
+        GameEventsManager.Instance.CombatEvents.CombatStart();
         // Start with the player going first
         battleState = BattleState.PlayerTurn;
 
@@ -119,19 +149,22 @@ public class CombatManager : MonoBehaviour
         while (!combatEnded)
         {
             // Start player's turn
+            Status = "Choose an action:";
             GameEventsManager.Instance.CombatEvents.PlayerTurn();
 
             while (battleState == BattleState.PlayerTurn)
                 yield return null;
 
 
-            yield return new WaitForSeconds(3f);
+            yield return new WaitForSeconds(1.5f);
 
             // Start enemy's turn
             GameEventsManager.Instance.CombatEvents.EnemyTurn();
 
             while (battleState == BattleState.EnemyTurn) 
                 yield return null;
+
+            yield return new WaitForSeconds(1.5f);
         }
     }
 
@@ -147,17 +180,36 @@ public class CombatManager : MonoBehaviour
         }
     }
 
-    private void EndCombat(CombatController controller)
+    private void EndCombat(CombatController losingController)
     {
         combatEnded = true;
         StopAllCoroutines();
 
         // Show popup
-        if (controller == playerCombatController)
+        if (losingController == playerCombatController)
+        {
             Debug.Log("Player has lost!");
+            Status = "You've been slain...";
+        }
         else
+        {
             Debug.Log("Player has won!");
+            Status = $"{losingController.Name} has been defeated!";
+        }
+        StartCoroutine(CombatEndRoutine());
+    }
+
+    // Function for anything that needs to happen before combat scene ends
+    private IEnumerator CombatEndRoutine()
+    {
+        yield return new WaitForSeconds(3f);
+
+        GameEventsManager.Instance.CombatEvents.CombatEnd();
+
+        battleState = BattleState.NotStarted;
 
         // Go back to overworld
+        yield return new WaitForSeconds(0.5f);
+        //GameEventsManager.Instance.PlayerEvents.EnablePlayerMovement();
     }
 }

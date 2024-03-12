@@ -12,23 +12,34 @@ public enum CombatAction
 
 public abstract class CombatController : MonoBehaviour
 {
-    [SerializeField] protected int maxHealth;
-    protected int currentHealth;
+    [field: SerializeField] public int MaxHealth { get; protected set; }
+    public int CurrentHealth { get; protected set; }
 
-    [SerializeField] protected int maxMana;
-    protected int currentMana;
+    [field: SerializeField] public int MaxMana { get; protected set; }
+    public int CurrentMana { get; protected set; }
 
     [SerializeField] protected int damage;
 
     public abstract int Level { get; }
     public abstract string Name { get; }
 
-    bool isDefending;
+    private bool isDefending;
+
+    private string status;
+    public string Status
+    {
+        get => status;
+        set
+        {
+            status = value;
+            GameEventsManager.Instance.CombatEvents.CombatStatusChange(status);
+        }
+    }
 
     private void Awake()
     {
-        currentHealth = maxHealth;
-        currentMana = maxMana;
+        CurrentHealth = MaxHealth;
+        CurrentMana = MaxMana;
         isDefending = false;
     }
 
@@ -45,36 +56,73 @@ public abstract class CombatController : MonoBehaviour
             isDefending = false;
         }
 
-        currentHealth -= amount;
+        Status = $"{Name} took {amount} damage!";
+        CurrentHealth -= amount;
+        GameEventsManager.Instance.CombatEvents.HealthChange(this);
 
-        if (currentHealth <= 0)
+        Debug.Log($"{Name} took {amount} damage!");
+
+        if (CurrentHealth <= 0)
         {
             Debug.Log($"{Name} has died!");
-            GameEventsManager.Instance.CombatEvents.EntityDied(this);
+            GameEventsManager.Instance.CombatEvents.LoseCombat(this);
         }
     }
 
     protected void Attack(CombatController opponentController)
     {
+        // TODO: Figure out why opponentController can be null
+        if (opponentController != null) 
+        { 
+            // Set status
+            Status = $"{Name} has attacked {opponentController.Name} for {damage} damage!";
+        }
+
+        // Attack and end turn
         GameEventsManager.Instance.CombatEvents.Attack(opponentController, damage);
-        GameEventsManager.Instance.CombatEvents.EndTurn();
+        EndTurn();
     }
 
     protected void Defend()
     {
+        Status = $"{Name} defended!";
+        GameEventsManager.Instance.CombatEvents.CombatStatusChange(status);
+
         isDefending = true;
+        EndTurn();
+    }
+
+    protected void UseItem()
+    {
+        // TODO: Use item in combat
+        // Use inventory to select an item to use
+
+        // Invoke item's effects on this controller
+
+        EndTurn();
+    }
+
+    protected void Escape()
+    {
+        // TODO: Escape from combat
+        // End the battle with whoever escaped losing
+        GameEventsManager.Instance.CombatEvents.LoseCombat(this);
+    }
+
+    protected void EndTurn()
+    {
         GameEventsManager.Instance.CombatEvents.EndTurn();
     }
 
     // TODO: End turn after using an item somehow
     protected void GainHealth(int amount)
     {
-        currentHealth = Mathf.Min(currentHealth + amount, maxHealth);
+        CurrentHealth = Mathf.Min(CurrentHealth + amount, MaxHealth);
     }
 
     protected void GainMana(int amount)
     {
-        currentMana = Mathf.Min(currentMana + amount, maxMana);
+        CurrentMana = Mathf.Min(CurrentMana + amount, MaxMana);
     }
 
 }

@@ -1,14 +1,11 @@
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.InputSystem;
-using UnityEngine.SceneManagement;
 
-public class Player : Entity
+public class GameplayCanvas : MonoBehaviour
 {
-    // Static variables
-    public static Player Instance;
+    public static GameplayCanvas Instance;
 
-    // Private methods
     private void Awake()
     {
         if (Instance == null)

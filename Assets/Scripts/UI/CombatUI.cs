@@ -4,15 +4,32 @@ using UnityEngine;
 
 public class CombatUI : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    [SerializeField] private GameObject contentParent;
+
+    private void Awake()
     {
-        
+        HideUI();
     }
 
-    // Update is called once per frame
-    void Update()
+    private void OnEnable()
     {
-        
+        GameEventsManager.Instance.CombatEvents.onCombatPreInitialization += ShowUI;
+        GameEventsManager.Instance.CombatEvents.onCombatEnd += HideUI;
+    }
+
+    private void OnDisable()
+    {
+        GameEventsManager.Instance.CombatEvents.onCombatPreInitialization -= ShowUI;
+        GameEventsManager.Instance.CombatEvents.onCombatEnd -= HideUI;
+    }
+
+    private void ShowUI()
+    {
+        contentParent.SetActive(true);
+    }
+
+    private void HideUI()
+    {
+        contentParent.SetActive(false);
     }
 }

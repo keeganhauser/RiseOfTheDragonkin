@@ -29,6 +29,7 @@ public class PlayerMovementController : MonoBehaviour
     private Vector2 velocity;
     private Animator animator;
     private bool movementDisabled;
+    private Vector3 savedLocation;
 
     private void Awake()
     {
@@ -38,18 +39,34 @@ public class PlayerMovementController : MonoBehaviour
         movementDisabled = false;
     }
 
-    private void Start()
+    private void OnEnable()
     {
+        Debug.Log($"{this.GetInstanceID()} Controller enabled");
         GameEventsManager.Instance.InputEvents.onMovePressed += MovePressed;
         GameEventsManager.Instance.PlayerEvents.onDisablePlayerMovement += DisablePlayerMovement;
         GameEventsManager.Instance.PlayerEvents.onEnablePlayerMovement += EnablePlayerMovement;
+        GameEventsManager.Instance.CombatEvents.onCombatPreInitialization += SavePlayerLocation;
+        GameEventsManager.Instance.CombatEvents.onCombatEnd += LoadPlayerLocation;
     }
 
-    private void OnDestroy()
+    private void OnDisable()
     {
+        Debug.Log($"{this.GetInstanceID()} Controller disabled");
         GameEventsManager.Instance.InputEvents.onMovePressed -= MovePressed;
         GameEventsManager.Instance.PlayerEvents.onDisablePlayerMovement -= DisablePlayerMovement;
         GameEventsManager.Instance.PlayerEvents.onEnablePlayerMovement -= EnablePlayerMovement;
+        GameEventsManager.Instance.CombatEvents.onCombatPreInitialization -= SavePlayerLocation;
+        GameEventsManager.Instance.CombatEvents.onCombatEnd -= LoadPlayerLocation;
+    }
+
+    private void SavePlayerLocation()
+    {
+        savedLocation = this.transform.position;
+    }
+
+    private void LoadPlayerLocation()
+    {
+        this.transform.position = savedLocation;
     }
 
     private void DisablePlayerMovement()
@@ -64,6 +81,7 @@ public class PlayerMovementController : MonoBehaviour
 
     private void MovePressed(Vector2 moveDir)
     {
+        Debug.Log(movementDisabled);
         velocity = moveDir.normalized * moveSpeed;
 
         if (movementDisabled)

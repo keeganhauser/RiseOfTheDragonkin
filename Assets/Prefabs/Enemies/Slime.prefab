@@ -184,7 +184,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 076c01006d18d474999a0094a2e81db7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 5
-  maxMana: 5
+  <MaxHealth>k__BackingField: 5
+  <MaxMana>k__BackingField: 5
   damage: 1
   level: 4
