@@ -4,22 +4,6 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-// TODO: Move enums
-public enum Direction
-{
-    Up,
-    Down,
-    Left,
-    Right
-}
-
-public enum CharacterAction
-{
-    Idle,
-    Move,
-    Attack
-}
-
 public class PlayerMovementController : MonoBehaviour
 {
     [Header("Config")]

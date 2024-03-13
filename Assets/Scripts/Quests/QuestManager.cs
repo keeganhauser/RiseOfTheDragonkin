@@ -4,14 +4,14 @@ using System.Text;
 using TMPro;
 using UnityEngine;
 
-public class QuestManager : MonoBehaviour
+public class QuestManager : SingletonMonobehavior<QuestManager>
 {
     private Dictionary<string, Quest> questMap;
 
-    private void Awake()
+    protected override void Awake()
     {
+        base.Awake();
         questMap = CreateQuestMap();
-        //DontDestroyOnLoad(gameObject);
     }
 
     private void OnEnable()

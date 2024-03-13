@@ -1,13 +1,16 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class CombatUI : MonoBehaviour
 {
     [SerializeField] private GameObject contentParent;
+    private Image combatUI;
 
     private void Awake()
     {
+        combatUI = GetComponent<Image>();
         HideUI();
     }
 
@@ -26,10 +29,12 @@ public class CombatUI : MonoBehaviour
     private void ShowUI()
     {
         contentParent.SetActive(true);
+        combatUI.raycastTarget = true;
     }
 
     private void HideUI()
     {
         contentParent.SetActive(false);
+        combatUI.raycastTarget = false;
     }
 }

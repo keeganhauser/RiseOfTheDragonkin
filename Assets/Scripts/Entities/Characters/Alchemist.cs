@@ -3,12 +3,13 @@ using UnityEngine;
 public class Alchemist : NPC, ITalkable
 {
     [SerializeField] private DialogueText dialogueText;
-    [SerializeField] private DialogueController dialogueController;
+    private DialogueController dialogueController;
     private QuestPoint questPoint;
 
     private void Awake()
     {
         questPoint = GetComponent<QuestPoint>();
+        dialogueController = FindFirstObjectByType<DialogueController>();
     }
 
     public override void Interact()

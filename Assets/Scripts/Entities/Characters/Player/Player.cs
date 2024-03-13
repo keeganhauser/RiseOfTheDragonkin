@@ -3,22 +3,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 
-public class Player : Entity
+public class Player : SingletonMonobehavior<Player>
 {
-    // Static variables
-    public static Player Instance;
-
-    // Private methods
-    private void Awake()
-    {
-        if (Instance == null)
-        {
-            Instance = this;
-            DontDestroyOnLoad(gameObject);
-        }
-        else
-        {
-            Destroy(gameObject);
-        }
-    }
+    [SerializeField] public string Name;
 }

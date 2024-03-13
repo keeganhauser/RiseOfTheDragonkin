@@ -12,4 +12,9 @@ public static class HTMLUtil
     {
         return $"<color={color}>{text}</color>";
     }
+
+    public static string GetStrikethroughText(string text)
+    {
+        return $"<s>{text}</s>";
+    }
 }

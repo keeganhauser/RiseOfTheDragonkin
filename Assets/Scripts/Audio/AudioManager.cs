@@ -1,14 +1,6 @@
 using System.Collections;
 using UnityEngine;
 
-public enum GameState
-{
-    MainMenu,
-    Overworld,
-    Cave,
-    Combat
-}
-
 public class AudioManager : MonoBehaviour
 {
     public static AudioManager Instance;

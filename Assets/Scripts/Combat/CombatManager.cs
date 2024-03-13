@@ -2,16 +2,6 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public enum BattleState
-{
-    NotStarted,
-    Start,
-    PlayerTurn,
-    EnemyTurn,
-    Won,
-    Lost
-}
-
 public class CombatManager : MonoBehaviour
 {
     public static CombatManager Instance;

@@ -2,14 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum CombatAction
-{
-    Attack,
-    Defend,
-    Item,
-    Escape
-}
-
 public abstract class CombatController : MonoBehaviour
 {
     [field: SerializeField] public int MaxHealth { get; protected set; }

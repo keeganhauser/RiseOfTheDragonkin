@@ -5,8 +5,9 @@ using UnityEngine;
 
 public class DialogueController : MonoBehaviour
 {
-    [SerializeField] private TextMeshProUGUI NPCNameText;
-    [SerializeField] private TextMeshProUGUI NPCDialogueText;
+    [SerializeField] private RectTransform contentParent;
+    [field: SerializeField] public TextMeshProUGUI NPCNameText { get; private set; }
+    [field: SerializeField] public TextMeshProUGUI NPCDialogueText { get; private set; }
     [SerializeField] private float typeSpeed = 10f;
 
     private Queue<string> paragraphs = new Queue<string>();
@@ -55,9 +56,9 @@ public class DialogueController : MonoBehaviour
     private void StartConversation(DialogueText dialogueText)
     {
         // Activate gameObject
-        if (!this.gameObject.activeSelf)
+        if (!contentParent.gameObject.activeSelf)
         {
-            this.gameObject.SetActive(true);
+            contentParent.gameObject.SetActive(true);
         }
 
         // Update speaker name
@@ -81,9 +82,9 @@ public class DialogueController : MonoBehaviour
         conversationEnded = false;
 
         // Deactivate gameObject
-        if (this.gameObject.activeSelf)
+        if (contentParent.gameObject.activeSelf)
         {
-            this.gameObject.SetActive(false);
+            contentParent.gameObject.SetActive(false);
         }
     }
 
