@@ -1,17 +1,34 @@
+using System.Collections.Generic;
 using UnityEngine;
 
-public class CraftingManager : MonoBehaviour
+public class CraftingManager : SingletonMonobehavior<CraftingManager>
 {
-    public static CraftingManager Instance;
-
     public CraftingRecipe[] recipes;
 
-    private void Awake()
+    // TODO: Make private
+    public Dictionary<CraftingRecipe, bool> knownRecipesMap;
+
+    protected override void Awake()
     {
-        if (Instance == null)
-            Instance = this;
-        else
-            Destroy(this);
+        base.Awake();
+        GenerateRecipesMap();
+    }
+
+    private void GenerateRecipesMap()
+    {
+        CraftingRecipe[] recipes = Resources.LoadAll<CraftingRecipe>("Recipes");
+        knownRecipesMap = new Dictionary<CraftingRecipe, bool>();
+
+        foreach (CraftingRecipe recipe in recipes)
+        {
+            if (knownRecipesMap.ContainsKey(recipe))
+            {
+                Debug.LogWarning($"Duplicate recipe found when generating map: {recipe.recipeName}");
+            }
+            // TODO: Redo this to load persistent data
+            knownRecipesMap.Add(recipe, true);
+        }
+
     }
 
     public void CraftItem(CraftingRecipe recipe)

@@ -7,22 +7,26 @@ public class InventoryUI : MonoBehaviour
 {
     [Header("Components")]
     [SerializeField] private GameObject mainInventoryGroup;
+    [SerializeField] private Button darkBackgroundButton;
     [SerializeField] private Button showInventoryButton;
 
     private void Awake()
     {
         // Setup the button's onClick to trigger the onInventoryTogglePressed event
         showInventoryButton.onClick.AddListener(() => GameEventsManager.Instance.InputEvents.InventoryTogglePressed());
+        darkBackgroundButton.onClick.AddListener(() => GameEventsManager.Instance.InputEvents.InventoryTogglePressed());
     }
 
     private void OnEnable()
     {
         GameEventsManager.Instance.InputEvents.onInventoryTogglePressed += ToggleInventory;
+        GameEventsManager.Instance.InputEvents.onQuestLogTogglePressed += ToggleButton;
     }
 
     private void OnDisable()
     {
         GameEventsManager.Instance.InputEvents.onInventoryTogglePressed -= ToggleInventory;
+        GameEventsManager.Instance.InputEvents.onQuestLogTogglePressed -= ToggleButton;
     }
 
     private void ToggleInventory()
@@ -31,14 +35,19 @@ public class InventoryUI : MonoBehaviour
         if (mainInventoryGroup.gameObject.activeInHierarchy)
         {
             mainInventoryGroup.SetActive(false);
-            showInventoryButton.gameObject.SetActive(true);
+            ToggleButton();
         }
 
         // Otherwise show it
         else
         {
             mainInventoryGroup.SetActive(true);
-            showInventoryButton.gameObject.SetActive(false);
+            ToggleButton();
         }
+    }
+
+    private void ToggleButton()
+    {
+        showInventoryButton.gameObject.SetActive(!showInventoryButton.gameObject.activeInHierarchy);
     }
 }

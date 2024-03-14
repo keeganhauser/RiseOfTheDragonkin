@@ -12,6 +12,7 @@ public class GameEventsManager : MonoBehaviour
     public InputEvents      InputEvents;
     public InventoryEvents  InventoryEvents;
     public CombatEvents     CombatEvents;
+    public CraftingEvents   CraftingEvents;
 
     private void Awake()
     {
@@ -30,5 +31,6 @@ public class GameEventsManager : MonoBehaviour
         InputEvents     = new InputEvents();
         InventoryEvents = new InventoryEvents();
         CombatEvents    = new CombatEvents();
+        CraftingEvents  = new CraftingEvents();
     }
 }

@@ -1,25 +1,12 @@
 using UnityEngine;
 
-public class InventoryManager : MonoBehaviour
+public class InventoryManager : SingletonMonobehavior<InventoryManager>
 {
-    public static InventoryManager Instance;
-
     public Item[] startingItems;
     public InventorySlot[] inventorySlots;
     public GameObject inventoryItemPrefab;
 
     int selectedSlot = -1;
-
-    private void Awake()
-    {
-        if (Instance == null)
-        {
-            Instance = this;
-            DontDestroyOnLoad(this);
-        }
-        else
-            Destroy(this);
-    }
 
     private void Start()
     {
@@ -29,6 +16,7 @@ public class InventoryManager : MonoBehaviour
         {
             AddItem(item);
         }
+        GameEventsManager.Instance.InventoryEvents.InventoryFinishLoad();
     }
 
     private void Update()

@@ -17,19 +17,31 @@ public class QuestLogUI : MonoBehaviour
     [SerializeField] private TextMeshProUGUI itemRewardsText;
     [SerializeField] private TextMeshProUGUI levelRequirementsText;
     [SerializeField] private TextMeshProUGUI questRequirementsText;
+    [SerializeField] private Button showQuestLogButton;
+    [SerializeField] private Button darkBackgroundButton;
+
 
     private Button firstSelectedButton;
+
+    private void Awake()
+    {
+        // Setup the button's onClick to trigger the onInventoryTogglePressed event
+        showQuestLogButton.onClick.AddListener(() => GameEventsManager.Instance.InputEvents.QuestLogTogglePressed());
+        darkBackgroundButton.onClick.AddListener(() => GameEventsManager.Instance.InputEvents.QuestLogTogglePressed());
+    }
 
     private void OnEnable()
     {
         GameEventsManager.Instance.QuestEvents.onQuestStateChange += QuestStateChange;
         GameEventsManager.Instance.InputEvents.onQuestLogTogglePressed += ToggleUI;
+        GameEventsManager.Instance.InputEvents.onInventoryTogglePressed += ToggleButton;
     }
 
     private void OnDisable()
     {
         GameEventsManager.Instance.QuestEvents.onQuestStateChange -= QuestStateChange;
         GameEventsManager.Instance.InputEvents.onQuestLogTogglePressed -= ToggleUI;
+        GameEventsManager.Instance.InputEvents.onInventoryTogglePressed -= ToggleButton;
     }
 
     private void QuestStateChange(Quest quest)
@@ -95,6 +107,7 @@ public class QuestLogUI : MonoBehaviour
         {
             firstSelectedButton.Select();
         }
+        ToggleButton();
     }
 
     private void HideUI()
@@ -102,5 +115,11 @@ public class QuestLogUI : MonoBehaviour
         contentParent.SetActive(false);
         GameEventsManager.Instance.PlayerEvents.EnablePlayerMovement();
         EventSystem.current.SetSelectedGameObject(null);
+        ToggleButton();
+    }
+
+    private void ToggleButton()
+    {
+        showQuestLogButton.gameObject.SetActive(!showQuestLogButton.gameObject.activeInHierarchy);
     }
 }
