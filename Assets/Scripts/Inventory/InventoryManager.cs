@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class InventoryManager : SingletonMonobehavior<InventoryManager>
+public class InventoryManager : SingletonMonoBehavior<InventoryManager>
 {
     public Item[] startingItems;
     public InventorySlot[] inventorySlots;
@@ -111,6 +111,7 @@ public class InventoryManager : SingletonMonobehavior<InventoryManager>
 
     public bool HasItem(Item item)
     {
+        Debug.Log($"Checking to see if {item.itemName} is in inventory...");
         foreach (InventorySlot slot in inventorySlots)
         {
             InventoryItem itemInSlot = slot.GetComponentInChildren<InventoryItem>();
@@ -156,6 +157,9 @@ public class InventoryManager : SingletonMonobehavior<InventoryManager>
             if (itemInSlot != null && itemInSlot.item == item)
             {
                 itemInSlot.Count -= amount;
+                Debug.Log($"Items in slot: {itemInSlot.Count}");
+                GameEventsManager.Instance.InventoryEvents.InventoryRemoveItem(item, amount);
+                Debug.Log($"Removed {amount} {item.itemName}");
                 return true;
             }
         }

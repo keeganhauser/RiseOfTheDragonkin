@@ -5,7 +5,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-public class CustomSceneManager : SingletonMonobehavior<CustomSceneManager>
+public class CustomSceneManager : SingletonMonoBehavior<CustomSceneManager>
 {
     private bool isFading;
     [SerializeField] private float fadeDuration = 1f;

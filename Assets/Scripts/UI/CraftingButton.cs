@@ -6,7 +6,7 @@ using UnityEngine.Events;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class CraftingButton : MonoBehaviour
+public class CraftingButton : MonoBehaviour, ISelectHandler
 {
     public Button Button { get; private set; }
     private TextMeshProUGUI buttonText;

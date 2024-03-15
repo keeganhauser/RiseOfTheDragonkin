@@ -15,38 +15,78 @@ public class CraftingUI : MonoBehaviour
     [SerializeField] private GridLayoutGroup sourceIngredientsGroup;
     [SerializeField] private GameObject sourceIngredientSlotPrefab;
     [SerializeField] private Image resultingItemSlot;
+    [SerializeField] private Button backgroundButton;
 
     private Button firstSelectedButton;
 
     public CraftingRecipe recipe;
+    public CraftingRecipe recipe2;
     private CraftingRecipe selectedRecipe;
 
     private void Awake()
     {
-        craftButton.onClick.AddListener(() => CraftingManager.Instance.CraftItem(recipe));
+        craftButton.onClick.AddListener(() => {
+            CraftSelectedItem();
+        });
+        backgroundButton.onClick.AddListener(() =>
+        {
+            ToggleUI();
+        });
+    }
+
+    private void Start()
+    {
+        ScrollBarSetup();
     }
 
     private void OnEnable()
     {
         GameEventsManager.Instance.CraftingEvents.onCraftingMenuToggle += ToggleUI;
-        GameEventsManager.Instance.InventoryEvents.onInventoryFinishLoad += TestRecipe;
     }
 
     private void OnDisable()
     {
         GameEventsManager.Instance.CraftingEvents.onCraftingMenuToggle -= ToggleUI;
-        GameEventsManager.Instance.InventoryEvents.onInventoryFinishLoad -= TestRecipe;
     }
 
-    private void TestRecipe()
+    private void Update()
     {
-        SetCraftingInfo(recipe);
+        if (Input.GetKeyDown(KeyCode.C))
+        {
+            ToggleUI();
+        }
+    }
+
+    private void CraftSelectedItem()
+    {
+        CraftingManager.Instance.CraftItem(selectedRecipe);
+    }
+
+    private void ScrollBarSetup()
+    {
+        foreach (CraftingRecipe recipe in CraftingManager.Instance.knownRecipesMap.Keys)
+        {
+            // Add the button to the scrolling list if not already added
+            CraftingButton craftingButton = scrollingList.CreateButtonIfNotExists(recipe, () =>
+            {
+                SetCraftingInfo(recipe);
+            });
+
+            // Set questLogButton to first selected button if select button is null
+            if (firstSelectedButton == null)
+            {
+                firstSelectedButton = craftingButton.Button;
+                firstSelectedButton.Select();
+            }
+        }
     }
 
     private void SetCraftingInfo(CraftingRecipe recipe)
     {
+        // If the recipe is already selected, don't redo everything
+        //if (recipe == selectedRecipe) return;
+
         // Show proper amount of source slots as the recipe calls for
-        // TODO: Show source items in slots
         foreach (Transform transform in sourceIngredientsGroup.transform)
         {
             Destroy(transform.gameObject);
@@ -68,6 +108,9 @@ public class CraftingUI : MonoBehaviour
             .GetComponentsInChildren<Image>()
             .First(c => c.gameObject != resultingItemSlot.gameObject)
             .sprite = recipe.resultingItem.image;
+
+        selectedRecipe = recipe;
+        
     }
 
     private void ToggleUI()
@@ -80,8 +123,8 @@ public class CraftingUI : MonoBehaviour
 
     private void ShowUI()
     {
-        contentParent.SetActive(true);
         GameEventsManager.Instance.PlayerEvents.DisablePlayerMovement();
+        contentParent.SetActive(true);
 
         if (firstSelectedButton != null)
         {

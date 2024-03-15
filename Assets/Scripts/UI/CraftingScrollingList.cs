@@ -13,6 +13,7 @@ public class CraftingScrollingList : MonoBehaviour
 
     private Dictionary<string, CraftingButton> idToButtonMap = new Dictionary<string, CraftingButton>();
 
+
     public CraftingButton CreateButtonIfNotExists(CraftingRecipe recipe, UnityAction selectAction)
     {
         CraftingButton craftingButton = null;
@@ -40,7 +41,7 @@ public class CraftingScrollingList : MonoBehaviour
         craftingButton.gameObject.name = $"{recipe.recipeName}_button";
 
         // Init button
-        craftingButton.Initialize(recipe.recipeName, selectAction);
+        craftingButton.Initialize(recipe.resultingItem.itemName, selectAction);
 
         // Add to map to keep track of button
         idToButtonMap.Add(recipe.recipeName, craftingButton);

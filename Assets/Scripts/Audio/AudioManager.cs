@@ -1,23 +1,9 @@
 using System.Collections;
 using UnityEngine;
 
-public class AudioManager : MonoBehaviour
+public class AudioManager : SingletonMonoBehavior<AudioManager>
 {
-    public static AudioManager Instance;
     private const float fadeDuration = 1f;
-
-    private void InstantiateAudio()
-    {
-        if (Instance != null && Instance != this)
-        {
-            Destroy(this);
-        }
-        else
-        {
-            Instance = this;
-            DontDestroyOnLoad(this);
-        }
-    }
 
     [Header("Menu Music")]
     [SerializeField] private MusicTrack[] menuTracks;
@@ -40,9 +26,10 @@ public class AudioManager : MonoBehaviour
     private MusicTrack[] currentTrackList;
     private int currentTrackIndex;
 
-    private void Awake()
+    protected override void Awake()
     {
-        InstantiateAudio();
+        base.Awake();
+
         audioSource = GetComponent<AudioSource>();
         audioSource.loop = true;
 

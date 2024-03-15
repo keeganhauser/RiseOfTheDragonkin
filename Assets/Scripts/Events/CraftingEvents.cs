@@ -8,9 +8,9 @@ public class CraftingEvents
         onCraftingMenuToggle?.Invoke();
     }
 
-    public event Action<Item> onCraftingItemCraft;
-    public void CraftingItemCraft(Item craftedItem)
+    public event Action<Item> onCraftItem;
+    public void CraftItem(Item craftedItem)
     {
-        onCraftingItemCraft?.Invoke(craftedItem);
+        onCraftItem?.Invoke(craftedItem);
     }
 }

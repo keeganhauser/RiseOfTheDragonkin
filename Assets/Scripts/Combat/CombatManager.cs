@@ -2,10 +2,8 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class CombatManager : MonoBehaviour
-{
-    public static CombatManager Instance;
-    
+public class CombatManager : SingletonMonoBehavior<CombatManager>
+{   
     public Enemy enemy; // TODO: Make private again
     
     private bool combatEnded;
@@ -30,13 +28,9 @@ public class CombatManager : MonoBehaviour
         }
     }
 
-    private void Awake()
+    protected override void Awake()
     {
-        if (Instance == null)
-            Instance = this;
-        else
-            Destroy(gameObject);
-        DontDestroyOnLoad(gameObject);
+        base.Awake();
 
         combatEnded = false;
         battleState = BattleState.NotStarted;

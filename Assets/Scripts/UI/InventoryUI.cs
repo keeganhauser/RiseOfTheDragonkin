@@ -35,6 +35,7 @@ public class InventoryUI : MonoBehaviour
         if (mainInventoryGroup.gameObject.activeInHierarchy)
         {
             mainInventoryGroup.SetActive(false);
+            GameEventsManager.Instance.PlayerEvents.EnablePlayerMovement();
             ToggleButton();
         }
 
@@ -42,6 +43,7 @@ public class InventoryUI : MonoBehaviour
         else
         {
             mainInventoryGroup.SetActive(true);
+            GameEventsManager.Instance.PlayerEvents.DisablePlayerMovement();
             ToggleButton();
         }
     }

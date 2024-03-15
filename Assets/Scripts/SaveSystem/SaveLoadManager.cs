@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class SaveLoadManager : SingletonMonobehavior<SaveLoadManager>
+public class SaveLoadManager : SingletonMonoBehavior<SaveLoadManager>
 {
     public List<ISaveable> iSaveableObjectList;
 

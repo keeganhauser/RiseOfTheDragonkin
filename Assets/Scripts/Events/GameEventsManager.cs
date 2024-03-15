@@ -2,10 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GameEventsManager : MonoBehaviour
+public class GameEventsManager : SingletonMonoBehavior<GameEventsManager>
 {
-    public static GameEventsManager Instance { get; private set; }
-
     public NPCEvents        NPCEvents;
     public QuestEvents      QuestEvents;
     public PlayerEvents     PlayerEvents;
@@ -14,15 +12,9 @@ public class GameEventsManager : MonoBehaviour
     public CombatEvents     CombatEvents;
     public CraftingEvents   CraftingEvents;
 
-    private void Awake()
+    protected override void Awake()
     {
-        if (Instance != null)
-        {
-            Destroy(gameObject);
-        }
-
-        Instance = this;
-        DontDestroyOnLoad(gameObject);
+        base.Awake();
 
         // Initialize events
         NPCEvents       = new NPCEvents();

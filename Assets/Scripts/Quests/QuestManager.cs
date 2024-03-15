@@ -4,7 +4,7 @@ using System.Text;
 using TMPro;
 using UnityEngine;
 
-public class QuestManager : SingletonMonobehavior<QuestManager>
+public class QuestManager : SingletonMonoBehavior<QuestManager>
 {
     private Dictionary<string, Quest> questMap;
 

@@ -3,7 +3,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 
-public class Player : SingletonMonobehavior<Player>
+public class Player : SingletonMonoBehavior<Player>
 {
     [SerializeField] public string Name;
 }
