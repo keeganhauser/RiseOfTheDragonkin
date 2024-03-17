@@ -43524,6 +43524,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Alchemist
       objectReference: {fileID: 0}
+    - target: {fileID: 1692200346193345931, guid: d68a2e94a3176b2408de9920b1400990, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2561428295564717301, guid: d68a2e94a3176b2408de9920b1400990, type: 3}
       propertyPath: m_LocalPosition.x
       value: -10.05

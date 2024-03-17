@@ -11,6 +11,12 @@ public class CombatEvents
         onCombatTrigger?.Invoke(enemy);
     }
 
+    public event Action onCombatPrePreInitialization;
+    public void CombatPrePreInitialization()
+    {
+        onCombatPrePreInitialization?.Invoke();
+    }
+
     // Called before combat starts being initialized
     public event Action onCombatPreInitialization;
     public void CombatPreInitialization()
@@ -22,6 +28,7 @@ public class CombatEvents
     public event Action onCombatPostInitialization;
     public void CombatPostInitialization()
     {
+        Debug.Log("Combat post init event");
         onCombatPostInitialization?.Invoke();
     }
 
@@ -36,6 +43,7 @@ public class CombatEvents
     public event Action onCombatEnd;
     public void CombatEnd()
     {
+        Debug.Log("Combat end");
         onCombatEnd?.Invoke();
     }
 
@@ -64,6 +72,7 @@ public class CombatEvents
     public event Action onEndTurn;
     public void EndTurn()
     {
+        Debug.Log("Combat end turn");
         onEndTurn?.Invoke();
     }
 
@@ -86,6 +95,12 @@ public class CombatEvents
     public void Defend(CombatController controller)
     {
         onDefend?.Invoke(controller);
+    }
+
+    public event Action<CombatController> onEscape;
+    public void Escape(CombatController controller)
+    {
+        onEscape?.Invoke(controller);
     }
 
     public event Action<string> onCombatStatusChange;

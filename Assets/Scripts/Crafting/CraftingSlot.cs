@@ -1,9 +1,6 @@
 using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
-using static UnityEditor.Progress;
 
 public class CraftingSlot : MonoBehaviour
 {
@@ -25,7 +22,7 @@ public class CraftingSlot : MonoBehaviour
     {
         Debug.Log("Initialized slot");
         this.item = item;
-        itemImage.sprite = item.image;
+        itemImage.sprite = item.ItemData.image;
         StartCoroutine(UpdateSprite());
     }
 

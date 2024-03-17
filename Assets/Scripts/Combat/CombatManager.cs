@@ -16,6 +16,14 @@ public class CombatManager : SingletonMonoBehavior<CombatManager>
     [SerializeField] private Vector2 playerPosition;
     [SerializeField] private Vector2 enemyPosition;
 
+    [SerializeField] private Transform playerBattleStation;
+    [SerializeField] private Transform enemyBattleStation;
+
+    private string previousSceneName;
+    private Vector3 previousPlayerPosition;
+    private Coroutine combatRoutine;
+    private Coroutine initRoutine;
+
     private string status;
     private string Status
     {
@@ -38,14 +46,10 @@ public class CombatManager : SingletonMonoBehavior<CombatManager>
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.RightArrow))
+        if (Input.GetKeyDown(KeyCode.Space))
         {
-            //GameEventsManager.Instance.CombatEvents.CombatTrigger(enemy);
-            CustomSceneManager.Instance.FadeAndLoadScene("CombatScene", Vector3.zero);
-        }
-        else if (Input.GetKeyDown(KeyCode.LeftArrow))
-        {
-            CustomSceneManager.Instance.FadeAndLoadScene("OverworldArea1", Vector3.zero);
+            Debug.Log("Space");
+            GameEventsManager.Instance.CombatEvents.CombatTrigger(enemy);
         }
 
     }
@@ -56,6 +60,7 @@ public class CombatManager : SingletonMonoBehavior<CombatManager>
         GameEventsManager.Instance.CombatEvents.onLoseCombat += EndCombat;
         GameEventsManager.Instance.CombatEvents.onEndTurn += EndTurn;
         GameEventsManager.Instance.CombatEvents.onEnemyChange += SetEnemy;
+        GameEventsManager.Instance.CombatEvents.onEscape += Escape;
     }
 
     private void OnDisable()
@@ -64,6 +69,7 @@ public class CombatManager : SingletonMonoBehavior<CombatManager>
         GameEventsManager.Instance.CombatEvents.onLoseCombat -= EndCombat;
         GameEventsManager.Instance.CombatEvents.onEndTurn -= EndTurn;
         GameEventsManager.Instance.CombatEvents.onEnemyChange -= SetEnemy;
+        GameEventsManager.Instance.CombatEvents.onEscape -= Escape;
     }
 
     private void CombatTrigger(Enemy enemy)
@@ -75,12 +81,26 @@ public class CombatManager : SingletonMonoBehavior<CombatManager>
         }
 
         if (battleState != BattleState.NotStarted) return;
-        StartCoroutine(InitializeCombat(enemy));
+
+        Debug.Log("Start init combat");
+        GameEventsManager.Instance.CombatEvents.CombatPrePreInitialization();
+
+        // Save the scene in which the player was previously located
+        previousSceneName = SceneManager.GetActiveScene().name;
+        GameEventsManager.Instance.SceneEvents.onSceneSwitchEnd += StartCombat;
+        CustomSceneManager.Instance.FadeAndLoadScene(SceneName.CombatScene.ToString(), Vector3.zero);
+    }
+
+    private void StartCombat()
+    {
+        GameEventsManager.Instance.SceneEvents.onSceneSwitchEnd -= StartCombat;
+        initRoutine = StartCoroutine(InitializeCombat(enemy));
     }
 
     private IEnumerator InitializeCombat(Enemy enemy)
     {
         // Set battle state
+        combatEnded = false;
         battleState = BattleState.Start;
         Status = $"You've encountered a {enemy.enemyName}!";
 
@@ -88,33 +108,29 @@ public class CombatManager : SingletonMonoBehavior<CombatManager>
 
         GameEventsManager.Instance.CombatEvents.CombatPreInitialization();
         
-        yield return StartCoroutine(SetupCombat());
+        SetupCombat();
 
         GameEventsManager.Instance.CombatEvents.CombatPostInitialization();
 
-        yield return StartCoroutine(DoCombat());
+        combatRoutine = StartCoroutine(DoCombat());
+        yield return combatRoutine;
     }
 
-    private IEnumerator SetupCombat()
+    private void SetupCombat()
     {
-        // Load combat scene
-        //SceneManager.LoadScene("CombatScene");
-        yield return new WaitForFixedUpdate();
-
-
         // Get components
         playerCombatController = Player.Instance.GetComponent<CombatController>();
 
         // Move player to proper spot
-        Player.Instance.gameObject.transform.position = playerPosition;
+        Player.Instance.transform.position = playerBattleStation.position;
 
         // Disable player movement and interactions
-        //GameEventsManager.Instance.PlayerEvents.DisablePlayerMovement();
+        GameEventsManager.Instance.PlayerEvents.DisablePlayerMovement();
 
         // Spawn enemy
-        //GameObject enemyObj = EnemySpawner.SpawnEnemy(enemy, enemyBattleStation.position, Quaternion.identity, enemyBattleStation);
-        GameObject enemyObj = EnemySpawner.SpawnEnemy(enemy, enemyPosition, Quaternion.identity, null);
+        GameObject enemyObj = EnemySpawner.SpawnEnemy(enemy, enemyBattleStation.position, Quaternion.identity, enemyBattleStation);
         enemyCombatController = enemyObj.GetComponent<CombatController>();
+        Debug.Log($"ecc get: {enemyCombatController.GetInstanceID()}");
     }
 
     private void SetEnemy(Enemy enemy)
@@ -154,6 +170,7 @@ public class CombatManager : SingletonMonoBehavior<CombatManager>
 
     private void EndTurn()
     {
+        if (combatEnded) return;
         if (battleState == BattleState.PlayerTurn)
         {
             battleState = BattleState.EnemyTurn;
@@ -164,22 +181,30 @@ public class CombatManager : SingletonMonoBehavior<CombatManager>
         }
     }
 
+    private void Escape(CombatController escapingController)
+    {
+        EndCombat(escapingController);
+    }
+
     private void EndCombat(CombatController losingController)
     {
+        StopCoroutine(combatRoutine);
+        StopCoroutine(initRoutine);
         combatEnded = true;
-        StopAllCoroutines();
+        battleState = BattleState.NotStarted;
 
         // Show popup
         if (losingController == playerCombatController)
         {
             Debug.Log("Player has lost!");
-            Status = "You've been slain...";
+            Status = "You've lost...";
         }
         else
         {
             Debug.Log("Player has won!");
             Status = $"{losingController.Name} has been defeated!";
         }
+
         StartCoroutine(CombatEndRoutine());
     }
 
@@ -188,12 +213,17 @@ public class CombatManager : SingletonMonoBehavior<CombatManager>
     {
         yield return new WaitForSeconds(3f);
 
+        
+        GameEventsManager.Instance.SceneEvents.onSceneSwitchStart += CleanUpCombat;
+        CustomSceneManager.Instance.FadeAndLoadScene(previousSceneName, previousPlayerPosition);
+    }
+
+    private void CleanUpCombat()
+    {
+        GameEventsManager.Instance.SceneEvents.onSceneSwitchStart -= CleanUpCombat;
         GameEventsManager.Instance.CombatEvents.CombatEnd();
-
-        battleState = BattleState.NotStarted;
-
-        // Go back to overworld
-        yield return new WaitForSeconds(0.5f);
-        //GameEventsManager.Instance.PlayerEvents.EnablePlayerMovement();
+        GameEventsManager.Instance.PlayerEvents.EnablePlayerMovement();
+        foreach (Transform child in enemyBattleStation.transform)
+            Destroy(child.gameObject);
     }
 }

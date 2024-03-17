@@ -5,7 +5,15 @@ using UnityEngine;
 public class PlayerCombatController : CombatController
 {    
     public override int Level => 1;
-    public override string Name => GetComponent<Entity>().Name;
+    public override string Name => "Player Name";
+
+    public void Initialize(int health, int mana, int damage, int speed)
+    {
+        MaxHealth = CurrentHealth = health;
+        MaxMana = CurrentMana = mana;
+        this.damage = damage;
+        Speed = speed;
+    }
 
     private void OnEnable()
     {
@@ -24,6 +32,15 @@ public class PlayerCombatController : CombatController
         Debug.Log("Handling player turn");
     }
 
+    protected override void TakeDamage(CombatController controller, int amount)
+    {
+        base.TakeDamage(controller, amount);
+
+        // TODO: Handle the player losing better than this
+        if (CurrentHealth <= 0)
+            CurrentHealth = MaxHealth;
+    }
+
     public void ButtonAttack()
     {
         Attack(CombatManager.Instance.enemyCombatController);
@@ -36,11 +53,32 @@ public class PlayerCombatController : CombatController
 
     public void ButtonItem()
     {
+        // Show the list of items to use
+        GameEventsManager.Instance.InventoryEvents.InventoryListToggle();
 
+        // Start listening to use event
+        GameEventsManager.Instance.InventoryEvents.onInventoryRemoveItem += InventoryListUseItem;
+        Debug.Log("Choosing an item...");
+    }
+
+    private void InventoryListUseItem(Item item, int amount)
+    {
+        // Stop listening to event
+        GameEventsManager.Instance.InventoryEvents.onInventoryRemoveItem -= InventoryListUseItem;
+
+
+        // Toggle inventory list off
+        GameEventsManager.Instance.InventoryEvents.InventoryListToggle();
+
+        // Update status
+        Status = $"You used {amount} {item.ItemData.itemName}!";
+        Debug.Log("PCC used item");
+        // End turn
+        GameEventsManager.Instance.CombatEvents.EndTurn();
     }
 
     public void ButtonEscape()
     {
-
+        Escape();
     }
 }

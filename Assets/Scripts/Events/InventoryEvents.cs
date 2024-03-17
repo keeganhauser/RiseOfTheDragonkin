@@ -1,4 +1,5 @@
 using System;
+using UnityEngine;
 
 public class InventoryEvents
 {
@@ -24,5 +25,24 @@ public class InventoryEvents
     public void InventorySlotSelect()
     {
         onInventorySlotSelect?.Invoke();
+    }
+
+    public event Action onInventoryListToggle;
+    public void InventoryListToggle()
+    {
+        onInventoryListToggle?.Invoke();
+    }
+
+    public event Action<GameObject, Item> onInventoryListUseItem;
+    public void InventoryListUseItem(GameObject target, Item item)
+    {
+        Debug.Log($"Used item: {item.ItemData.itemName}");
+        onInventoryListUseItem?.Invoke(target, item);
+    }
+
+    public event Action<Item> onInventoryListSelectItem;
+    public void InventoryListSelectItem(Item item)
+    {
+        onInventoryListSelectItem?.Invoke(item);
     }
 }

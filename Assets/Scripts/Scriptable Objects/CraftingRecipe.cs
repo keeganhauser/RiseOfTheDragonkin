@@ -4,6 +4,6 @@ using UnityEngine;
 public class CraftingRecipe : ScriptableObject
 {
     public string recipeName;
-    public Item[] requiredIngredients;
-    public Item resultingItem;
+    public GameObject[] requiredIngredients;
+    public GameObject resultingItem;
 }

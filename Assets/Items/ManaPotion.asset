@@ -18,4 +18,5 @@ MonoBehaviour:
   range: {x: 5, y: 4}
   itemName: Mana Potion
   stackable: 1
-  image: {fileID: -2012282804, guid: a2669bfa923d7cb45b328e10e0963a0a, type: 3}
+  image: {fileID: -642948617, guid: 122959c9aa5d31d41b28c34261bfcfc9, type: 3}
+  description: Restores 5 MP.

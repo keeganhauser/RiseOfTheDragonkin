@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c370f5964b8b07740b3a1ff3c8c0ff37, type: 3}
+  m_Name: Sorcerer
+  m_EditorClassIdentifier: 
+  defaultPlayerName: Sorcerer
+  damage: 15
+  health: 8
+  mana: 15
+  speed: 20
+  spriteLibrary: {fileID: 7108339969198208228, guid: a57e94af725d5c244a04a4b62847d7b3, type: 3}

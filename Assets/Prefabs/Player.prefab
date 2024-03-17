@@ -284,9 +284,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 683857ef372dc784f80ddf23b3713923, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <MaxHealth>k__BackingField: 20
+  <MaxHealth>k__BackingField: 10
   <MaxMana>k__BackingField: 20
-  damage: 10
+  damage: 12
 --- !u!1 &8935647323153579893
 GameObject:
   m_ObjectHideFlags: 0
@@ -360,8 +360,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -1622566685
+  m_SortingLayer: 6
   m_SortingOrder: 10
   m_Sprite: {fileID: 1219499882, guid: ac75f234125ff364c95dbc4d007db30e, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}

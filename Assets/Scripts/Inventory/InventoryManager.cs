@@ -1,8 +1,11 @@
+using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
+using static UnityEditor.Progress;
 
 public class InventoryManager : SingletonMonoBehavior<InventoryManager>
 {
-    public Item[] startingItems;
+    public GameObject[] startingItems;
     public InventorySlot[] inventorySlots;
     public GameObject inventoryItemPrefab;
 
@@ -12,9 +15,9 @@ public class InventoryManager : SingletonMonoBehavior<InventoryManager>
     {
         ChangeSelectedSlot(0);
 
-        foreach (Item item in startingItems)
+        foreach (GameObject itemPrefab in startingItems)
         {
-            AddItem(item);
+            AddItem(itemPrefab.GetComponent<Item>());
         }
         GameEventsManager.Instance.InventoryEvents.InventoryFinishLoad();
     }
@@ -35,11 +38,13 @@ public class InventoryManager : SingletonMonoBehavior<InventoryManager>
     private void OnEnable()
     {
         GameEventsManager.Instance.InputEvents.onToolbarScroll += ToolbarScroll;
+        GameEventsManager.Instance.InventoryEvents.onInventoryListUseItem += UseItem;
     }
 
     private void OnDisable()
     {
         GameEventsManager.Instance.InputEvents.onToolbarScroll -= ToolbarScroll;
+        GameEventsManager.Instance.InventoryEvents.onInventoryListUseItem -= UseItem;
     }
 
     private void ToolbarScroll(float scroll)
@@ -83,7 +88,7 @@ public class InventoryManager : SingletonMonoBehavior<InventoryManager>
 
             // Check if current inv slot already holds item of same type
             if (itemInSlot != null &&
-                itemInSlot.item.stackable &&
+                itemInSlot.item.ItemData.stackable &&
                 itemInSlot.item == item &&
                 itemInSlot.Count < itemInSlot.maxCount)
             {
@@ -111,7 +116,7 @@ public class InventoryManager : SingletonMonoBehavior<InventoryManager>
 
     public bool HasItem(Item item)
     {
-        Debug.Log($"Checking to see if {item.itemName} is in inventory...");
+        Debug.Log($"Checking to see if {item.ItemData.itemName} is in inventory...");
         foreach (InventorySlot slot in inventorySlots)
         {
             InventoryItem itemInSlot = slot.GetComponentInChildren<InventoryItem>();
@@ -158,8 +163,8 @@ public class InventoryManager : SingletonMonoBehavior<InventoryManager>
             {
                 itemInSlot.Count -= amount;
                 Debug.Log($"Items in slot: {itemInSlot.Count}");
+                Debug.Log($"Removed {amount} {item.ItemData.itemName}");
                 GameEventsManager.Instance.InventoryEvents.InventoryRemoveItem(item, amount);
-                Debug.Log($"Removed {amount} {item.itemName}");
                 return true;
             }
         }
@@ -169,5 +174,43 @@ public class InventoryManager : SingletonMonoBehavior<InventoryManager>
     private void UseItem(InventoryItem invItem)
     {
         invItem.Count--;
+    }
+
+    public int GetItemCount(Item item)
+    {
+        int count = 0;
+        
+        foreach (InventorySlot slot in inventorySlots)
+        {
+            InventoryItem itemInSlot = slot.GetComponentInChildren<InventoryItem>();
+            if (itemInSlot != null && itemInSlot.item == item)
+            {
+                count += itemInSlot.Count;        
+            }
+        }
+
+        return count;
+    }
+
+    public Item[] GetUniqueItemList()
+    {
+        HashSet<Item> items = new HashSet<Item>();
+
+        foreach (InventorySlot slot in inventorySlots)
+        {
+            InventoryItem itemInSlot = slot.GetComponentInChildren<InventoryItem>();
+            if (itemInSlot != null)
+            {
+                items.Add(itemInSlot.item);        
+            }
+        }
+        
+        return items.ToArray();
+    }
+
+    private void UseItem(GameObject target, Item item)
+    {
+        (item as ConsumableItem).Consume(target);
+        RemoveItem(item);
     }
 }

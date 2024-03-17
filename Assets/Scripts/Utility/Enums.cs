@@ -2,7 +2,8 @@ public enum SceneName
 {
     StartingTown01,
     ForestArea01,
-    CombatScene
+    CombatScene,
+    Dungeon01
 }
 
 public enum Direction

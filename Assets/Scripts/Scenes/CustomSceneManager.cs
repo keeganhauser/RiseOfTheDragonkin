@@ -39,28 +39,38 @@ public class CustomSceneManager : SingletonMonoBehavior<CustomSceneManager>
     private IEnumerator FadeAndSwitchScenes(string sceneName, Vector3 spawnPosition)
     {
         // Reset loading screen text
-        loadingText.text = "Loading...0%";
+        loadingText.text = "Loading... 0%";
 
         // Fade screen to black
+        GameEventsManager.Instance.SceneEvents.SceneFadeOut();
         yield return StartCoroutine(Fade(1f));
+
 
         // Save scene data
         SaveLoadManager.Instance.StoreCurrentSceneData();
 
         // Set player position
-        Player.Instance.gameObject.transform.position = spawnPosition;
+        Player.Instance.transform.position = spawnPosition;
+        Debug.Log($"Spawn position: {spawnPosition}");
 
         // Unload current scene
         yield return SceneManager.UnloadSceneAsync(SceneManager.GetActiveScene());
 
         // Load next scene
+        GameEventsManager.Instance.SceneEvents.SceneSwitchStart();
         yield return StartCoroutine(LoadSceneAndSetActive(sceneName));
+        GameEventsManager.Instance.SceneEvents.SceneSwitchEnd();
 
         // Load new scene data
         SaveLoadManager.Instance.RestoreCurrentSceneData();
 
+        // Chill for a sec
+        yield return new WaitForSeconds(1f);
+
         // Fade screen back in
         yield return StartCoroutine(Fade(0f));
+        
+        GameEventsManager.Instance.SceneEvents.SceneFadeIn();
     }
 
     private IEnumerator Fade(float finalAlpha)
@@ -92,7 +102,7 @@ public class CustomSceneManager : SingletonMonoBehavior<CustomSceneManager>
         while (!operation.isDone)
         {
             float progressValue = Mathf.Clamp01(operation.progress / 0.9f);
-            loadingText.text = $"Loading... {progressValue:P2}";
+            loadingText.text = $"Loading... {progressValue * 100:F2}%";
             yield return null;
         }
 

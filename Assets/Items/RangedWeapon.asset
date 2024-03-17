@@ -18,4 +18,5 @@ MonoBehaviour:
   range: {x: 5, y: 4}
   itemName: Bow
   stackable: 0
-  image: {fileID: -291782565, guid: 895dafff016159d4c8b1b471f1f0078d, type: 3}
+  image: {fileID: 457583568, guid: 122959c9aa5d31d41b28c34261bfcfc9, type: 3}
+  description: A simple bow.

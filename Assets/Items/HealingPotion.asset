@@ -18,4 +18,5 @@ MonoBehaviour:
   range: {x: 5, y: 4}
   itemName: Healing Potion
   stackable: 1
-  image: {fileID: 1736836470, guid: a2669bfa923d7cb45b328e10e0963a0a, type: 3}
+  image: {fileID: 464472096, guid: 122959c9aa5d31d41b28c34261bfcfc9, type: 3}
+  description: Restores 5 HP.

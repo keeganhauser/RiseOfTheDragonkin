@@ -25,21 +25,19 @@ public class PlayerMovementController : MonoBehaviour
 
     private void OnEnable()
     {
-        Debug.Log($"{this.GetInstanceID()} Controller enabled");
         GameEventsManager.Instance.InputEvents.onMovePressed += MovePressed;
         GameEventsManager.Instance.PlayerEvents.onDisablePlayerMovement += DisablePlayerMovement;
         GameEventsManager.Instance.PlayerEvents.onEnablePlayerMovement += EnablePlayerMovement;
-        GameEventsManager.Instance.CombatEvents.onCombatPreInitialization += SavePlayerLocation;
+        GameEventsManager.Instance.CombatEvents.onCombatPrePreInitialization += SavePlayerLocation;
         GameEventsManager.Instance.CombatEvents.onCombatEnd += LoadPlayerLocation;
     }
 
     private void OnDisable()
     {
-        Debug.Log($"{this.GetInstanceID()} Controller disabled");
         GameEventsManager.Instance.InputEvents.onMovePressed -= MovePressed;
         GameEventsManager.Instance.PlayerEvents.onDisablePlayerMovement -= DisablePlayerMovement;
         GameEventsManager.Instance.PlayerEvents.onEnablePlayerMovement -= EnablePlayerMovement;
-        GameEventsManager.Instance.CombatEvents.onCombatPreInitialization -= SavePlayerLocation;
+        GameEventsManager.Instance.CombatEvents.onCombatPrePreInitialization -= SavePlayerLocation;
         GameEventsManager.Instance.CombatEvents.onCombatEnd -= LoadPlayerLocation;
     }
 

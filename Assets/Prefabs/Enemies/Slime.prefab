@@ -186,5 +186,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <MaxHealth>k__BackingField: 5
   <MaxMana>k__BackingField: 5
-  damage: 1
+  <Speed>k__BackingField: 0
+  damage: 10
   level: 4

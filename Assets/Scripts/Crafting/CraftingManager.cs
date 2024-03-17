@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class CraftingManager : SingletonMonoBehavior<CraftingManager>
@@ -35,18 +36,20 @@ public class CraftingManager : SingletonMonoBehavior<CraftingManager>
     public bool CraftItem(CraftingRecipe recipe)
     {
         // Check if player has ingredients in inventory
-        foreach (Item ingredient in recipe.requiredIngredients)
+        foreach (GameObject ingredientPrefab in recipe.requiredIngredients)
         {
+            Item ingredient = ingredientPrefab.GetComponent<Item>();
             if (!InventoryManager.Instance.HasItem(ingredient))
             {
-                Debug.Log($"Missing required ingredient: {ingredient.itemName}");
+                Debug.Log($"Missing required ingredient: {ingredient.ItemData.itemName}");
                 return false;
             }
         }
 
         // Remove ingredients from inventory
-        foreach (Item ingredient in recipe.requiredIngredients)
+        foreach (GameObject ingredientPrefab in recipe.requiredIngredients)
         {
+            Item ingredient = ingredientPrefab.GetComponent<Item>();
             bool removed = InventoryManager.Instance.RemoveItem(ingredient);
             if (!removed)
             {
@@ -56,9 +59,10 @@ public class CraftingManager : SingletonMonoBehavior<CraftingManager>
         }
 
         // Add resulting item to inventory
-        InventoryManager.Instance.AddItem(recipe.resultingItem);
+        Item resultingItem = recipe.resultingItem.GetComponent<Item>();
+        InventoryManager.Instance.AddItem(resultingItem);
 
-        GameEventsManager.Instance.CraftingEvents.CraftItem(recipe.resultingItem);
+        GameEventsManager.Instance.CraftingEvents.CraftItem(resultingItem);
         return true;
     }
 }

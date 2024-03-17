@@ -34,13 +34,13 @@ public class InventoryItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
     {
         image = GetComponent<Image>();
         this.item = item;
-        image.sprite = item.image;
+        image.sprite = item.ItemData.image;
         RefreshCountText();
     }
 
     public void RefreshCountText()
     {
-        if (item.stackable && count > 1)
+        if (item.ItemData.stackable && count > 1)
             countText.text = count.ToString();
         else
             countText.text = string.Empty;

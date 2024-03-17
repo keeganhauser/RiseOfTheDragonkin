@@ -13,7 +13,7 @@ public class WorldItem : MonoBehaviour
     private void Awake()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
-        spriteRenderer.sprite = item.image;
+        spriteRenderer.sprite = item.ItemData.image;
     }
 
     private void OnTriggerEnter2D(Collider2D other)

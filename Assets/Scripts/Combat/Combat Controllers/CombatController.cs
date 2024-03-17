@@ -9,6 +9,7 @@ public abstract class CombatController : MonoBehaviour
 
     [field: SerializeField] public int MaxMana { get; protected set; }
     public int CurrentMana { get; protected set; }
+    [field: SerializeField] public int Speed { get; protected set; }
 
     [SerializeField] protected int damage;
 
@@ -37,7 +38,7 @@ public abstract class CombatController : MonoBehaviour
 
     protected abstract void HandleTurn();
 
-    protected void TakeDamage(CombatController controller, int amount)
+    protected virtual void TakeDamage(CombatController controller, int amount)
     {
         if (controller != this) return;
         Debug.Log($"{Name} is trying to be attacked for {amount} damage");
@@ -78,7 +79,6 @@ public abstract class CombatController : MonoBehaviour
     protected void Defend()
     {
         Status = $"{Name} defended!";
-        GameEventsManager.Instance.CombatEvents.CombatStatusChange(status);
 
         isDefending = true;
         EndTurn();
@@ -97,8 +97,8 @@ public abstract class CombatController : MonoBehaviour
     protected void Escape()
     {
         // TODO: Escape from combat
-        // End the battle with whoever escaped losing
-        GameEventsManager.Instance.CombatEvents.LoseCombat(this);
+        Status = $"{Name} has escaped!";
+        GameEventsManager.Instance.CombatEvents.Escape(this);
     }
 
     protected void EndTurn()
@@ -106,15 +106,14 @@ public abstract class CombatController : MonoBehaviour
         GameEventsManager.Instance.CombatEvents.EndTurn();
     }
 
-    // TODO: End turn after using an item somehow
-    protected void GainHealth(int amount)
+    public void GainHealth(int amount)
     {
         CurrentHealth = Mathf.Min(CurrentHealth + amount, MaxHealth);
+        GameEventsManager.Instance.CombatEvents.HealthChange(this);
     }
 
-    protected void GainMana(int amount)
+    public void GainMana(int amount)
     {
         CurrentMana = Mathf.Min(CurrentMana + amount, MaxMana);
     }
-
 }

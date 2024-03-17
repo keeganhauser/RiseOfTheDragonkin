@@ -11,6 +11,7 @@ public class GameEventsManager : SingletonMonoBehavior<GameEventsManager>
     public InventoryEvents  InventoryEvents;
     public CombatEvents     CombatEvents;
     public CraftingEvents   CraftingEvents;
+    public SceneEvents      SceneEvents;
 
     protected override void Awake()
     {
@@ -24,5 +25,6 @@ public class GameEventsManager : SingletonMonoBehavior<GameEventsManager>
         InventoryEvents = new InventoryEvents();
         CombatEvents    = new CombatEvents();
         CraftingEvents  = new CraftingEvents();
+        SceneEvents     = new SceneEvents();
     }
 }
