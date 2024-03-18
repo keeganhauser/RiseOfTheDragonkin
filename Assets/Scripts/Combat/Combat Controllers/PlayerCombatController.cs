@@ -43,6 +43,7 @@ public class PlayerCombatController : CombatController
 
     public void ButtonAttack()
     {
+        GameEventsManager.Instance.PlayerEvents.PlayerAttack();
         Attack(CombatManager.Instance.enemyCombatController);
     }
 

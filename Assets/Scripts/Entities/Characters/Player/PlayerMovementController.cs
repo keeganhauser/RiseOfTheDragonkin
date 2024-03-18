@@ -30,6 +30,8 @@ public class PlayerMovementController : MonoBehaviour
         GameEventsManager.Instance.PlayerEvents.onEnablePlayerMovement += EnablePlayerMovement;
         GameEventsManager.Instance.CombatEvents.onCombatPrePreInitialization += SavePlayerLocation;
         GameEventsManager.Instance.CombatEvents.onCombatEnd += LoadPlayerLocation;
+        GameEventsManager.Instance.PlayerEvents.onPlayerAttack += TriggerAttackAnim;
+        GameEventsManager.Instance.CombatEvents.onCombatPostInitialization += CombatStart;
     }
 
     private void OnDisable()
@@ -39,6 +41,18 @@ public class PlayerMovementController : MonoBehaviour
         GameEventsManager.Instance.PlayerEvents.onEnablePlayerMovement -= EnablePlayerMovement;
         GameEventsManager.Instance.CombatEvents.onCombatPrePreInitialization -= SavePlayerLocation;
         GameEventsManager.Instance.CombatEvents.onCombatEnd -= LoadPlayerLocation;
+        GameEventsManager.Instance.PlayerEvents.onPlayerAttack -= TriggerAttackAnim;
+        GameEventsManager.Instance.CombatEvents.onCombatPostInitialization -= CombatStart;
+    }
+
+    private void TriggerAttackAnim()
+    {
+        StartCoroutine(TriggerAnimation(CharacterAction.Attack));
+    }
+
+    private void CombatStart()
+    {
+        SetAnimator(Direction.Right);
     }
 
     private void SavePlayerLocation()

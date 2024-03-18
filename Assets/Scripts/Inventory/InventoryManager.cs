@@ -210,6 +210,8 @@ public class InventoryManager : SingletonMonoBehavior<InventoryManager>
 
     private void UseItem(GameObject target, Item item)
     {
+        // UseItem is only called from the inventory list, and it verifies
+        // that `item` is a ConsumeableItem, so this cast won't fail.
         (item as ConsumableItem).Consume(target);
         RemoveItem(item);
     }

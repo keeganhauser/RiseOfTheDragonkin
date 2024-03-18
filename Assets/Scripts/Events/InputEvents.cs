@@ -32,4 +32,10 @@ public class InputEvents
     {
         onToolbarScroll?.Invoke(scroll);
     }
+
+    public event Action onPause;
+    public void Pause()
+    {
+        onPause?.Invoke();
+    }
 }

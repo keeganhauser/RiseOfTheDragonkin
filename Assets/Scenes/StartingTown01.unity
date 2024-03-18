@@ -43408,26 +43408,6 @@ TilemapCollider2D:
   m_MaximumTileChangeCount: 1000
   m_ExtrusionFactor: 0
   m_UseDelaunayMesh: 0
---- !u!1 &1513591057 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1692200346193345931, guid: d68a2e94a3176b2408de9920b1400990, type: 3}
-  m_PrefabInstance: {fileID: 6450888498046520526}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1513591062
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1513591057}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c0d5f6d25f9996d40ad80716981815e7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  questInfoForPoint: {fileID: 11400000, guid: 4c88f6c28fa00714fb4afc4ecf5308dc, type: 2}
-  startPoint: 1
-  finishPoint: 0
 --- !u!1 &1977942435 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8896146409451084174, guid: cb33997381b946341877f223350efb7e, type: 3}
@@ -43459,6 +43439,10 @@ PrefabInstance:
     - target: {fileID: 1563853818788931425, guid: cb33997381b946341877f223350efb7e, type: 3}
       propertyPath: <Name>k__BackingField
       value: Merchant
+      objectReference: {fileID: 0}
+    - target: {fileID: 7589852870248526660, guid: cb33997381b946341877f223350efb7e, type: 3}
+      propertyPath: startPoint
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8622045960427970323, guid: cb33997381b946341877f223350efb7e, type: 3}
       propertyPath: m_LocalPosition.x
@@ -43524,10 +43508,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Alchemist
       objectReference: {fileID: 0}
-    - target: {fileID: 1692200346193345931, guid: d68a2e94a3176b2408de9920b1400990, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 2561428295564717301, guid: d68a2e94a3176b2408de9920b1400990, type: 3}
       propertyPath: m_LocalPosition.x
       value: -10.05
@@ -43568,25 +43548,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5604382979143945574, guid: d68a2e94a3176b2408de9920b1400990, type: 3}
-      propertyPath: finishPoint
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6306452306917058996, guid: d68a2e94a3176b2408de9920b1400990, type: 3}
-      propertyPath: dialogueController
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 6306452306917058996, guid: d68a2e94a3176b2408de9920b1400990, type: 3}
-      propertyPath: <Name>k__BackingField
-      value: Alchemist
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 1692200346193345931, guid: d68a2e94a3176b2408de9920b1400990, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1513591062}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d68a2e94a3176b2408de9920b1400990, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:

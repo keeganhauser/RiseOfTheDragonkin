@@ -125,6 +125,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Name: Player
+  playerClass: {fileID: 11400000, guid: 8b8a6fa4137c6b646a7055397f2ce667, type: 2}
+  defaultPlayerClass: {fileID: 11400000, guid: 8b8a6fa4137c6b646a7055397f2ce667, type: 2}
 --- !u!114 &8789947223645997065
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -267,6 +269,22 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: 87a85790-0202-4701-9561-da631033cad8
     m_ActionName: Player/ToolbarScroll[/Mouse/scroll/y]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 7989408267032937817}
+        m_TargetAssemblyTypeName: InputManager, Assembly-CSharp
+        m_MethodName: PauseTogglePressed
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 45000c3d-96d3-458a-bcbb-7234697aef22
+    m_ActionName: Player/Pause[/Keyboard/escape]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player
@@ -286,6 +304,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <MaxHealth>k__BackingField: 10
   <MaxMana>k__BackingField: 20
+  <Speed>k__BackingField: 0
   damage: 12
 --- !u!1 &8935647323153579893
 GameObject:

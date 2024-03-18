@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <ID>k__BackingField: FindQuest
   DisplayName: Talk to the people!
-  LevelRequirement: 10
+  LevelRequirement: 1
   QuestPrerequisites:
   - {fileID: 11400000, guid: 166d905198c79224f90f4019f3cd7e59, type: 2}
   QuestStepPrefabs:

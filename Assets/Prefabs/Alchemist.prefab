@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 8272732690388686010}
   - component: {fileID: 6306452306917058996}
   - component: {fileID: 5604382979143945574}
+  - component: {fileID: 4371256958212090566}
   m_Layer: 0
   m_Name: Alchemist
   m_TagString: Untagged
@@ -93,11 +94,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d8cb1cffd9a564948b1903e44e87a540, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  <Name>k__BackingField: Alchemist
   direction: 1
   interactSprite: {fileID: 2034771370952665759}
-  <NPCName>k__BackingField: Alchemist
   dialogueText: {fileID: 11400000, guid: 4b0187a48a16e764ba2f3043d7071ef3, type: 2}
-  dialogueController: {fileID: 0}
 --- !u!114 &5604382979143945574
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -112,7 +112,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   questInfoForPoint: {fileID: 11400000, guid: 166d905198c79224f90f4019f3cd7e59, type: 2}
   startPoint: 1
-  finishPoint: 1
+  finishPoint: 0
+--- !u!114 &4371256958212090566
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1692200346193345931}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c0d5f6d25f9996d40ad80716981815e7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  questInfoForPoint: {fileID: 11400000, guid: 4c88f6c28fa00714fb4afc4ecf5308dc, type: 2}
+  startPoint: 1
+  finishPoint: 0
 --- !u!1 &3369758069291512633
 GameObject:
   m_ObjectHideFlags: 0

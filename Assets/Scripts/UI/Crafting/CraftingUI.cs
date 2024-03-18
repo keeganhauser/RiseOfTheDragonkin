@@ -32,6 +32,7 @@ public class CraftingUI : MonoBehaviour
         {
             ToggleUI();
         });
+        HideUI();
     }
 
     private void Start()

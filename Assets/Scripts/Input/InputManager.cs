@@ -49,4 +49,12 @@ public class InputManager : MonoBehaviour
         }
     }
 
+    public void PauseTogglePressed(InputAction.CallbackContext context)
+    {
+        if (context.started)
+        {
+            GameEventsManager.Instance.InputEvents.Pause();
+        }
+    }
+
 }

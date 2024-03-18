@@ -36,4 +36,11 @@ public class PlayerEvents
     }
 
     // TODO: Enable/disable player interactions
+
+
+    public event Action onPlayerAttack;
+    public void PlayerAttack()
+    {
+        onPlayerAttack?.Invoke();
+    }
 }

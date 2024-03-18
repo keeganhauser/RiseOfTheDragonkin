@@ -229,24 +229,24 @@ MonoBehaviour:
       m_Hash: 969585799
       m_Sprite: {fileID: 1611518944, guid: 94c347a03ee258f459cd4a358bcf32b2, type: 3}
       m_FromMain: 1
-      m_SpriteOverride: {fileID: 1611518944, guid: 94c347a03ee258f459cd4a358bcf32b2, type: 3}
+      m_SpriteOverride: {fileID: -25782540, guid: e5424fa2e46c39a4897c2a909d101fc6, type: 3}
     - m_Name: Swashbuckler_melee_13
       m_Hash: 248349713
       m_Sprite: {fileID: -393866050, guid: 94c347a03ee258f459cd4a358bcf32b2, type: 3}
       m_FromMain: 1
-      m_SpriteOverride: {fileID: -393866050, guid: 94c347a03ee258f459cd4a358bcf32b2, type: 3}
+      m_SpriteOverride: {fileID: 41605989, guid: e5424fa2e46c39a4897c2a909d101fc6, type: 3}
     - m_Name: Swashbuckler_melee_14
       m_Hash: 279515570
       m_Sprite: {fileID: 1602561419, guid: 94c347a03ee258f459cd4a358bcf32b2, type: 3}
       m_FromMain: 1
-      m_SpriteOverride: {fileID: 1602561419, guid: 94c347a03ee258f459cd4a358bcf32b2, type: 3}
+      m_SpriteOverride: {fileID: -1340013904, guid: e5424fa2e46c39a4897c2a909d101fc6, type: 3}
     - m_Name: Swashbuckler_melee_15
       m_Hash: 665723172
       m_Sprite: {fileID: 486807388, guid: 94c347a03ee258f459cd4a358bcf32b2, type: 3}
       m_FromMain: 1
-      m_SpriteOverride: {fileID: 486807388, guid: 94c347a03ee258f459cd4a358bcf32b2, type: 3}
+      m_SpriteOverride: {fileID: 388960175, guid: e5424fa2e46c39a4897c2a909d101fc6, type: 3}
     m_FromMain: 1
-    m_EntryOverrideCount: 0
+    m_EntryOverrideCount: 4
   - m_Name: AttackDown
     m_Hash: 124622267
     m_CategoryList: []
@@ -255,24 +255,24 @@ MonoBehaviour:
       m_Hash: 336449268
       m_Sprite: {fileID: 2042709624, guid: 94c347a03ee258f459cd4a358bcf32b2, type: 3}
       m_FromMain: 1
-      m_SpriteOverride: {fileID: 2042709624, guid: 94c347a03ee258f459cd4a358bcf32b2, type: 3}
+      m_SpriteOverride: {fileID: 1152177082, guid: e5424fa2e46c39a4897c2a909d101fc6, type: 3}
     - m_Name: Swashbuckler_melee_1
       m_Hash: 587923042
       m_Sprite: {fileID: 789438257, guid: 94c347a03ee258f459cd4a358bcf32b2, type: 3}
       m_FromMain: 1
-      m_SpriteOverride: {fileID: 789438257, guid: 94c347a03ee258f459cd4a358bcf32b2, type: 3}
+      m_SpriteOverride: {fileID: -1097594366, guid: e5424fa2e46c39a4897c2a909d101fc6, type: 3}
     - m_Name: Swashbuckler_melee_2
       m_Hash: 973320152
       m_Sprite: {fileID: -940858428, guid: 94c347a03ee258f459cd4a358bcf32b2, type: 3}
       m_FromMain: 1
-      m_SpriteOverride: {fileID: -940858428, guid: 94c347a03ee258f459cd4a358bcf32b2, type: 3}
+      m_SpriteOverride: {fileID: -1329480050, guid: e5424fa2e46c39a4897c2a909d101fc6, type: 3}
     - m_Name: Swashbuckler_melee_3
       m_Hash: 218406734
       m_Sprite: {fileID: -662400696, guid: 94c347a03ee258f459cd4a358bcf32b2, type: 3}
       m_FromMain: 1
-      m_SpriteOverride: {fileID: -662400696, guid: 94c347a03ee258f459cd4a358bcf32b2, type: 3}
+      m_SpriteOverride: {fileID: 741774368, guid: e5424fa2e46c39a4897c2a909d101fc6, type: 3}
     m_FromMain: 1
-    m_EntryOverrideCount: 0
+    m_EntryOverrideCount: 4
   - m_Name: AttackLeft
     m_Hash: 569762536
     m_CategoryList: []
@@ -281,24 +281,24 @@ MonoBehaviour:
       m_Hash: 325061357
       m_Sprite: {fileID: 1720402135, guid: 94c347a03ee258f459cd4a358bcf32b2, type: 3}
       m_FromMain: 1
-      m_SpriteOverride: {fileID: 1720402135, guid: 94c347a03ee258f459cd4a358bcf32b2, type: 3}
+      m_SpriteOverride: {fileID: 2015274959, guid: e5424fa2e46c39a4897c2a909d101fc6, type: 3}
     - m_Name: Swashbuckler_melee_5
       m_Hash: 610744955
       m_Sprite: {fileID: -509328615, guid: 94c347a03ee258f459cd4a358bcf32b2, type: 3}
       m_FromMain: 1
-      m_SpriteOverride: {fileID: -509328615, guid: 94c347a03ee258f459cd4a358bcf32b2, type: 3}
+      m_SpriteOverride: {fileID: 525108343, guid: e5424fa2e46c39a4897c2a909d101fc6, type: 3}
     - m_Name: Swashbuckler_melee_6
       m_Hash: 1030646721
       m_Sprite: {fileID: 2127290207, guid: 94c347a03ee258f459cd4a358bcf32b2, type: 3}
       m_FromMain: 1
-      m_SpriteOverride: {fileID: 2127290207, guid: 94c347a03ee258f459cd4a358bcf32b2, type: 3}
+      m_SpriteOverride: {fileID: 116074773, guid: e5424fa2e46c39a4897c2a909d101fc6, type: 3}
     - m_Name: Swashbuckler_melee_7
       m_Hash: 174676823
       m_Sprite: {fileID: -329909997, guid: 94c347a03ee258f459cd4a358bcf32b2, type: 3}
       m_FromMain: 1
-      m_SpriteOverride: {fileID: -329909997, guid: 94c347a03ee258f459cd4a358bcf32b2, type: 3}
+      m_SpriteOverride: {fileID: 564403644, guid: e5424fa2e46c39a4897c2a909d101fc6, type: 3}
     m_FromMain: 1
-    m_EntryOverrideCount: 0
+    m_EntryOverrideCount: 4
   - m_Name: AttackRight
     m_Hash: 430531633
     m_CategoryList: []
@@ -307,24 +307,24 @@ MonoBehaviour:
       m_Hash: 450250438
       m_Sprite: {fileID: 800988881, guid: 94c347a03ee258f459cd4a358bcf32b2, type: 3}
       m_FromMain: 1
-      m_SpriteOverride: {fileID: 800988881, guid: 94c347a03ee258f459cd4a358bcf32b2, type: 3}
+      m_SpriteOverride: {fileID: -300840784, guid: e5424fa2e46c39a4897c2a909d101fc6, type: 3}
     - m_Name: Swashbuckler_melee_9
       m_Hash: 768702032
       m_Sprite: {fileID: 425486033, guid: 94c347a03ee258f459cd4a358bcf32b2, type: 3}
       m_FromMain: 1
-      m_SpriteOverride: {fileID: 425486033, guid: 94c347a03ee258f459cd4a358bcf32b2, type: 3}
+      m_SpriteOverride: {fileID: 1658331925, guid: e5424fa2e46c39a4897c2a909d101fc6, type: 3}
     - m_Name: Swashbuckler_melee_10
       m_Hash: 398775723
       m_Sprite: {fileID: 1457618184, guid: 94c347a03ee258f459cd4a358bcf32b2, type: 3}
       m_FromMain: 1
-      m_SpriteOverride: {fileID: 1457618184, guid: 94c347a03ee258f459cd4a358bcf32b2, type: 3}
+      m_SpriteOverride: {fileID: 137035754, guid: e5424fa2e46c39a4897c2a909d101fc6, type: 3}
     - m_Name: Swashbuckler_melee_11
       m_Hash: 549709117
       m_Sprite: {fileID: 980390031, guid: 94c347a03ee258f459cd4a358bcf32b2, type: 3}
       m_FromMain: 1
-      m_SpriteOverride: {fileID: 980390031, guid: 94c347a03ee258f459cd4a358bcf32b2, type: 3}
+      m_SpriteOverride: {fileID: -562770691, guid: e5424fa2e46c39a4897c2a909d101fc6, type: 3}
     m_FromMain: 1
-    m_EntryOverrideCount: 0
+    m_EntryOverrideCount: 4
   m_PrimaryLibraryGUID: 6fa361fa2eebb1c46b219f9718d6c50f
-  m_ModificationHash: 638454483597508384
+  m_ModificationHash: 638463080361083438
   m_Version: 1
