@@ -1,10 +1,11 @@
 using System;
-
+using UnityEngine;
 public class QuestEvents
 {
     public event Action<string> onStartQuest;
     public void StartQuest(string id)
     {
+        Debug.Log($"Starting quest {id}");
         onStartQuest?.Invoke(id);
     }
 
@@ -23,6 +24,7 @@ public class QuestEvents
     public event Action<Quest> onQuestStateChange;
     public void QuestStateChange(Quest quest)
     {
+        Debug.Log($"{quest.Info.DisplayName} has been set to {quest.State}");
         onQuestStateChange?.Invoke(quest);
     }
 
@@ -30,5 +32,11 @@ public class QuestEvents
     public void QuestStepStateChange(string id, int stepIndex,  QuestStepState stepState)
     {
         onQuestStepStateChange?.Invoke(id, stepIndex, stepState);
+    }
+
+    public event Action onGetAllQuestStates;
+    public void GetAllQuestStates()
+    {
+        onGetAllQuestStates?.Invoke();
     }
 }

@@ -5,21 +5,30 @@ using UnityEngine;
 public class Merchant : NPC, IInteractable
 {
     [SerializeField] private DialogueText dialogueText;
-    [SerializeField] private DialogueController dialogueController;
-    private QuestPoint questPoint;
+    private DialogueController dialogueController;
+    private QuestPoint[] questPoint;
 
     private void Awake()
     {
-        questPoint = GetComponent<QuestPoint>();
+        questPoint = GetComponents<QuestPoint>();
+        dialogueController = FindFirstObjectByType<DialogueController>();
     }
 
     public override void Interact()
     {
+        if (!IsWithinInteractDistance()) return;
+
         GameEventsManager.Instance.NPCEvents.TriggerInteract(this);
-        questPoint?.StartQuest();
+
+        foreach (QuestPoint p in questPoint)
+        {
+            p?.StartQuest();
+        }
+
 
         if (dialogueController != null) 
-        { 
+        {
+            Debug.Log("Merchant talk");
             Talk(dialogueText);
         }
     }

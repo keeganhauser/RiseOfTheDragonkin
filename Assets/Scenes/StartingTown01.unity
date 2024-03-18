@@ -43408,26 +43408,6 @@ TilemapCollider2D:
   m_MaximumTileChangeCount: 1000
   m_ExtrusionFactor: 0
   m_UseDelaunayMesh: 0
---- !u!1 &1977942435 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 8896146409451084174, guid: cb33997381b946341877f223350efb7e, type: 3}
-  m_PrefabInstance: {fileID: 2925737464057369203}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1977942440
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1977942435}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c0d5f6d25f9996d40ad80716981815e7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  questInfoForPoint: {fileID: 11400000, guid: 4c88f6c28fa00714fb4afc4ecf5308dc, type: 2}
-  startPoint: 0
-  finishPoint: 1
 --- !u!1001 &2925737464057369203
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -43436,14 +43416,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1563853818788931425, guid: cb33997381b946341877f223350efb7e, type: 3}
-      propertyPath: <Name>k__BackingField
-      value: Merchant
-      objectReference: {fileID: 0}
-    - target: {fileID: 7589852870248526660, guid: cb33997381b946341877f223350efb7e, type: 3}
-      propertyPath: startPoint
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 8622045960427970323, guid: cb33997381b946341877f223350efb7e, type: 3}
       propertyPath: m_LocalPosition.x
       value: -3.02
@@ -43491,10 +43463,7 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 8896146409451084174, guid: cb33997381b946341877f223350efb7e, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1977942440}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cb33997381b946341877f223350efb7e, type: 3}
 --- !u!1001 &6450888498046520526
 PrefabInstance:

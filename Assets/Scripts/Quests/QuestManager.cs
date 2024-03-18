@@ -6,7 +6,7 @@ using UnityEngine;
 
 public class QuestManager : SingletonMonoBehavior<QuestManager>
 {
-    private Dictionary<string, Quest> questMap;
+    public Dictionary<string, Quest> questMap { get; private set; }
 
     protected override void Awake()
     {
@@ -45,6 +45,19 @@ public class QuestManager : SingletonMonoBehavior<QuestManager>
 
             // Broadcast the initial state of each quest
             GameEventsManager.Instance.QuestEvents.QuestStateChange(quest);
+        }
+    }
+
+    private void InitQuestStatus()
+    {
+        // Loop through all quests
+        foreach (Quest quest in questMap.Values)
+        {
+            // If quest requirements are met, switch it to CanStart
+            if (quest.State == QuestState.RequirementsNotMet && CheckRequirementsMet(quest))
+            {
+                ChangeQuestState(quest.Info.ID, QuestState.CanStart);
+            }
         }
     }
 

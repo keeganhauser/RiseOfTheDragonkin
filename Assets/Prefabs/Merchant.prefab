@@ -97,6 +97,7 @@ GameObject:
   - component: {fileID: 6275457967549722475}
   - component: {fileID: 5129665763487627197}
   - component: {fileID: 1252386153868812962}
+  - component: {fileID: 4208549121400949411}
   m_Layer: 0
   m_Name: Sprite
   m_TagString: Untagged
@@ -222,6 +223,20 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &4208549121400949411
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1043518892109171238}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3c4250c0abb46f24e972271c08d6c6e1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  combatDirection: 0
+  defaultDirection: 1
 --- !u!1 &8896146409451084174
 GameObject:
   m_ObjectHideFlags: 0
@@ -234,6 +249,7 @@ GameObject:
   - component: {fileID: 4932302369445007734}
   - component: {fileID: 1563853818788931425}
   - component: {fileID: 7589852870248526660}
+  - component: {fileID: 2228484640572908926}
   m_Layer: 0
   m_Name: Merchant
   m_TagString: Untagged
@@ -315,10 +331,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4bb0c898d0820014cbfc24920563d6bc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  direction: 0
+  <Name>k__BackingField: Merchant
+  direction: 1
   interactSprite: {fileID: 3058127901337548614}
-  <NPCName>k__BackingField: Merchant
-  dialogueText: {fileID: 0}
+  dialogueText: {fileID: 11400000, guid: 961afd2657b802f4d84e50a8932e0a40, type: 2}
   dialogueController: {fileID: 0}
 --- !u!114 &7589852870248526660
 MonoBehaviour:
@@ -333,5 +349,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   questInfoForPoint: {fileID: 11400000, guid: 166d905198c79224f90f4019f3cd7e59, type: 2}
-  startPoint: 0
+  startPoint: 1
+  finishPoint: 1
+--- !u!114 &2228484640572908926
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8896146409451084174}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c0d5f6d25f9996d40ad80716981815e7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  questInfoForPoint: {fileID: 11400000, guid: 4c88f6c28fa00714fb4afc4ecf5308dc, type: 2}
+  startPoint: 1
   finishPoint: 1

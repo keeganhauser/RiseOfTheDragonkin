@@ -96,7 +96,7 @@ public class DialogueController : MonoBehaviour
         NPCDialogueText.text = paragraph;
         NPCDialogueText.maxVisibleCharacters = maxVisibleChars;
 
-        foreach (char  character in paragraph)
+        foreach (char character in paragraph)
         {
             maxVisibleChars++;
             NPCDialogueText.maxVisibleCharacters = maxVisibleChars;

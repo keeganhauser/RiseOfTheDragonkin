@@ -24,6 +24,8 @@ public class EnemyAnimationController : AnimationController
         GameEventsManager.Instance.PlayerEvents.onPlayerDecideAttack -= TriggerHitAnim;
     }
 
+
+
     private void TriggerHitAnim()
     {
         StartCoroutine(TriggerAnimation("Hit"));

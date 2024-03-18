@@ -10,12 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d19f8898fb0c3414daa09fb6b84df48b, type: 3}
-  m_Name: Test Conversation
+  m_Name: Test Merchant Convo
   m_EditorClassIdentifier: 
-  speakerName: Alchemist
+  speakerName: Merchant
   paragraphs:
-  - Hello!
-  - How's it going?
-  - I've been trying to learn a new spell, but it's been very difficult...
-  - I'm hoping to learn a new <color=red>fire</color> spell! That way I can protect
-    myself from enemies!
+  - Hi, I'm the merchant!
+  - Need any wares? If you have <color=yellow>coin</color>, of course...

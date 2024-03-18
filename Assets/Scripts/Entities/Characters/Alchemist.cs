@@ -4,11 +4,11 @@ public class Alchemist : NPC, ITalkable
 {
     [SerializeField] private DialogueText dialogueText;
     private DialogueController dialogueController;
-    private QuestPoint questPoint;
+    private QuestPoint[] questPoint;
 
     private void Awake()
     {
-        questPoint = GetComponent<QuestPoint>();
+        questPoint = GetComponents<QuestPoint>();
         dialogueController = FindFirstObjectByType<DialogueController>();
     }
 
@@ -18,7 +18,12 @@ public class Alchemist : NPC, ITalkable
 
         // If player is within interaction distance:
         GameEventsManager.Instance.NPCEvents.TriggerInteract(this);
+        foreach (QuestPoint p in questPoint)
+        {
+            p?.StartQuest();
+        }
 
+        Debug.Log("Merchant talk");
         Talk(dialogueText);
     }
 

@@ -62,7 +62,6 @@ public class PlayerMovementController : MonoBehaviour
 
     private void MovePressed(Vector2 moveDir)
     {
-        Debug.Log(movementDisabled);
         velocity = moveDir.normalized * moveSpeed;
 
         if (movementDisabled)

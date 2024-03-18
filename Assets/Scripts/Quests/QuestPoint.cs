@@ -18,6 +18,7 @@ public class QuestPoint : MonoBehaviour
     private void Awake()
     {
         questId = questInfoForPoint.ID;
+        currentQuestState = QuestManager.Instance.questMap[questId].State;
     }
 
     private void OnEnable()
@@ -32,6 +33,7 @@ public class QuestPoint : MonoBehaviour
 
     public void StartQuest()
     {
+        Debug.Log($"Trying to start quest {questInfoForPoint.DisplayName}");
         if ((currentQuestState == QuestState.CanStart) && startPoint)
         {
             GameEventsManager.Instance.QuestEvents.StartQuest(questId);
@@ -44,6 +46,7 @@ public class QuestPoint : MonoBehaviour
 
     private void QuestStateChanged(Quest quest)
     {
+        Debug.LogWarning($"Trying to see if {quest.Info.ID} == {questId}");
         if (quest.Info.ID == questId)
         {
             currentQuestState = quest.State;
