@@ -7,8 +7,4 @@ public class Enemy : ScriptableObject
     public string enemyName;
     public string description;
     public GameObject enemyPrefab;
-
-    [Header("Visual")]
-    public Sprite sprite;
-    public Material material;
 }

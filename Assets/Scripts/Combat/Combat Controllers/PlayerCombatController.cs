@@ -18,13 +18,13 @@ public class PlayerCombatController : CombatController
     private void OnEnable()
     {
         GameEventsManager.Instance.CombatEvents.onPlayerTurn += HandleTurn;
-        GameEventsManager.Instance.CombatEvents.onAttack += TakeDamage;
+        GameEventsManager.Instance.EnemyEvents.onEnemyAttack += TakeDamage;
     }
 
     private void OnDisable()
     {
         GameEventsManager.Instance.CombatEvents.onPlayerTurn -= HandleTurn;
-        GameEventsManager.Instance.CombatEvents.onAttack -= TakeDamage;
+        GameEventsManager.Instance.EnemyEvents.onEnemyAttack -= TakeDamage;
     }
 
     protected override void HandleTurn()
@@ -32,19 +32,25 @@ public class PlayerCombatController : CombatController
         Debug.Log("Handling player turn");
     }
 
-    protected override void TakeDamage(CombatController controller, int amount)
+    protected override void TakeDamage(int amount)
     {
-        base.TakeDamage(controller, amount);
+        base.TakeDamage(amount);
 
         // TODO: Handle the player losing better than this
         if (CurrentHealth <= 0)
             CurrentHealth = MaxHealth;
     }
 
+    protected override void Attack()
+    {
+        GameEventsManager.Instance.PlayerEvents.PlayerDecideAttack();
+        GameEventsManager.Instance.PlayerEvents.PlayerAttack(damage);
+        GameEventsManager.Instance.CombatEvents.EndTurn();
+    }
+
     public void ButtonAttack()
     {
-        GameEventsManager.Instance.PlayerEvents.PlayerAttack();
-        Attack(CombatManager.Instance.enemyCombatController);
+        Attack();
     }
 
     public void ButtonDefend()

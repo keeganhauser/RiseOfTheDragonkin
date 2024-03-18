@@ -130,7 +130,6 @@ public class CombatManager : SingletonMonoBehavior<CombatManager>
         // Spawn enemy
         GameObject enemyObj = EnemySpawner.SpawnEnemy(enemy, enemyBattleStation.position, Quaternion.identity, enemyBattleStation);
         enemyCombatController = enemyObj.GetComponent<CombatController>();
-        Debug.Log($"ecc get: {enemyCombatController.GetInstanceID()}");
     }
 
     private void SetEnemy(Enemy enemy)

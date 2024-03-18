@@ -14,13 +14,7 @@ public class EnemySpawner : MonoBehaviour
         Transform parent)
     {
         GameObject enemyObj = Instantiate(enemy.enemyPrefab, position, rotation, parent);
-
-        SpriteRenderer spriteRenderer = enemyObj.GetComponent<SpriteRenderer>();
-        if (spriteRenderer != null)
-        {
-            spriteRenderer.sprite = enemy.sprite;
-            spriteRenderer.material = enemy.material;
-        }
+        enemyObj.name = enemy.enemyName;
 
         return enemyObj;
     }

@@ -38,11 +38,8 @@ public abstract class CombatController : MonoBehaviour
 
     protected abstract void HandleTurn();
 
-    protected virtual void TakeDamage(CombatController controller, int amount)
+    protected virtual void TakeDamage(int amount)
     {
-        if (controller != this) return;
-        Debug.Log($"{Name} is trying to be attacked for {amount} damage");
-
         if (isDefending)
         {
             amount /= 2;
@@ -53,8 +50,6 @@ public abstract class CombatController : MonoBehaviour
         CurrentHealth -= amount;
         GameEventsManager.Instance.CombatEvents.HealthChange(this);
 
-        Debug.Log($"{Name} took {amount} damage!");
-
         if (CurrentHealth <= 0)
         {
             Debug.Log($"{Name} has died!");
@@ -62,21 +57,9 @@ public abstract class CombatController : MonoBehaviour
         }
     }
 
-    protected void Attack(CombatController opponentController)
-    {
-        // TODO: Figure out why opponentController can be null
-        if (opponentController != null) 
-        { 
-            // Set status
-            Status = $"{Name} has attacked {opponentController.Name} for {damage} damage!";
-        }
+    protected abstract void Attack();
 
-        // Attack and end turn
-        GameEventsManager.Instance.CombatEvents.Attack(opponentController, damage);
-        EndTurn();
-    }
-
-    protected void Defend()
+    protected virtual void Defend()
     {
         Status = $"{Name} defended!";
 
@@ -84,7 +67,7 @@ public abstract class CombatController : MonoBehaviour
         EndTurn();
     }
 
-    protected void UseItem()
+    protected virtual void UseItem()
     {
         // TODO: Use item in combat
         // Use inventory to select an item to use
@@ -94,7 +77,7 @@ public abstract class CombatController : MonoBehaviour
         EndTurn();
     }
 
-    protected void Escape()
+    protected virtual void Escape()
     {
         // TODO: Escape from combat
         Status = $"{Name} has escaped!";

@@ -38,9 +38,21 @@ public class PlayerEvents
     // TODO: Enable/disable player interactions
 
 
-    public event Action onPlayerAttack;
-    public void PlayerAttack()
+    public event Action<int> onPlayerAttack;
+    public void PlayerAttack(int damage)
     {
-        onPlayerAttack?.Invoke();
+        onPlayerAttack?.Invoke(damage);
+    }
+
+    public event Action onPlayerDecideAttack;
+    public void PlayerDecideAttack()
+    {
+        onPlayerDecideAttack?.Invoke();
+    }
+
+    public event Action onPlayerInitializeFinish;
+    public void PlayerInitializeFinish()
+    {
+        onPlayerInitializeFinish?.Invoke();
     }
 }

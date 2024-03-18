@@ -12,6 +12,7 @@ public class GameEventsManager : SingletonMonoBehavior<GameEventsManager>
     public CombatEvents     CombatEvents;
     public CraftingEvents   CraftingEvents;
     public SceneEvents      SceneEvents;
+    public EnemyEvents      EnemyEvents;
 
     protected override void Awake()
     {
@@ -26,5 +27,6 @@ public class GameEventsManager : SingletonMonoBehavior<GameEventsManager>
         CombatEvents    = new CombatEvents();
         CraftingEvents  = new CraftingEvents();
         SceneEvents     = new SceneEvents();
+        EnemyEvents     = new EnemyEvents();
     }
 }

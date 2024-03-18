@@ -770,6 +770,10 @@ PrefabInstance:
       propertyPath: m_WasSpriteAssigned
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7160155988968317347, guid: 366836d8b6572174fbab604f771099a1, type: 3}
+      propertyPath: enemy
+      value: 
+      objectReference: {fileID: 11400000, guid: 81427a0999091304c9fe18644048a4d0, type: 2}
     - target: {fileID: 8089603995979795983, guid: 366836d8b6572174fbab604f771099a1, type: 3}
       propertyPath: m_Sprite
       value: 
@@ -854,10 +858,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
-    - target: {fileID: 5394773268987632909, guid: 1dcf55ef5a5eae349a2c097e1e015d4d, type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 800988881, guid: 94c347a03ee258f459cd4a358bcf32b2, type: 3}
     - target: {fileID: 7135300453810491091, guid: 1dcf55ef5a5eae349a2c097e1e015d4d, type: 3}
       propertyPath: m_LocalPosition.x
       value: 1.8927898
@@ -897,18 +897,6 @@ PrefabInstance:
     - target: {fileID: 7135300453810491091, guid: 1dcf55ef5a5eae349a2c097e1e015d4d, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7555204490431367782, guid: 1dcf55ef5a5eae349a2c097e1e015d4d, type: 3}
-      propertyPath: m_labelHash
-      value: 8.8622666e-23
-      objectReference: {fileID: 0}
-    - target: {fileID: 7555204490431367782, guid: 1dcf55ef5a5eae349a2c097e1e015d4d, type: 3}
-      propertyPath: m_SpriteHash
-      value: 200499217
-      objectReference: {fileID: 0}
-    - target: {fileID: 7555204490431367782, guid: 1dcf55ef5a5eae349a2c097e1e015d4d, type: 3}
-      propertyPath: m_CategoryHash
-      value: 1.7514657e-23
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

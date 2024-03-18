@@ -18,6 +18,7 @@ public class Player : SingletonMonoBehavior<Player>
             InitializePlayer(defaultPlayerClass);
         else
             InitializePlayer(playerClass);
+        GameEventsManager.Instance.PlayerEvents.PlayerInitializeFinish();
     }
 
     public void InitializePlayer(PlayerClass playerClass)
