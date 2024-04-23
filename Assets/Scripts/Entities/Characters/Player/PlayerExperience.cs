@@ -19,6 +19,7 @@ public class PlayerExperience : MonoBehaviour
             stats.CurrentExp -= stats.NextLevelExp;
             NextLevel();
         }
+        GameEventsManager.Instance.PlayerEvents.PlayerExpChange();
     }
 
     private void NextLevel()

@@ -73,4 +73,22 @@ public class PlayerEvents
     {
         onPlayerRevive?.Invoke();
     }
+
+    public event Action onPlayerHealthChange;
+    public void PlayerHealthChange()
+    {
+        onPlayerHealthChange?.Invoke();
+    }
+
+    public event Action onPlayerManaChange;
+    public void PlayerManaChange()
+    {
+        onPlayerManaChange?.Invoke();
+    }
+
+    public event Action onPlayerExpChange;
+    public void PlayerExpChange()
+    {
+        onPlayerExpChange?.Invoke();
+    }
 }

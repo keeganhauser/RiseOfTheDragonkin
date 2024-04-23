@@ -14,5 +14,6 @@ public class PlayerMana : MonoBehaviour
     public void UseMana(float amount)
     {
         stats.Mana = Mathf.Max(stats.Mana - amount, 0f);
+        GameEventsManager.Instance.PlayerEvents.PlayerManaChange();
     }
 }

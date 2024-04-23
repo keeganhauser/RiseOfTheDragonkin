@@ -14,6 +14,7 @@ public class PlayerHealth : MonoBehaviour, IDamageable
     public void TakeDamage(float amount)
     {
         stats.Health = Mathf.Max(stats.Health - amount, 0f);
+        GameEventsManager.Instance.PlayerEvents.PlayerHealthChange();
 
         if (stats.Health <= 0f) 
         {
