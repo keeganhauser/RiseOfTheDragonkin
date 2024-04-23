@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: afae955a0bc4aa0448f410d80468697a
+guid: 71504fdd486a2b04394371a347c05b91
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -81,6 +81,19 @@ TextureImporter:
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
     buildTarget: Standalone
     maxTextureSize: 2048
     resizeAlgorithm: 0
@@ -119,24 +132,11 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 3
-    buildTarget: WebGL
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    ignorePlatformSupport: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Swashbuckler_hit_0
+      name: Sorcerer_die_0
       rect:
         serializedVersion: 2
         x: 0
@@ -150,35 +150,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f6431701110086145a55f583836ca3d6
-      internalID: 558331611
+      spriteID: 52d471978a5a606479edf313bbfcf477
+      internalID: 1564499713
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Swashbuckler_hit_1
-      rect:
-        serializedVersion: 2
-        x: 96
-        y: 288
-        width: 96
-        height: 96
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: b42cc110aa5d2404ca7b852d1ba83115
-      internalID: 885899544
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Swashbuckler_hit_2
+      name: Sorcerer_die_1
       rect:
         serializedVersion: 2
         x: 0
@@ -192,35 +171,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ca0f57045a59d314f82fa2061e20a566
-      internalID: -1507249373
+      spriteID: c13935c36237eae40b36ea566c015d5a
+      internalID: -1948238836
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Swashbuckler_hit_3
-      rect:
-        serializedVersion: 2
-        x: 96
-        y: 192
-        width: 96
-        height: 96
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 17af9459cb4120946a36d67e11c071c4
-      internalID: 982751038
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Swashbuckler_hit_4
+      name: Sorcerer_die_2
       rect:
         serializedVersion: 2
         x: 0
@@ -234,35 +192,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 4ae286ccfcfdf6d4eb6cb79f13432880
-      internalID: -2079164964
+      spriteID: 2cebfc17e52b1884f9466b827e50d6e3
+      internalID: -1066569912
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Swashbuckler_hit_5
-      rect:
-        serializedVersion: 2
-        x: 96
-        y: 96
-        width: 96
-        height: 96
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 788e31f77e51691478a8b2540b25d922
-      internalID: -244215617
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Swashbuckler_hit_6
+      name: Sorcerer_die_3
       rect:
         serializedVersion: 2
         x: 0
@@ -276,29 +213,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 326e8f109039e0d41bc1460c12dca9f8
-      internalID: -1116648390
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Swashbuckler_hit_7
-      rect:
-        serializedVersion: 2
-        x: 96
-        y: 0
-        width: 96
-        height: 96
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 78c19c6d7d1c69346bf17279bb3152d8
-      internalID: -1686672871
+      spriteID: 05551bc9efa307e4397c2f72c52ac2e3
+      internalID: 733802269
       vertices: []
       indices: 
       edges: []
@@ -314,14 +230,10 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Swashbuckler_hit_0: 558331611
-      Swashbuckler_hit_1: 885899544
-      Swashbuckler_hit_2: -1507249373
-      Swashbuckler_hit_3: 982751038
-      Swashbuckler_hit_4: -2079164964
-      Swashbuckler_hit_5: -244215617
-      Swashbuckler_hit_6: -1116648390
-      Swashbuckler_hit_7: -1686672871
+      Sorcerer_die_0: 1564499713
+      Sorcerer_die_1: -1948238836
+      Sorcerer_die_2: -1066569912
+      Sorcerer_die_3: 733802269
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

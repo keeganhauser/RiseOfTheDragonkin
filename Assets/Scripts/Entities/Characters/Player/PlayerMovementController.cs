@@ -11,12 +11,14 @@ public class PlayerMovementController : MonoBehaviour
 
     private Rigidbody2D rb2d;
     private Vector2 velocity;
+    private Transform playerTransform;
     public bool movementDisabled { get; private set; }
     private Vector3 savedLocation;
 
     private void Awake()
     {
-        rb2d = GetComponent<Rigidbody2D>();
+        playerTransform = this.transform.parent;
+        rb2d = GetComponentInParent<Rigidbody2D>();
         velocity = Vector2.zero;
         movementDisabled = false;
     }
@@ -28,6 +30,8 @@ public class PlayerMovementController : MonoBehaviour
         GameEventsManager.Instance.PlayerEvents.onEnablePlayerMovement += EnablePlayerMovement;
         GameEventsManager.Instance.CombatEvents.onCombatPrePreInitialization += SavePlayerLocation;
         GameEventsManager.Instance.CombatEvents.onCombatEnd += LoadPlayerLocation;
+        GameEventsManager.Instance.PlayerEvents.onPlayerDeath += DisablePlayerMovement;
+        GameEventsManager.Instance.PlayerEvents.onPlayerRevive += EnablePlayerMovement;
     }
 
     private void OnDisable()
@@ -37,16 +41,18 @@ public class PlayerMovementController : MonoBehaviour
         GameEventsManager.Instance.PlayerEvents.onEnablePlayerMovement -= EnablePlayerMovement;
         GameEventsManager.Instance.CombatEvents.onCombatPrePreInitialization -= SavePlayerLocation;
         GameEventsManager.Instance.CombatEvents.onCombatEnd -= LoadPlayerLocation;
+        GameEventsManager.Instance.PlayerEvents.onPlayerDeath -= DisablePlayerMovement;
+        GameEventsManager.Instance.PlayerEvents.onPlayerRevive -= EnablePlayerMovement;
     }
 
     private void SavePlayerLocation()
     {
-        savedLocation = this.transform.position;
+        savedLocation = this.transform.parent.position;
     }
 
     private void LoadPlayerLocation()
     {
-        this.transform.position = savedLocation;
+        this.transform.parent.position = savedLocation;
     }
 
     private void DisablePlayerMovement()

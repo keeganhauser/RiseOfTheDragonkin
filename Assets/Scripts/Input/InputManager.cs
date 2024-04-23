@@ -11,7 +11,7 @@ public class InputManager : MonoBehaviour
 {
     public void MovePressed(InputAction.CallbackContext context)
     {
-        if (context.performed || context.canceled)
+        if (context.started || context.performed || context.canceled)
         {
             GameEventsManager.Instance.InputEvents.MovePressed(context.ReadValue<Vector2>());
         }

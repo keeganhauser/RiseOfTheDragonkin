@@ -43,7 +43,7 @@ public abstract class AnimationController : MonoBehaviour
     public IEnumerator TriggerAnimation(string triggerName)
     {
         animator.SetTrigger(triggerName);
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForFixedUpdate();
         animator.ResetTrigger(triggerName);
     }
 

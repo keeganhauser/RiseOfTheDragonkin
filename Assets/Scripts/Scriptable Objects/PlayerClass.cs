@@ -7,9 +7,6 @@ using UnityEngine.U2D.Animation;
 public class PlayerClass : ScriptableObject
 {
     public string defaultPlayerName;
-    public int damage;
-    public int health;
-    public int mana;
-    public int speed;
     public SpriteLibraryAsset spriteLibrary;
+    // TODO: Add default items
 }

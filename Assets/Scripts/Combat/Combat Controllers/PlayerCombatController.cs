@@ -44,7 +44,9 @@ public class PlayerCombatController : CombatController
     protected override void Attack()
     {
         GameEventsManager.Instance.PlayerEvents.PlayerDecideAttack();
+
         GameEventsManager.Instance.PlayerEvents.PlayerAttack(damage);
+
         GameEventsManager.Instance.CombatEvents.EndTurn();
     }
 

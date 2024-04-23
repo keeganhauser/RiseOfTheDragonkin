@@ -325,6 +325,114 @@ MonoBehaviour:
       m_SpriteOverride: {fileID: -562770691, guid: e5424fa2e46c39a4897c2a909d101fc6, type: 3}
     m_FromMain: 1
     m_EntryOverrideCount: 4
+  - m_Name: HitUp
+    m_Hash: 750666941
+    m_CategoryList: []
+    m_OverrideEntries:
+    - m_Name: Swashbuckler_hit_6
+      m_Hash: 974131256
+      m_Sprite: {fileID: -1116648390, guid: afae955a0bc4aa0448f410d80468697a, type: 3}
+      m_FromMain: 1
+      m_SpriteOverride: {fileID: 1806604187, guid: 6bfa27267adf5e649a6832ba3b596786, type: 3}
+    - m_Name: Swashbuckler_hit_7
+      m_Hash: 219619502
+      m_Sprite: {fileID: -1686672871, guid: afae955a0bc4aa0448f410d80468697a, type: 3}
+      m_FromMain: 1
+      m_SpriteOverride: {fileID: -679309793, guid: 6bfa27267adf5e649a6832ba3b596786, type: 3}
+    m_FromMain: 1
+    m_EntryOverrideCount: 2
+  - m_Name: HitDown
+    m_Hash: 346561764
+    m_CategoryList: []
+    m_OverrideEntries:
+    - m_Name: Swashbuckler_hit_0
+      m_Hash: 326350093
+      m_Sprite: {fileID: 558331611, guid: afae955a0bc4aa0448f410d80468697a, type: 3}
+      m_FromMain: 1
+      m_SpriteOverride: {fileID: 1757640408, guid: 6bfa27267adf5e649a6832ba3b596786, type: 3}
+    - m_Name: Swashbuckler_hit_1
+      m_Hash: 611616155
+      m_Sprite: {fileID: 885899544, guid: afae955a0bc4aa0448f410d80468697a, type: 3}
+      m_FromMain: 1
+      m_SpriteOverride: {fileID: -1040387723, guid: 6bfa27267adf5e649a6832ba3b596786, type: 3}
+    m_FromMain: 1
+    m_EntryOverrideCount: 2
+  - m_Name: HitLeft
+    m_Hash: 842034103
+    m_CategoryList: []
+    m_OverrideEntries:
+    - m_Name: Swashbuckler_hit_2
+      m_Hash: 1031656481
+      m_Sprite: {fileID: -1507249373, guid: afae955a0bc4aa0448f410d80468697a, type: 3}
+      m_FromMain: 1
+      m_SpriteOverride: {fileID: -67658852, guid: 6bfa27267adf5e649a6832ba3b596786, type: 3}
+    - m_Name: Swashbuckler_hit_3
+      m_Hash: 175826103
+      m_Sprite: {fileID: 982751038, guid: afae955a0bc4aa0448f410d80468697a, type: 3}
+      m_FromMain: 1
+      m_SpriteOverride: {fileID: 2065923661, guid: 6bfa27267adf5e649a6832ba3b596786, type: 3}
+    m_FromMain: 1
+    m_EntryOverrideCount: 2
+  - m_Name: HitRight
+    m_Hash: 586083805
+    m_CategoryList: []
+    m_OverrideEntries:
+    - m_Name: Swashbuckler_hit_4
+      m_Hash: 337539348
+      m_Sprite: {fileID: -2079164964, guid: afae955a0bc4aa0448f410d80468697a, type: 3}
+      m_FromMain: 1
+      m_SpriteOverride: {fileID: 1037657654, guid: 6bfa27267adf5e649a6832ba3b596786, type: 3}
+    - m_Name: Swashbuckler_hit_5
+      m_Hash: 588857730
+      m_Sprite: {fileID: -244215617, guid: afae955a0bc4aa0448f410d80468697a, type: 3}
+      m_FromMain: 1
+      m_SpriteOverride: {fileID: -1574209892, guid: 6bfa27267adf5e649a6832ba3b596786, type: 3}
+    m_FromMain: 1
+    m_EntryOverrideCount: 2
+  - m_Name: DieUp
+    m_Hash: 883581179
+    m_CategoryList: []
+    m_OverrideEntries:
+    - m_Name: Swashbuckler_die_3
+      m_Hash: 309248241
+      m_Sprite: {fileID: -1165381062, guid: 4456704381f362f45988cb44fc0497ae, type: 3}
+      m_FromMain: 1
+      m_SpriteOverride: {fileID: 733802269, guid: 71504fdd486a2b04394371a347c05b91, type: 3}
+    m_FromMain: 1
+    m_EntryOverrideCount: 1
+  - m_Name: DieDown
+    m_Hash: 243845282
+    m_CategoryList: []
+    m_OverrideEntries:
+    - m_Name: Swashbuckler_die_0
+      m_Hash: 191336779
+      m_Sprite: {fileID: -314693480, guid: 4456704381f362f45988cb44fc0497ae, type: 3}
+      m_FromMain: 1
+      m_SpriteOverride: {fileID: 1564499713, guid: 71504fdd486a2b04394371a347c05b91, type: 3}
+    m_FromMain: 1
+    m_EntryOverrideCount: 1
+  - m_Name: DieLeft
+    m_Hash: 672186353
+    m_CategoryList: []
+    m_OverrideEntries:
+    - m_Name: Swashbuckler_die_1
+      m_Hash: 1012965853
+      m_Sprite: {fileID: 355318777, guid: 4456704381f362f45988cb44fc0497ae, type: 3}
+      m_FromMain: 1
+      m_SpriteOverride: {fileID: -1948238836, guid: 71504fdd486a2b04394371a347c05b91, type: 3}
+    m_FromMain: 1
+    m_EntryOverrideCount: 1
+  - m_Name: DieRight
+    m_Hash: 1036724652
+    m_CategoryList: []
+    m_OverrideEntries:
+    - m_Name: Swashbuckler_die_2
+      m_Hash: 627699815
+      m_Sprite: {fileID: -858456133, guid: 4456704381f362f45988cb44fc0497ae, type: 3}
+      m_FromMain: 1
+      m_SpriteOverride: {fileID: -1066569912, guid: 71504fdd486a2b04394371a347c05b91, type: 3}
+    m_FromMain: 1
+    m_EntryOverrideCount: 1
   m_PrimaryLibraryGUID: 6fa361fa2eebb1c46b219f9718d6c50f
-  m_ModificationHash: 638463080361083438
+  m_ModificationHash: 638494164252394984
   m_Version: 1

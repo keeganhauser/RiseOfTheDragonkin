@@ -46,11 +46,9 @@ public class QuestPoint : MonoBehaviour
 
     private void QuestStateChanged(Quest quest)
     {
-        Debug.LogWarning($"Trying to see if {quest.Info.ID} == {questId}");
         if (quest.Info.ID == questId)
         {
             currentQuestState = quest.State;
-            Debug.Log($"Quest '{questId}' updated to state {currentQuestState}");
         }
     }
 }

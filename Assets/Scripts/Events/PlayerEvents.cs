@@ -55,4 +55,22 @@ public class PlayerEvents
     {
         onPlayerInitializeFinish?.Invoke();
     }
+
+    public event Action onPlayerWasHit;
+    public void PlayerWasHit()
+    {
+        onPlayerWasHit?.Invoke();
+    }
+
+    public event Action onPlayerDeath;
+    public void PlayerDeath()
+    {
+        onPlayerDeath?.Invoke();
+    }
+
+    public event Action onPlayerRevive;
+    public void PlayerRevive()
+    {
+        onPlayerRevive?.Invoke();
+    }
 }
