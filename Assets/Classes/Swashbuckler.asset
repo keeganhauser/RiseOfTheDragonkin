@@ -13,8 +13,5 @@ MonoBehaviour:
   m_Name: Swashbuckler
   m_EditorClassIdentifier: 
   defaultPlayerName: Swashbuckler
-  damage: 12
-  health: 15
-  mana: 8
-  speed: 16
   spriteLibrary: {fileID: 7108339969198208228, guid: 6fa361fa2eebb1c46b219f9718d6c50f, type: 3}
+  classIcon: {fileID: 21300000, guid: 9b723382fb40dce40a932812d0a704a0, type: 3}

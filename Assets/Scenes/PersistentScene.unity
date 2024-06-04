@@ -1005,6 +1005,10 @@ PrefabInstance:
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: -331293098, guid: 799e1a5c9dcc01f44bd35c5a57baf0f0, type: 3}
+    - target: {fileID: 5568604292409927094, guid: 1dcf55ef5a5eae349a2c097e1e015d4d, type: 3}
+      propertyPath: playerClass
+      value: 
+      objectReference: {fileID: 11400000, guid: 8b8a6fa4137c6b646a7055397f2ce667, type: 2}
     - target: {fileID: 7135300453810491091, guid: 1dcf55ef5a5eae349a2c097e1e015d4d, type: 3}
       propertyPath: m_LocalPosition.x
       value: 1.8927898
@@ -2494,6 +2498,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   contentParent: {fileID: 1016884473}
+  playerIcon: {fileID: 1651520526}
   healthBar: {fileID: 1532203409}
   manaBar: {fileID: 1127673310}
   expBar: {fileID: 1771083681}

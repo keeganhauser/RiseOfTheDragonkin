@@ -1,7 +1,4 @@
-using System.Collections;
 using UnityEngine;
-using UnityEngine.InputSystem;
-using UnityEngine.SceneManagement;
 using UnityEngine.U2D.Animation;
 
 public class Player : SingletonMonoBehavior<Player>
@@ -15,6 +12,7 @@ public class Player : SingletonMonoBehavior<Player>
     private PlayerExperience exp;
 
     public PlayerStats Stats => stats;
+    public PlayerClass ClassInfo => playerClass;
 
     protected override void Awake()
     {
@@ -28,8 +26,10 @@ public class Player : SingletonMonoBehavior<Player>
         health = GetComponent<PlayerHealth>();
         mana = GetComponent<PlayerMana>();
         exp = GetComponent<PlayerExperience>();
+    }
 
-
+    private void Start()
+    {
         GameEventsManager.Instance.PlayerEvents.PlayerInitializeFinish();
     }
 

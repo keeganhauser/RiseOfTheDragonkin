@@ -8,5 +8,6 @@ public class PlayerClass : ScriptableObject
 {
     public string defaultPlayerName;
     public SpriteLibraryAsset spriteLibrary;
+    public Sprite classIcon;
     // TODO: Add default items
 }

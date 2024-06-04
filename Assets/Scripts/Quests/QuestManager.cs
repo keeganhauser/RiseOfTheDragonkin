@@ -63,15 +63,7 @@ public class QuestManager : SingletonMonoBehavior<QuestManager>
 
     private void Update()
     {
-        // Loop through all quests
-        foreach (Quest quest in questMap.Values)
-        {
-            // If quest requirements are met, switch it to CanStart
-            if (quest.State == QuestState.RequirementsNotMet && CheckRequirementsMet(quest))
-            {
-                ChangeQuestState(quest.Info.ID, QuestState.CanStart);
-            }
-        }
+        InitQuestStatus();
     }
 
     private void StartQuest(string id)

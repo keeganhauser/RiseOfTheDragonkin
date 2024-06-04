@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -7,6 +8,7 @@ using UnityEngine.UI;
 public class PlayerUI : MonoBehaviour
 {
     [SerializeField] private GameObject contentParent;
+    [SerializeField] private Image playerIcon;
 
     [SerializeField] private Image healthBar;
     [SerializeField] private Image manaBar;
@@ -27,7 +29,7 @@ public class PlayerUI : MonoBehaviour
     private void GetStats()
     {
         stats = Player.Instance.Stats;
-        UpdateUI();
+        playerIcon.sprite = Player.Instance.ClassInfo.classIcon;
     }
 
     private void OnEnable()
@@ -42,7 +44,14 @@ public class PlayerUI : MonoBehaviour
 
     private void Update()
     {
-        UpdateUI();
+        if (stats != null)
+        {
+            UpdateUI();
+        }
+        else
+        {
+            Debug.LogWarning("stats is null");
+        }
     }
 
     private void UpdateUI()
