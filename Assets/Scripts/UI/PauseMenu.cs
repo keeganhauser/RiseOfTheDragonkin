@@ -8,7 +8,6 @@ using UnityEngine.UI;
 
 public class PauseMenu : MonoBehaviour
 {
-    private MariaDB db;
     private bool isPaused;
     private Image image;
 
@@ -27,7 +26,6 @@ public class PauseMenu : MonoBehaviour
 
     void Start()
     {
-        db = FindObjectOfType<MariaDB>();
         isPaused = false;
         saveButton.onClick.AddListener(SaveGame);
         loadButton.onClick.AddListener(LoadGame);
@@ -96,32 +94,12 @@ public class PauseMenu : MonoBehaviour
 
     public void SaveGame()
     {
-        Player player = FindObjectOfType<Player>();
-        Vector3 pos = player.GetComponent<Transform>().position;
-        DateTime date = DateTime.Now;
-        string scene_name = SceneManager.GetActiveScene().name;
-
-        db.Insert(player.Name, pos.ToString("F6").Trim("()".ToCharArray()), date, scene_name);
-        Debug.Log($"Game saved at {date}");
+        SaveLoadManager.Instance.Save();
     }
 
     public void LoadGame()
     {
-        Player player = FindObjectOfType<Player>();
-        string[] str_coords;
-        string scene_name;
-
-        string result = db.Read(MariaDB.SelectType.MostRecent);
-        string[] values = result.Split(';');
-
-        // Load proper scene
-        scene_name = values[3].Trim();
-        SceneManager.SetActiveScene(SceneManager.GetSceneByName(scene_name));
-
-        // Set player position
-        str_coords = values[2].Split(',');
-        player.transform.position = new Vector2(Convert.ToSingle(str_coords[0]), Convert.ToSingle(str_coords[1]));
-
+        SaveLoadManager.Instance.Load();
         ResumeGame();
     }
 }

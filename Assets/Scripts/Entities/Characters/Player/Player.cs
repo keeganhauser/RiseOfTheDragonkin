@@ -24,6 +24,7 @@ public class Player : SingletonMonoBehavior<Player>
     public void InitializePlayer(PlayerClass playerClass)
     { 
         this.playerClass = playerClass;
+        this.Name = playerClass.defaultPlayerName;
         GetComponent<PlayerCombatController>().Initialize(
             playerClass.health,
             playerClass.mana,
